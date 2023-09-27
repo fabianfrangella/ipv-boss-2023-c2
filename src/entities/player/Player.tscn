@@ -21,3 +21,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, 133 )
 current = true
 smoothing_enabled = true
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

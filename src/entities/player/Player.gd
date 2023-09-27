@@ -28,6 +28,7 @@ func initialize():
 	attackHandler = attackHandlers.get("melee")
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
+	movementHandler.initialize(get_node("DashTimer"))
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
