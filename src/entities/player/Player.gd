@@ -16,24 +16,24 @@ func _ready():
 func _physics_process(delta):
 	movementHandler.handle_movement(self)
 	attackHandler.handle_attack()
-	if Input.is_action_pressed("change_attack_mode"):
+	if Input.is_action_just_pressed("change_attack_mode"):
 		_change_attack_mode()
 	
 
 func initialize():
 	attackHandlers = {
-		"melee": MeleeAttack.new(),
-		"range": RangeAttack.new()
+		ATTACK_MODES.MELEE: MeleeAttack.new(),
+		ATTACK_MODES.RANGE: RangeAttack.new()
 	}
-	attackHandler = attackHandlers.get("melee")
+	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
-		attackHandler = attackHandlers.get("range")
+		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
 		currentAttackMode = ATTACK_MODES.RANGE
 	else:
-		attackHandler = attackHandlers.get("melee")
+		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 		currentAttackMode = ATTACK_MODES.MELEE
