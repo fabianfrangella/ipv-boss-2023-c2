@@ -1,4 +1,5 @@
 extends AttackMode
 
 func handle_attack():
-	pass 
+	if Input.is_action_just_pressed("attack"):
+		print("range attack")
