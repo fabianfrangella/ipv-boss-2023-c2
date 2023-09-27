@@ -1,17 +1,8 @@
-extends KinematicBody2D
+extends Node
 
-
-var velocity: Vector2 = Vector2.ZERO
 var speed = 240
 
-func _ready():
-	pass 
-
-func _physics_process(delta):
-	move_on_input()
-
-
-func move_on_input():
+func handle_movement(body: KinematicBody2D):
 			var motion = Vector2()
 			if Input.is_action_pressed("move_up"):
 				motion += Vector2(0, -1)
@@ -24,4 +15,4 @@ func move_on_input():
 
 			motion = motion.normalized() * speed
 
-			move_and_slide(motion)
+			body.move_and_slide(motion)
