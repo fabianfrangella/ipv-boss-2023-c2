@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AbstractState",
+"class": "AbstractEnemyState",
+"language": "GDScript",
+"path": "res://entities/enemies/states/AbstractEnemyState.gd"
+}, {
+"base": "Node",
+"class": "AbstractState",
+"language": "GDScript",
+"path": "res://entities/AbstractState.gd"
+}, {
+"base": "Node",
+"class": "AbstractStateMachine",
+"language": "GDScript",
+"path": "res://entities/AbstractStateMachine.gd"
+}, {
 "base": "Node2D",
 "class": "AttackMode",
 "language": "GDScript",
 "path": "res://entities/player/AttackMode.gd"
+}, {
+"base": "TileMap",
+"class": "PathfindAstar",
+"language": "GDScript",
+"path": "res://entities/AstarTilemap.gd"
 } ]
 _global_script_class_icons={
-"AttackMode": ""
+"AbstractEnemyState": "",
+"AbstractState": "",
+"AbstractStateMachine": "",
+"AttackMode": "",
+"PathfindAstar": ""
 }
 
 [application]
@@ -71,6 +95,11 @@ change_attack_mode={
 dash={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+show_enemy_detection_area={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

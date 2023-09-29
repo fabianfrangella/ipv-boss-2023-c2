@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://entities/enemies/BasicEnemy.gd" type="Script" id=1]
+[ext_resource path="res://entities/enemies/StateMachine.gd" type="Script" id=2]
+[ext_resource path="res://entities/enemies/states/IdleState.gd" type="Script" id=3]
+[ext_resource path="res://entities/enemies/states/AlertState.gd" type="Script" id=4]
+[ext_resource path="res://entities/enemies/states/DieState.gd" type="Script" id=5]
+[ext_resource path="res://entities/enemies/states/WalkState.gd" type="Script" id=6]
+[ext_resource path="res://entities/enemies/DetectionArea.gd" type="Script" id=7]
+[ext_resource path="res://assets/enemie.png" type="Texture" id=8]
+[ext_resource path="res://assets/green_circle.png" type="Texture" id=9]
+[ext_resource path="res://entities/enemies/EnemyProjectile.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "alert",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "attack",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "die",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "die_alert",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "go_normal",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle_alert",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_alert",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 101.0
+height = 68.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 2617.4
+
+[node name="BasicEnemy" type="KinematicBody2D"]
+scale = Vector2( 0.3, 0.3 )
+collision_layer = 4
+script = ExtResource( 1 )
+projectile_scene = ExtResource( 10 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+character_path = NodePath("..")
+START_STATE = NodePath("Idle")
+STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Alert"), NodePath("Die") ]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+state_id = "idle"
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+one_shot = true
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+state_id = "walk"
+
+[node name="Alert" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+state_id = "alert"
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+state_id = "die"
+
+[node name="FirePosition" type="Position2D" parent="."]
+
+[node name="Body" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "alert"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 7 )
+
+[node name="green_circle" type="Sprite" parent="DetectionArea"]
+visible = false
+modulate = Color( 0, 0, 0, 0 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource( 2 )
+
+[connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_IdleTimer_timeout"]
+[connection signal="animation_finished" from="Body" to="StateMachine" method="_on_Body_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="StateMachine" method="_on_DetectionArea_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="StateMachine" method="_on_DetectionArea_body_exited"]

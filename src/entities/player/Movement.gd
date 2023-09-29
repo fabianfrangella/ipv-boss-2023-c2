@@ -1,7 +1,7 @@
 extends Node
 
 var speed = 240
-var dash_speed = 10
+var dash_speed = 30
 var can_dash
 
 func initialize(dash_timer: Timer):
