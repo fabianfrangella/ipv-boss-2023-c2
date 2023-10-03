@@ -6,10 +6,11 @@
 [ext_resource path="res://entities/player/Weapon.gd" type="Script" id=4]
 [ext_resource path="res://entities/player/PlayerMeleeAttack.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 5.5 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -19 )
 collision_mask = 3
 script = ExtResource( 1 )
 
@@ -17,6 +18,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 26.5 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
