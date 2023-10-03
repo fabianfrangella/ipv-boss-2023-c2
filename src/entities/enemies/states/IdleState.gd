@@ -38,8 +38,5 @@ func _on_animation_finished(anim_name: String) -> void:
 			character._play_animation("idle_alert")
 		"go_normal":
 			character._play_animation("idle")
-			#character._play_animation("idle_alert")
-			pass
 		"go_normal":
-			#character._play_animation("idle")
-			pass
+			character._play_animation("idle")

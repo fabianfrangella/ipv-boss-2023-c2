@@ -1,18 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/mock/MockTile.tres" type="TileSet" id=2]
 [ext_resource path="res://entities/enemies/BasicEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/AstarTilemap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World.gd" type="Script" id=5]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, -1 )
 mode = 1
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 256, 128 )
+collision_layer = 0
+collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0 )
+tile_data = PoolIntArray( -589828, 0, 0, -589827, 0, 0, -589826, 0, 0, -589825, 0, 0, -655360, 0, 0, -655359, 0, 0, -655358, 0, 0, -655357, 0, 0, -655356, 0, 0, -655355, 0, 0, -655354, 0, 0, -655353, 0, 0, -655352, 0, 0, -655351, 0, 0, -524292, 0, 0, -524291, 0, 0, -524290, 0, 0, -524289, 0, 0, -589824, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -589815, 0, 0, -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 0, 0, -524288, 0, 0, -524287, 0, 0, -524286, 0, 0, -524285, 0, 0, -524284, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -524280, 0, 0, -524279, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -393210, 0, 0, -393209, 0, 0, -393208, 0, 0, -393207, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -327671, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -262135, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0 )
 
 [node name="YSort" type="YSort" parent="TileMap"]
 
@@ -20,17 +25,41 @@ tile_data = PoolIntArray( -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -262146, 
 
 [node name="Player" parent="TileMap/YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( 503, 127 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 
 [node name="Enemies" type="Node2D" parent="TileMap/YSort/Entities"]
 
+[node name="AstarTilemap" parent="TileMap/YSort/Entities/Enemies" instance=ExtResource( 4 )]
+position = Vector2( -1, -1 )
+mode = 1
+cell_size = Vector2( 256, 128 )
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( -524293, 0, 0, -458757, 0, 0, -458756, 0, 0, -524279, 0, 0, 393225, 0, 0 )
+
 [node name="BasicEnemy" parent="TileMap/YSort/Entities/Enemies" instance=ExtResource( 3 )]
 position = Vector2( 168, 269 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 1
+speed = 100.0
+max_speed = 1000.0
+pathfinding_step_threshold = 10.0
+wander_radius = Vector2( 1000, 1000 )
+pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="BasicEnemy2" parent="TileMap/YSort/Entities/Enemies" instance=ExtResource( 3 )]
 position = Vector2( 956, 402 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 1
+pathfinding_step_threshold = 5000.0
+pathfinding_path = NodePath("../AstarTilemap")
+
+[node name="BasicEnemy3" parent="TileMap/YSort/Entities/Enemies" instance=ExtResource( 3 )]
+position = Vector2( 913, -154 )
+collision_layer = 4
+collision_mask = 1
+speed = 100.0
+max_speed = 1000.0
+pathfinding_step_threshold = 10.0
+wander_radius = Vector2( 1000, 1000 )
+pathfinding_path = NodePath("../AstarTilemap")

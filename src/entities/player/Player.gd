@@ -5,6 +5,11 @@ const RangeAttack = preload("res://entities/player/RangeAttack.gd")
 const MovementHandler = preload("res://entities/player/Movement.gd")
 const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
+onready var weapon = $WeaponContainer/Weapon
+
+
+var projectile_container: Node
+
 var attackHandler
 var movementHandler
 var attackHandlers
@@ -15,16 +20,18 @@ func _ready():
 
 func _physics_process(delta):
 	movementHandler.handle_movement(self)
-	attackHandler.handle_attack()
+	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode"):
 		_change_attack_mode()
 	
 
-func initialize():
+func initialize(projectile_container: Node = get_parent()):
 	attackHandlers = {
 		ATTACK_MODES.MELEE: MeleeAttack.new(),
 		ATTACK_MODES.RANGE: RangeAttack.new()
 	}
+	self.projectile_container = projectile_container
+	weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
@@ -37,3 +44,9 @@ func _change_attack_mode():
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 		currentAttackMode = ATTACK_MODES.MELEE
+
+func notify_hit() -> void:
+	set_physics_process(false)
+	collision_layer = 0
+	get_parent().remove_child(self)
+	queue_free()

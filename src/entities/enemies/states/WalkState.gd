@@ -4,7 +4,7 @@ export (float) var speed: float = 10.0
 export (float) var max_speed: float = 100.0
 export (float) var pathfinding_step_threshold: float = 5.0
 export (Vector2) var wander_radius:Vector2 = Vector2(10.0, 10.0)
-var path:Array
+var path:Array = []
 
 func enter() ->void:
 	if character.pathfinding != null:
@@ -13,6 +13,7 @@ func enter() ->void:
 			rand_range(-wander_radius.y, wander_radius.y)
 		)
 		path = character.pathfinding.get_simple_path(character.global_position, random_target)
+		print(path)
 		if path.empty() || path.size() == 1:
 			emit_signal("finished","idle")
 		else:
@@ -33,7 +34,6 @@ func update(delta:float) ->void:
 	if path.empty():
 		emit_signal("finished","idle")
 		return
-		
 	var next_point: Vector2 = path.front()
 		
 	while character.global_position.distance_to(next_point) < pathfinding_step_threshold:
@@ -43,7 +43,7 @@ func update(delta:float) ->void:
 			return
 		next_point = path.front()
 	
-	character.velocity = (character.velocity * character.global_position.direction_to(next_point) *speed).clamped(max_speed)
+	character.velocity = (character.velocity + character.global_position.direction_to(next_point) *speed).clamped(max_speed)
 	character._apply_movement()
 	character.body_anim.flip_h = character.velocity.x < 0
 	

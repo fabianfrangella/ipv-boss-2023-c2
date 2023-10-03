@@ -47,6 +47,8 @@ func remove() -> void:
 	## Acá, como hicimos con Turret y Player, delegamos la "muerte"
 	## a una animación de golpe.
 	projectile_animations.play("hit")
+	get_parent().remove_child(self)
+	queue_free()
 
 
 ## Esta función se llamaría desde "hit" al terminar la animación

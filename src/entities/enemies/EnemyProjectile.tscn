@@ -15,6 +15,7 @@ VELOCITY = 150.0
 wait_time = 6.0
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -26,3 +27,5 @@ shape = SubResource( 1 )
 position = Vector2( -10.5, 0 )
 scale = Vector2( 0.587302, 0.416667 )
 texture = ExtResource( 2 )
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

@@ -23,7 +23,7 @@ animations = [ {
 "name": "attack",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "die",
 "speed": 3.0
@@ -68,7 +68,8 @@ radius = 2617.4
 
 [node name="BasicEnemy" type="KinematicBody2D"]
 scale = Vector2( 0.3, 0.3 )
-collision_layer = 4
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 projectile_scene = ExtResource( 10 )
 
@@ -98,6 +99,7 @@ script = ExtResource( 5 )
 state_id = "die"
 
 [node name="FirePosition" type="Position2D" parent="."]
+position = Vector2( 2.19345e-05, 0 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
