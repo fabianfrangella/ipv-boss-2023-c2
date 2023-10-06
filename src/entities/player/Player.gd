@@ -34,6 +34,7 @@ func initialize(projectile_container: Node = get_parent()):
 	weapon.projectile_container = projectile_container
 	range_weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
+	range_weapon.get_node("Sprite").hide()
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
@@ -41,9 +42,13 @@ func initialize(projectile_container: Node = get_parent()):
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
+		weapon.get_node("Sprite").hide()
+		range_weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.RANGE
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
+		range_weapon.get_node("Sprite").hide()
+		weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.MELEE
 
 func notify_hit() -> void:
