@@ -349,12 +349,20 @@ margin_left = 12.0
 margin_top = 13.0
 margin_right = 252.0
 margin_bottom = 275.0
-text = "PRESS \"WASD\" TO MOVE
+text = "KEYBOARD:
+PRESS \"WASD\" TO MOVE
 PRESS \"LEFT CLICK\" TO ATTACK
 PRESS \"Q\" TO CHANGE ATTACK MODE
 PRESS \"SPACE BAR\" TO DASH
 PRESS \"R\" TO RESET GAME
-PRESS \"H\" TO HIDE THIS TIPS"
+PRESS \"H\" TO HIDE THIS TIPS
+
+JOYSTICK:
+USE \"LEFT STICK\" TO MOVE
+USE \"RIGHT STICK\" TO AIM
+PRESS \"R2\" TO ATTACK
+PRESS \"L1\" TO CHANGE ATTACK MODE
+PRESS \"R1\" TO DASH"
 uppercase = true
 script = ExtResource( 14 )
 __meta__ = {

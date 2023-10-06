@@ -4,13 +4,28 @@ export (PackedScene) var projectile_scene: PackedScene
 onready var weapon_tip: Node2D = $WeaponTip
 var projectile_container: Node
 var fire_tween: SceneTreeTween
+var is_using_joystick = false
 
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		is_using_joystick = false
+		rotation = (get_global_mouse_position() - global_position).angle()
 
 ## Acá solo me mantengo apuntando si tengo habilitada esa función.
 ## Esto es como corrección de apuntado para compensar por el delay
 ## aplicado por la animación de disparo.
 func process_input() -> void:
-	rotation = (get_global_mouse_position() - global_position).angle()
+	if (not is_using_joystick):
+		is_using_joystick = Input.get_joy_axis(0,3) == 1 || Input.get_joy_axis(0, 2) == 1
+	
+	if (is_using_joystick):
+		var _lookDir = Vector2()
+		_lookDir.y = Input.get_joy_axis(0, 3)
+		_lookDir.x = Input.get_joy_axis(0, 2)
+		rotation = _lookDir.angle()
+	else:
+		rotation = (get_global_mouse_position() - global_position).angle()
 
 
 func fire() -> void:
