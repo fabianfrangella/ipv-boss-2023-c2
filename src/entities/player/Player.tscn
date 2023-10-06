@@ -60,4 +60,4 @@ scale = Vector2( 0.1083, 0.0908251 )
 texture = ExtResource( 7 )
 
 [node name="WeaponTip" type="Position2D" parent="RangeWeaponContainer/Weapon"]
-position = Vector2( 11, -4 )
+position = Vector2( 19, 1 )
