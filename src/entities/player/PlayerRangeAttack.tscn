@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/Projectile.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "fire_start"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Charged2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.625, 9.4375 )
+
+[node name="PlayerRangeAttack" instance=ExtResource( 1 )]
+VELOCITY = 500.0
+
+[node name="LifetimeTimer" parent="." index="0"]
+wait_time = 5.0
+
+[node name="ProjectileAnimations" parent="." index="1"]
+anims/fire_start = SubResource( 2 )
+
+[node name="Hitbox" parent="." index="3"]
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( -1.625, -0.4375 )
+shape = SubResource( 1 )

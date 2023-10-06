@@ -6,7 +6,7 @@ const MovementHandler = preload("res://entities/player/Movement.gd")
 const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
 onready var weapon = $WeaponContainer/Weapon
-
+onready var range_weapon = $RangeWeaponContainer/Weapon
 
 var projectile_container: Node
 
@@ -32,6 +32,7 @@ func initialize(projectile_container: Node = get_parent()):
 	}
 	self.projectile_container = projectile_container
 	weapon.projectile_container = projectile_container
+	range_weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()

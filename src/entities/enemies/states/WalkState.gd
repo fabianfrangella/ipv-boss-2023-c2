@@ -12,7 +12,6 @@ func enter() ->void:
 			rand_range(-wander_radius.y, wander_radius.y)
 		)
 		path = character.pathfinding.get_simple_path(character.global_position, random_target)
-		print(path)
 		if path.empty() || path.size() == 1:
 			emit_signal("finished","idle")
 		else:
@@ -28,11 +27,9 @@ func exit() -> void:
 
 func update(delta:float) ->void:
 	if character._can_see_target():
-		print ("can see target")
 		emit_signal("finished","alert")
 		return
 	if path.empty():
-		print ("empty path")
 		emit_signal("finished","idle")
 		return
 	var next_point: Vector2 = path.front()

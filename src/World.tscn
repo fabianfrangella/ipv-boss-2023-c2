@@ -317,7 +317,7 @@ wander_radius = Vector2( 1000, 1000 )
 pathfinding_path = NodePath("../../../AstarTilemap")
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( 981, 128 )
+position = Vector2( -153, 71 )
 collision_layer = 2
 
 [node name="BasicEnemy6" parent="YSort/Entities" instance=ExtResource( 3 )]
