@@ -8,7 +8,7 @@ const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
 signal hit(amount)
 signal healed(amount)
-
+var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
 signal dead()
@@ -139,3 +139,23 @@ func handle_event(event: String, value = null) -> void:
 
 func notify_dead():
 	handle_event("dead")
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		is_using_joystick = false
+		rotation = (get_global_mouse_position() - global_position).angle()
+
+## Acá solo me mantengo apuntando si tengo habilitada esa función.
+## Esto es como corrección de apuntado para compensar por el delay
+## aplicado por la animación de disparo.
+func process_input() -> void:
+	if (not is_using_joystick):
+		is_using_joystick = Input.get_joy_axis(0,3) == 1 || Input.get_joy_axis(0, 2) == 1
+	
+	if (is_using_joystick):
+		var _lookDir = Vector2()
+		_lookDir.y = Input.get_joy_axis(0, 3)
+		_lookDir.x = Input.get_joy_axis(0, 2)
+		rotation = _lookDir.angle()
+	else:
+		rotation = (get_global_mouse_position() - global_position).angle()

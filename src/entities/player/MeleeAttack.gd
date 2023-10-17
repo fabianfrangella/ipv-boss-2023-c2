@@ -7,7 +7,7 @@ extends AttackMode
 
 # Called when the node enters the scene tree for the first time.
 func _handle_attack(body: KinematicBody2D) -> void:
-	body.weapon.process_input()
+
 	if Input.is_action_just_pressed("attack"):
 		if body.projectile_container == null:
 			body.projectile_container = get_parent()
