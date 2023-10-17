@@ -1,12 +1,29 @@
 extends KinematicBody2D
+class_name Player
 
 const MeleeAttack = preload("res://entities/player/MeleeAttack.gd")
 const RangeAttack = preload("res://entities/player/RangeAttack.gd")
 const MovementHandler = preload("res://entities/player/Movement.gd")
 const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
+signal hit(amount)
+signal healed(amount)
+
+signal hp_changed(current_hp, max_hp)
+signal mana_changed(current_mana, max_mana)
+signal dead()
+
 onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
+
+export (int) var max_hp: int = 3
+var hp: int = max_hp
+
+export (float) var max_mana: float = 5.0
+var mana: float = max_mana
+
+export (float) var mana_recovery_time: float = 5.0
+export (float) var mana_recovery_delay: float = 1.0
 
 var projectile_container: Node
 
@@ -38,6 +55,7 @@ func initialize(projectile_container: Node = get_parent()):
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
+	GameState.set_current_player(self)
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
@@ -51,8 +69,73 @@ func _change_attack_mode():
 		weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.MELEE
 
-func notify_hit() -> void:
+func notify_hit(amount: int = 1) -> void:
+	handle_event("hit", amount)
+
+func sum_hp(amount: int) -> void:
+	hp = clamp(hp + amount, 0, max_hp)
+	emit_signal("hp_changed", hp, max_hp)
+	print("hp_changed %s %s" % [hp, max_hp])
+
+
+var mana_regen_tween: SceneTreeTween
+
+func sum_mana(amount: float) -> void:
+	_update_passive_prop(
+		clamp(mana + amount, 0.0, max_mana),
+		max_mana,
+		"mana",
+		"mana_changed"
+	)
+	if mana < max_mana:
+		if mana_regen_tween:
+			mana_regen_tween.kill()
+		mana_regen_tween = create_tween()
+		var duration: float = (max_mana - mana) * mana_recovery_time / max_mana
+		mana_regen_tween.tween_method(
+			self,
+			"_update_passive_prop",
+			mana, max_mana, duration,
+			[max_mana, "mana", "mana_changed"]
+		).set_delay(mana_recovery_delay)
+		
+func _update_passive_prop(amount, max_amount, property: String, updated_signal) -> void:
+	set(property, amount)
+	emit_signal(updated_signal, amount, max_amount)
+	
+func _remove() -> void:
 	set_physics_process(false)
 	collision_layer = 0
 	get_parent().remove_child(self)
 	queue_free()
+
+
+
+
+func notify_healed(amount):
+	handle_event("healed", amount)
+
+
+func notify_hp_changed(current_hp, max_hp):
+	handle_event("hp_changed", [current_hp, max_hp])
+
+func notify_mana_changed(current_mana, max_mana):
+	handle_event("mana_changed", [current_mana, max_mana])
+
+
+func handle_event(event: String, value = null) -> void:
+	print(value)
+	match event:
+		"hit":
+			sum_hp(-value)
+		"healed":
+			sum_hp(value)
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("dead")
+		"dead":
+			_remove()
+
+
+func notify_dead():
+	handle_event("dead")
