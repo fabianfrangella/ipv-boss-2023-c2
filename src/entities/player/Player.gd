@@ -15,6 +15,7 @@ signal dead()
 
 onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
+onready var body_anim: Node2D = $Body
 
 export (int) var max_hp: int = 3
 var hp: int = max_hp
@@ -31,6 +32,7 @@ var attackHandler
 var movementHandler
 var attackHandlers
 var currentAttackMode
+var can_melee_attack = true
 
 func _ready():
 	initialize()
@@ -51,7 +53,7 @@ func initialize(projectile_container: Node = get_parent()):
 	weapon.projectile_container = projectile_container
 	range_weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
-	range_weapon.get_node("Sprite").hide()
+	#range_weapon.get_node("Sprite").hide()
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
@@ -60,13 +62,13 @@ func initialize(projectile_container: Node = get_parent()):
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
-		weapon.get_node("Sprite").hide()
-		range_weapon.get_node("Sprite").show()
+		#weapon.get_node("Sprite").hide()
+		#range_weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.RANGE
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
-		range_weapon.get_node("Sprite").hide()
-		weapon.get_node("Sprite").show()
+		#range_weapon.get_node("Sprite").hide()
+		#weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.MELEE
 
 func notify_hit(amount: int = 1) -> void:
@@ -139,3 +141,7 @@ func handle_event(event: String, value = null) -> void:
 
 func notify_dead():
 	handle_event("dead")
+
+
+func _on_Melee_animation_finished():
+	can_melee_attack = true
