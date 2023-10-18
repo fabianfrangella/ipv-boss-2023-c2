@@ -8,7 +8,7 @@ const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
 signal hit(amount)
 signal healed(amount)
-
+var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
 signal dead()
