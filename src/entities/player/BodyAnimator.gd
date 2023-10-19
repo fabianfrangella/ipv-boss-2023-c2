@@ -9,6 +9,7 @@ var can_melee_attack = true
 var previous_direction = Vector2(0, 0)
 var is_attacking = false
 var can_change_animation = true
+var can_range_attack = true
 
 func _ready():
 	melee_weapon_anim.show()
@@ -26,6 +27,7 @@ func play_attack(type):
 		var melee_animation = _get_melee_animation(previous_direction)
 		body_anim.play(melee_animation)
 	elif(type == 'range'):
+		can_range_attack = false
 		var range_animation = _get_range_animation(previous_direction)
 		is_attacking = true
 		body_anim.play(range_animation)
@@ -74,6 +76,11 @@ func _physics_process(delta):
 	# después veo de moverlo a un lugar menos turbio
 	body.weapon.get_node("WeaponTip").position = previous_direction * 50
 	body.range_weapon.get_node("WeaponTip").position = previous_direction * 50
+	
+	#TODO: Llevar todo lo relacionado a estas (hp, mana, costos, etc) a un singleton
+	#	   para poder validar estas cosas desde varios scripts distintos sin repetir codigo
+	#      ni pasar dependencias innecesarias
+	can_range_attack = body.mana >= 2.0
 
 func set_melee_animator():
 	melee_weapon_anim.show()
