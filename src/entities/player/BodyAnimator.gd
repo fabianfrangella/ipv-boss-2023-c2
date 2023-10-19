@@ -20,9 +20,6 @@ func play(animation):
 		body_anim.play(animation)
 
 func play_attack(type):
-	# acá tiro magia negra para mover el tip invisible en la direccion a la que está atacando
-	# después veo de moverlo a un lugar menos turbio
-	body.weapon.get_node("WeaponTip").position = previous_direction * 50
 	if (type == 'melee'):
 		can_melee_attack = false
 		is_attacking = true
@@ -73,6 +70,10 @@ func _physics_process(delta):
 	if (not is_attacking && direction != Vector2(0, 0)):
 		previous_direction = direction
 		_play_movement_animation(direction)
+	# acá tiro magia negra para mover el tip invisible en la direccion a la que está atacando
+	# después veo de moverlo a un lugar menos turbio
+	body.weapon.get_node("WeaponTip").position = previous_direction * 50
+	body.range_weapon.get_node("WeaponTip").position = previous_direction * 50
 
 func set_melee_animator():
 	melee_weapon_anim.show()
