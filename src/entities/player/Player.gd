@@ -62,9 +62,11 @@ func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
 		currentAttackMode = ATTACK_MODES.RANGE
+		body_anim.set_range_animator()
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 		currentAttackMode = ATTACK_MODES.MELEE
+		body_anim.set_melee_animator()
 
 func notify_hit(amount: int = 1) -> void:
 	handle_event("hit", amount)
@@ -118,7 +120,6 @@ func notify_mana_changed(current_mana, max_mana):
 	handle_event("mana_changed", [current_mana, max_mana])
 
 func handle_event(event: String, value = null) -> void:
-	print(value)
 	match event:
 		"hit":
 			sum_hp(-value)
