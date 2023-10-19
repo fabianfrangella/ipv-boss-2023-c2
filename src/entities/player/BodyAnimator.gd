@@ -5,8 +5,10 @@ onready var melee_weapon_anim: AnimatedSprite = $Melee
 onready var range_weapon_anim: AnimatedSprite = $Range
 onready var body = get_parent()
 
-var can_melee_attack = true
 var previous_direction = Vector2(0, 0)
+
+#TODO: Pasar todos estos flags a señales para eliminar dependencias directas
+var can_melee_attack = true
 var is_attacking = false
 var can_change_animation = true
 var can_range_attack = true
