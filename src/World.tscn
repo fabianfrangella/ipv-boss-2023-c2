@@ -334,15 +334,14 @@ pathfinding_path = NodePath("../../../AstarTilemap")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 12.0
-margin_top = 13.0
-margin_right = 252.0
-margin_bottom = 275.0
+margin_left = 772.0
+margin_top = 7.0
+margin_right = 1016.0
+margin_bottom = 269.0
 text = "KEYBOARD:
 PRESS \"WASD\" TO MOVE
-PRESS \"LEFT CLICK\" TO ATTACK
+PRESS \"ENTER\" TO ATTACK
 PRESS \"Q\" TO CHANGE ATTACK MODE
 PRESS \"SPACE BAR\" TO DASH
 PRESS \"R\" TO RESET GAME
