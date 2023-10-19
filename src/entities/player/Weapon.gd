@@ -4,7 +4,7 @@ export (PackedScene) var projectile_scene: PackedScene
 onready var weapon_tip: Node2D = $WeaponTip
 var projectile_container: Node
 var fire_tween: SceneTreeTween
-var is_using_joystick = false
+
 onready var player = $"../.."
 const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 export (float) var mana_drain: float = 2.0

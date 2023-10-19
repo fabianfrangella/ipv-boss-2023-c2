@@ -251,27 +251,11 @@ position = Vector2( 939, 10 )
 
 [node name="Barrels3" parent="YSort/Props" instance=ExtResource( 6 )]
 position = Vector2( 111, 32 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Barrels2" parent="YSort/Props" instance=ExtResource( 6 )]
 position = Vector2( -36, -45 )
-
-[node name="Barrels" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 526, -157 )
-
-[node name="Barrels4" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 1409, 279 )
-
-[node name="Barrels5" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 1489, -38 )
-
-[node name="Barrels6" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( -100, 593 )
-
-[node name="Barrels7" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 638, 279 )
-
-[node name="Barrels8" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 838, 826 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Entities" type="YSort" parent="YSort"]
 
@@ -293,7 +277,7 @@ pathfinding_step_threshold = 5000.0
 pathfinding_path = NodePath("../../../AstarTilemap")
 
 [node name="BasicEnemy3" parent="YSort/Entities" instance=ExtResource( 3 )]
-position = Vector2( 864, -77 )
+position = Vector2( 1134, 152 )
 collision_layer = 4
 collision_mask = 1
 speed = 100.0
@@ -303,7 +287,7 @@ wander_radius = Vector2( 1000, 1000 )
 pathfinding_path = NodePath("../../../AstarTilemap")
 
 [node name="BasicEnemy4" parent="YSort/Entities" instance=ExtResource( 3 )]
-position = Vector2( 227, 73 )
+position = Vector2( 128, 168 )
 collision_layer = 4
 collision_mask = 1
 speed = 100.0

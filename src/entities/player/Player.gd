@@ -15,7 +15,7 @@ signal dead()
 
 onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
-onready var body_anim: Node2D = $Body
+onready var body_anim: Node2D = $BodyAnimations
 
 export (int) var max_hp: int = 3
 var hp: int = max_hp
@@ -32,7 +32,7 @@ var attackHandler
 var movementHandler
 var attackHandlers
 var currentAttackMode
-var can_melee_attack = true
+var previous_direction = Vector2(0, 0)
 
 func _ready():
 	initialize()
@@ -53,7 +53,6 @@ func initialize(projectile_container: Node = get_parent()):
 	weapon.projectile_container = projectile_container
 	range_weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
-	#range_weapon.get_node("Sprite").hide()
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
@@ -62,13 +61,9 @@ func initialize(projectile_container: Node = get_parent()):
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
-		#weapon.get_node("Sprite").hide()
-		#range_weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.RANGE
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
-		#range_weapon.get_node("Sprite").hide()
-		#weapon.get_node("Sprite").show()
 		currentAttackMode = ATTACK_MODES.MELEE
 
 func notify_hit(amount: int = 1) -> void:
@@ -112,8 +107,6 @@ func _remove() -> void:
 	queue_free()
 
 
-
-
 func notify_healed(amount):
 	handle_event("healed", amount)
 
@@ -123,7 +116,6 @@ func notify_hp_changed(current_hp, max_hp):
 
 func notify_mana_changed(current_mana, max_mana):
 	handle_event("mana_changed", [current_mana, max_mana])
-
 
 func handle_event(event: String, value = null) -> void:
 	print(value)
@@ -141,7 +133,3 @@ func handle_event(event: String, value = null) -> void:
 
 func notify_dead():
 	handle_event("dead")
-
-
-func _on_Melee_animation_finished():
-	can_melee_attack = true
