@@ -43,6 +43,7 @@ func _physics_process(delta):
 	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode"):
 		_change_attack_mode()
+	_set_weapon_direction()
 	
 
 func initialize(projectile_container: Node = get_parent()):
@@ -58,6 +59,10 @@ func initialize(projectile_container: Node = get_parent()):
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
 	GameState.set_current_player(self)
+
+func _set_weapon_direction():
+	self.weapon.get_node("WeaponTip").position = previous_direction * 50
+	self.range_weapon.get_node("WeaponTip").position = previous_direction * 50
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):

@@ -21,11 +21,6 @@ func _ready():
 	_play_idle_animation()
 
 func _physics_process(delta):
-	# acá tiro magia negra para mover el tip invisible en la direccion a la que está atacando
-	# después veo de moverlo a un lugar menos turbio
-	body.weapon.get_node("WeaponTip").position = previous_direction * 50
-	body.range_weapon.get_node("WeaponTip").position = previous_direction * 50
-	
 	match self.state:
 		AnimationState.IDLE: _play_idle_animation()
 		AnimationState.MOVEMENT: _play_movement_animation()
@@ -133,9 +128,6 @@ func _play_movement_animation():
 			body_anim.play("idle_down")
 
 func _on_animation_finished():
-	if 'melee' in body_anim.animation:
-		emit_signal("finished_attacking")
-		state = AnimationState.IDLE
-	if 'range' in body_anim.animation:
+	if 'melee' in body_anim.animation or 'range' in body_anim.animation:
 		emit_signal("finished_attacking")
 		state = AnimationState.IDLE
