@@ -1589,5 +1589,7 @@ projectile_scene = ExtResource( 6 )
 [connection signal="hit" from="." to="." method="notify_hit"]
 [connection signal="hp_changed" from="." to="." method="notify_hp_changed"]
 [connection signal="mana_changed" from="." to="." method="notify_mana_changed"]
+[connection signal="finished_attacking" from="BodyAnimations" to="." method="_on_BodyAnimations_finished_attacking"]
+[connection signal="is_attacking" from="BodyAnimations" to="." method="_on_BodyAnimations_is_attacking"]
 [connection signal="animation_finished" from="BodyAnimations/Melee" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="animation_finished" from="BodyAnimations/Range" to="BodyAnimations" method="_on_animation_finished"]

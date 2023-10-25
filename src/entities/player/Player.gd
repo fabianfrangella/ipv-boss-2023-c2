@@ -38,7 +38,7 @@ func _ready():
 	initialize()
 
 func _physics_process(delta):
-	if (not body_anim.is_attacking):
+	if (not movementHandler.is_attacking):
 		movementHandler.handle_movement(self)
 	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode"):
@@ -135,3 +135,13 @@ func handle_event(event: String, value = null) -> void:
 
 func notify_dead():
 	handle_event("dead")
+
+
+func _on_BodyAnimations_finished_attacking():
+	attackHandler.can_attack = true
+	movementHandler.is_attacking = false
+
+
+func _on_BodyAnimations_is_attacking():
+	attackHandler.can_attack = false
+	movementHandler.is_attacking = true

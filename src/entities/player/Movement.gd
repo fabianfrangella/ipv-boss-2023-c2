@@ -3,6 +3,7 @@ extends Node
 var speed = 240
 var dash_speed = 30
 var can_dash
+var is_attacking = false
 
 func initialize(dash_timer: Timer):
 	can_dash = true
@@ -21,6 +22,12 @@ func handle_movement(body: KinematicBody2D):
 		
 	body.previous_direction = velocity
 	
+	if (velocity == Vector2(0, 0) && not is_attacking):
+		body.body_anim.set_state("idle")
+	if (not is_attacking && velocity != Vector2(0, 0)):
+		body.body_anim.set_direction(velocity)
+		body.body_anim.set_state('movement')
+		
 	velocity = velocity.normalized() * speed
 	
 	if can_dash && Input.is_action_pressed("dash"):

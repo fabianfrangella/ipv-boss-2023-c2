@@ -9,11 +9,8 @@ onready var body = get_parent()
 
 var previous_direction = Vector2(0, 0)
 
-#TODO: Pasar todos estos flags a señales para eliminar dependencias directas
-var can_melee_attack = true
-var is_attacking = false
-
-var can_range_attack = true
+signal is_attacking
+signal finished_attacking
 
 var state = AnimationState.IDLE
 var attack_type = 'melee'
@@ -21,24 +18,9 @@ var attack_type = 'melee'
 func _ready():
 	melee_weapon_anim.show()
 	range_weapon_anim.hide()
-	_play_idle_animation(Vector2(0, 0))
+	_play_idle_animation()
 
 func _physics_process(delta):
-	var direction = Vector2()
-	if Input.is_action_pressed("ui_up"):
-		direction += Vector2(0, -1)
-	if Input.is_action_pressed("ui_down"):
-		direction += Vector2(0, 1)
-	if Input.is_action_pressed("ui_left"):
-		direction += Vector2(-1, 0)
-	if Input.is_action_pressed("ui_right"):
-		direction += Vector2(1, 0)
-		
-	if (direction == Vector2(0, 0) && not is_attacking):
-		state = AnimationState.IDLE
-	if (not is_attacking && direction != Vector2(0, 0)):
-		previous_direction = direction
-		state = AnimationState.MOVEMENT
 	# acá tiro magia negra para mover el tip invisible en la direccion a la que está atacando
 	# después veo de moverlo a un lugar menos turbio
 	body.weapon.get_node("WeaponTip").position = previous_direction * 50
@@ -47,25 +29,31 @@ func _physics_process(delta):
 	#TODO: Llevar todo lo relacionado a estas (hp, mana, costos, etc) a un singleton
 	#	   para poder validar estas cosas desde varios scripts distintos sin repetir codigo
 	#      ni pasar dependencias innecesarias
-	can_range_attack = body.mana >= 2.0
+	#can_range_attack = body.mana >= 2.0
 	
 	match self.state:
-		AnimationState.IDLE: _play_idle_animation(previous_direction)
-		AnimationState.MOVEMENT: _play_movement_animation(direction)
+		AnimationState.IDLE: _play_idle_animation()
+		AnimationState.MOVEMENT: _play_movement_animation()
 		AnimationState.ATTACK: _play_attack_animation()
-		
-func set_state(new_state):
+
+func set_direction(direction):
+	self.previous_direction = direction
+
+func set_state(new_state, direction = self.previous_direction):
 	match new_state:
 		'melee': 
 			self.state = AnimationState.ATTACK
-			is_attacking = true
-			can_melee_attack = false
+			emit_signal("is_attacking")
 			attack_type = 'melee'
 		'range':
 			self.state = AnimationState.ATTACK
-			is_attacking = true
-			can_range_attack = false
+			emit_signal("is_attacking")
 			attack_type = 'range'
+		'idle':
+			self.state = AnimationState.IDLE
+		'movement':
+			self.previous_direction = direction
+			self.state = AnimationState.MOVEMENT
 
 func _play_attack_animation():
 	if (attack_type == 'melee'):
@@ -109,8 +97,8 @@ func set_range_animator():
 	range_weapon_anim.show()
 	body_anim = range_weapon_anim
 
-func _play_idle_animation(direction: Vector2):
-	match direction:
+func _play_idle_animation():
+	match self.previous_direction:
 		Vector2(0,-1):
 			body_anim.play("idle_up")
 		Vector2(0, 1):
@@ -128,8 +116,8 @@ func _play_idle_animation(direction: Vector2):
 		Vector2(1, 1):
 			body_anim.play("idle_down_right")
 
-func _play_movement_animation(direction: Vector2):
-	match direction:
+func _play_movement_animation():
+	match self.previous_direction:
 		Vector2(0,-1):
 			body_anim.play("walk_up")
 		Vector2(0, 1):
@@ -151,9 +139,8 @@ func _play_movement_animation(direction: Vector2):
 
 func _on_animation_finished():
 	if 'melee' in body_anim.animation:
-		can_melee_attack = true
-		is_attacking = false
+		emit_signal("finished_attacking")
 		state = AnimationState.IDLE
 	if 'range' in body_anim.animation:
-		is_attacking = false
+		emit_signal("finished_attacking")
 		state = AnimationState.IDLE
