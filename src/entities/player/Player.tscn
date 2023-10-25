@@ -1461,7 +1461,7 @@ animations = [ {
 "frames": [ SubResource( 268 ), SubResource( 269 ), SubResource( 270 ), SubResource( 271 ) ],
 "loop": true,
 "name": "range_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 272 ), SubResource( 273 ), SubResource( 274 ), SubResource( 275 ) ],
 "loop": true,

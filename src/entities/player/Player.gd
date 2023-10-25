@@ -38,7 +38,8 @@ func _ready():
 	initialize()
 
 func _physics_process(delta):
-	movementHandler.handle_movement(self)
+	if (not body_anim.is_attacking):
+		movementHandler.handle_movement(self)
 	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode"):
 		_change_attack_mode()
