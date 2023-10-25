@@ -6,5 +6,5 @@ func _handle_attack(body: KinematicBody2D) -> void:
 			body.projectile_container = get_parent()
 		if body.weapon.projectile_container == null:
 			body.weapon.projectile_container = body.projectile_container
-		body.body_anim.play_attack('melee')
+		body.body_anim.set_state('melee')
 		body.weapon.fire()

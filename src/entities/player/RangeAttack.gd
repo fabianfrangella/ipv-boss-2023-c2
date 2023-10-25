@@ -9,4 +9,4 @@ func _handle_attack(body: KinematicBody2D) -> void:
 		if body.range_weapon.projectile_container == null:
 			body.range_weapon.projectile_container = body.projectile_container
 		body.range_weapon.fire()
-		body.body_anim.play_attack('range')
+		body.body_anim.set_state('range')

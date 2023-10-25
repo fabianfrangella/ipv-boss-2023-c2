@@ -68,25 +68,25 @@ flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 384, 640, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=212]
+[sub_resource type="AtlasTexture" id=360]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 0, 128, 128, 128 )
+region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=213]
+[sub_resource type="AtlasTexture" id=361]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 128, 128, 128, 128 )
+region = Rect2( 128, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=214]
+[sub_resource type="AtlasTexture" id=362]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 256, 128, 128, 128 )
+region = Rect2( 256, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=215]
+[sub_resource type="AtlasTexture" id=363]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 384, 128, 128, 128 )
+region = Rect2( 384, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=216]
 flags = 4
@@ -665,7 +665,7 @@ animations = [ {
 "name": "idle_down_right",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ) ],
+"frames": [ SubResource( 360 ), SubResource( 361 ), SubResource( 362 ), SubResource( 363 ) ],
 "loop": true,
 "name": "idle_left",
 "speed": 10.0
