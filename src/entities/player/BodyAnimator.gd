@@ -26,11 +26,6 @@ func _physics_process(delta):
 	body.weapon.get_node("WeaponTip").position = previous_direction * 50
 	body.range_weapon.get_node("WeaponTip").position = previous_direction * 50
 	
-	#TODO: Llevar todo lo relacionado a estas (hp, mana, costos, etc) a un singleton
-	#	   para poder validar estas cosas desde varios scripts distintos sin repetir codigo
-	#      ni pasar dependencias innecesarias
-	#can_range_attack = body.mana >= 2.0
-	
 	match self.state:
 		AnimationState.IDLE: _play_idle_animation()
 		AnimationState.MOVEMENT: _play_movement_animation()
