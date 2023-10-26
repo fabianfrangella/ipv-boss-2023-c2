@@ -20,11 +20,11 @@ func handle_movement(body: KinematicBody2D):
 	if Input.is_action_pressed("ui_right"):
 		velocity += Vector2(1, 0)
 		
-	body.previous_direction = velocity
 	
 	if (velocity == Vector2(0, 0) && not is_attacking):
 		body.body_anim.set_state("idle")
 	if (not is_attacking && velocity != Vector2(0, 0)):
+		body.previous_direction = velocity
 		body.body_anim.set_direction(velocity)
 		body.body_anim.set_state('movement')
 		

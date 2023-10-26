@@ -104,7 +104,7 @@ position = Vector2( 2.19345e-05, 0 )
 [node name="Body" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "alert"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
