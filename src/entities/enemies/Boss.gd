@@ -11,7 +11,6 @@ func _ready():
 	
 func _physics_process(delta):
 	if (target != null):
-		print(self.position.direction_to(target.position))
 		body_anim.set_state(AnimationState.IDLE, _get_direction_to(self.position.direction_to(target.position)))
 
 func _get_direction_to(pos):
@@ -24,7 +23,4 @@ func _get_direction_to(pos):
 		abs_position.y = 1
 	if (pos.y < 0):
 		abs_position.y = -1
-	#(0.041921, 0.999121)
-
-	print (abs_position)
 	return abs_position
