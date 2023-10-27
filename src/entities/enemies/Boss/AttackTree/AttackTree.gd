@@ -13,29 +13,26 @@ func _physics_process(delta):
 	if (boss.is_dead()):
 		return
 	if (states != null):
+		_set_states(boss.hp)
 		_handle_states(delta)
 
 func _handle_states(delta):
 	if (states != null):
-		for state in self.states:
+		for state in states:
 			state.handle_state(delta)
 
-func _set_states():
-	if (boss.hp > 90):
+func _set_states(hp):
+	if (hp > 90):
 		states = [areaAttack]
-	elif (boss.hp <= 90 && boss.hp > 70):
+	elif (hp <= 90 && boss.hp > 70):
+		states = [areaAttack]
+	elif (hp <= 70 && boss.hp > 50):
 		states = [summonAttack]
-	elif (boss.hp <= 70 && boss.hp > 50):
-		states = [areaAttack]
-	elif (boss.hp <= 50 && boss.hp > 30):
+	elif (hp <= 50 && boss.hp > 30):
 		states = [fireAttack]
-	elif (boss.hp <= 30 && boss.hp > 10):
+	elif (hp <= 30 && boss.hp > 10):
 		states = [fireAttack, areaAttack]
-	elif (boss.hp <= 10 && boss.hp > 0):
+	elif (hp <= 10 && boss.hp > 0):
 		states = [fireAttack, areaAttack, summonAttack]
-	elif (boss.hp <= 0):
+	elif (hp <= 0):
 		states = []
-
-
-func _on_Boss_hp_changed(hp):
-	_set_states()

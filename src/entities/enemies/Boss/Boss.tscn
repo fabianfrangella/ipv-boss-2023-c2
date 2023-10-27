@@ -991,7 +991,6 @@ script = ExtResource( 6 )
 [node name="SummonAttack" type="Node2D" parent="AttackTree"]
 script = ExtResource( 7 )
 
-[connection signal="hp_changed" from="." to="AttackTree" method="_on_Boss_hp_changed"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]
 [connection signal="animation_finished" from="BodyAnimations/Demon" to="." method="_on_Demon_animation_finished"]
 [connection signal="area_attack" from="AttackTree/AreaAttack" to="." method="_on_AreaAttack_area_attack"]
