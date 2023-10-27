@@ -24,8 +24,10 @@ func notify_hit():
 		states = [fireAttack]
 	elif (boss.hp <= 30 && boss.hp > 10):
 		states = [fireAttack, areaAttack]
-	elif (boss.hp <= 10):
+	elif (boss.hp <= 10 && boss.hp > 0):
 		states = [fireAttack, areaAttack, summonAttack]
+	elif (boss.hp <= 0):
+		states = []
 
 func _handle_states(delta):
 	if (states != null):

@@ -16,7 +16,9 @@ func _ready():
 	target = get_parent().get_node("Player")
 	
 func _physics_process(delta):
-	if (target != null):
+	if (target != null && hp <= 0):
+		return
+	elif (target != null):
 		body_anim.set_state(AnimationState.IDLE, 
 		_get_direction_to(self.position.direction_to(target.position)))
 
@@ -24,6 +26,9 @@ func notify_hit():
 	self.hp -= 10
 	emit_signal("hp_changed", self.hp, max_hp)
 	attack_tree.notify_hit()
+	if (target != null && hp <= 0):
+		body_anim.set_state(AnimationState.DEAD,
+				_get_direction_to(self.position.direction_to(target.position)))
 
 func _get_direction_to(pos):
 	var abs_position = Vector2(0, 0)
@@ -39,6 +44,8 @@ func _get_direction_to(pos):
 
 
 func _on_HealTimer_timeout():
+	if (hp <= 0):
+		return
 	if (hp < 100):
 		hp+=10
 		if (hp > max_hp):

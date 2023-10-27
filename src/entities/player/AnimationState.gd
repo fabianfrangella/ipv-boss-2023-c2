@@ -1,1 +1,1 @@
-enum { IDLE, ATTACK, MOVEMENT }
+enum { IDLE, ATTACK, MOVEMENT, DEAD }
