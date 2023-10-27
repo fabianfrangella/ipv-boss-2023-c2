@@ -17,7 +17,7 @@ onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
 onready var body_anim: Node2D = $BodyAnimations
 
-export (int) var max_hp: int = 3
+export (int) var max_hp: int = 100
 var hp: int = max_hp
 
 export (float) var max_mana: float = 5.0

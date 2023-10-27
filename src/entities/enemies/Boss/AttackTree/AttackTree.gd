@@ -10,10 +10,17 @@ onready var summonAttack = get_node("SummonAttack")
 onready var states = [areaAttack]
 
 func _physics_process(delta):
+	if (boss.is_dead()):
+		return
 	if (states != null):
 		_handle_states(delta)
 
-func notify_hit():
+func _handle_states(delta):
+	if (states != null):
+		for state in self.states:
+			state.handle_state(delta)
+
+func _set_states():
 	if (boss.hp > 90):
 		states = [areaAttack]
 	elif (boss.hp <= 90 && boss.hp > 70):
@@ -29,8 +36,6 @@ func notify_hit():
 	elif (boss.hp <= 0):
 		states = []
 
-func _handle_states(delta):
-	if (states != null):
-		for state in self.states:
-			state.handle_state(delta)
 
+func _on_Boss_hp_changed(hp):
+	_set_states()

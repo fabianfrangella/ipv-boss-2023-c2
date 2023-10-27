@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=2]
+[gd_scene load_steps=268 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -1537,6 +1537,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 5.5 )
 
+[sub_resource type="CapsuleShape2D" id=364]
+radius = 19.1667
+height = 25.0
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -16 )
 scale = Vector2( 1.2, 1.2 )
@@ -1583,6 +1587,13 @@ script = ExtResource( 4 )
 projectile_scene = ExtResource( 6 )
 
 [node name="WeaponTip" type="Position2D" parent="RangeWeaponContainer/Weapon"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 20 )
+shape = SubResource( 364 )
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="healed" from="." to="." method="notify_healed"]
