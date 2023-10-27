@@ -817,9 +817,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=124]
-radius = 18.6667
-height = 17.3333
+[sub_resource type="RectangleShape2D" id=184]
+extents = Vector2( 16.3333, 13.6667 )
 
 [sub_resource type="SpriteFrames" id=125]
 animations = [ {
@@ -939,8 +938,8 @@ frames = SubResource( 5 )
 animation = "attack_up_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.666667, 28.6667 )
-shape = SubResource( 124 )
+position = Vector2( -9, 51 )
+shape = SubResource( 184 )
 
 [node name="AttackTree" type="Node2D" parent="."]
 position = Vector2( 0.666667, 0 )
@@ -972,7 +971,7 @@ frames = SubResource( 125 )
 animation = "explode"
 
 [node name="Explosion4" type="AnimatedSprite" parent="AttackTree/AreaAttack/ExplosionContainer/Explosions"]
-position = Vector2( 1.2517e-06, 0 )
+position = Vector2( -3.57628e-07, -0.666667 )
 z_index = 1
 frames = SubResource( 125 )
 animation = "explode"
