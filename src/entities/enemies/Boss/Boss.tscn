@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=2]
+[gd_scene load_steps=236 format=2]
 
 [ext_resource path="res://assets/characters/boss/demon.png" type="Texture" id=1]
 [ext_resource path="res://entities/enemies/Boss/Boss.gd" type="Script" id=2]
@@ -818,7 +818,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=184]
-extents = Vector2( 16.3333, 13.6667 )
+extents = Vector2( 14, 12.5833 )
 
 [sub_resource type="SpriteFrames" id=125]
 animations = [ {
@@ -921,6 +921,9 @@ animations = [ {
 "speed": 20.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=185]
+radius = 16.6667
+
 [node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
@@ -938,7 +941,7 @@ frames = SubResource( 5 )
 animation = "attack_up_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -9, 51 )
+position = Vector2( -12.6667, 51.25 )
 shape = SubResource( 184 )
 
 [node name="AttackTree" type="Node2D" parent="."]
@@ -971,7 +974,7 @@ frames = SubResource( 125 )
 animation = "explode"
 
 [node name="Explosion4" type="AnimatedSprite" parent="AttackTree/AreaAttack/ExplosionContainer/Explosions"]
-position = Vector2( -3.57628e-07, -0.666667 )
+position = Vector2( -2.98023e-07, -2 )
 z_index = 1
 frames = SubResource( 125 )
 animation = "explode"
@@ -989,6 +992,12 @@ script = ExtResource( 6 )
 
 [node name="SummonAttack" type="Node2D" parent="AttackTree"]
 script = ExtResource( 7 )
+
+[node name="BossHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitbox"]
+position = Vector2( -11.3333, 26.6667 )
+shape = SubResource( 185 )
 
 [connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]
 [connection signal="animation_finished" from="BodyAnimations/Demon" to="." method="_on_Demon_animation_finished"]

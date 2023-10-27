@@ -61,8 +61,8 @@ func initialize(projectile_container: Node = get_parent()):
 	GameState.set_current_player(self)
 
 func _set_weapon_direction():
-	self.weapon.get_node("WeaponTip").position = previous_direction * 50
-	self.range_weapon.get_node("WeaponTip").position = previous_direction * 50
+	self.weapon.get_node("WeaponTip").position = previous_direction * 10
+	self.range_weapon.get_node("WeaponTip").position = previous_direction * 10
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
