@@ -4,7 +4,7 @@
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/mock/MockTile.tres" type="TileSet" id=3]
 [ext_resource path="res://entities/player/Hints.gd" type="Script" id=4]
-[ext_resource path="res://entities/enemies/Boss.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/enemies/Boss/Boss.tscn" type="PackedScene" id=5]
 
 [node name="BossWorld" type="Node2D"]
 
