@@ -47,7 +47,7 @@ func _play_explosions():
 		explosion_animations.get_node("Explosion4")
 	]
 	for explosion in explosions:
-		var random_range = rand_range(-25, 25)
+		var random_range = rand_range(-40, 40)
 		var rand_position = Vector2(random_range, random_range)
 		explosion.position = rand_position
 		explosion.play("explode")
