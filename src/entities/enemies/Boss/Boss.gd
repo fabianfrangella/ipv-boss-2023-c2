@@ -18,7 +18,7 @@ func _ready():
 	target = get_parent().get_node("Player")
 	
 func _physics_process(delta):
-	if (target == null || is_dead()|| target.hp <= 0):
+	if (target == null || is_dead() || target.hp <= 0):
 		return
 	elif (target != null):
 		if (not is_attacking):
@@ -70,3 +70,7 @@ func _on_Demon_animation_finished():
 
 func is_dead():
 	return hp <= 0
+
+
+func _on_Player_dead():
+	target = null

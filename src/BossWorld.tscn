@@ -70,3 +70,4 @@ collision_layer = 2
 max_hp = 100
 
 [connection signal="hp_changed" from="YSort/Entities/Boss" to="IULayer/BossUI" method="_on_hp_changed"]
+[connection signal="dead" from="YSort/Entities/Player" to="YSort/Entities/Boss" method="_on_Player_dead"]
