@@ -2,13 +2,12 @@ extends AbstractEnemyState
 
 
 func enter() -> void:
-	character._play_animation("dead")
 	character.dead = true
 	character.collision_layer = 0
 	character.collision_mask = 0
 	
 	if character.target != null:
-		character._play_animation("die_alert")
+		character._play_animation("die")
 
 	else:
 		character._play_animation("die")
@@ -16,6 +15,6 @@ func enter() -> void:
 
 
 func _on_animation_finished(anim_name:String) -> void:
-	if anim_name in ["die_alert" ,"die"]:
+	if anim_name in ["die_alert_"+ character.direccion ,"die_"+ character.direccion]:
 		
 		character._remove()

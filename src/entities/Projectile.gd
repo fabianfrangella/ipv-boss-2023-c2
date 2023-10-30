@@ -6,18 +6,18 @@ onready var hitbox: Area2D = $Hitbox
 onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
 export (float) var VELOCITY: float = 800.0
-
+var damage: int = 1
 var direction: Vector2
 
 
-func initialize(container: Node, spawn_position: Vector2, direction: Vector2) -> void:
+func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dmg: int = 1) -> void:
 	container.add_child(self)
 	self.direction = direction
 	global_position = spawn_position
 	rotation = direction.angle()
 	lifetime_timer.connect("timeout", self, "_on_lifetime_timer_timeout")
 	lifetime_timer.start()
-	
+	damage = dmg
 	## Ahora definimos que la implementación de proyectiles usará un AnimationPlayer
 	## que contendrá 3 animaciones claves: fire_start, fire_loop y hit.
 	## Acá lo que hacemos es definir que iniciará con "fire_start" para darle
@@ -59,5 +59,6 @@ func _remove() -> void:
 
 func _on_Hitbox_body_entered(body: Node) -> void:
 	if body.has_method("notify_hit"):
-		body.notify_hit()
+		body.notify_hit(damage)
+		print(damage)
 	remove()

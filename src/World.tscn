@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/mock/MockTile.tres" type="TileSet" id=2]
@@ -12,9 +12,13 @@
 [ext_resource path="res://assets/mock/WallRound_S.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/mock/WallRound_N.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/mock/WallRound_W.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/mock/WallDoor_E.tscn" type="PackedScene" id=13]
+[ext_resource path="res://entities/props/PickupObject.tscn" type="PackedScene" id=13]
 [ext_resource path="res://entities/player/Hints.gd" type="Script" id=14]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/steelarmor.png" type="Texture" id=16]
+[ext_resource path="res://assets/Potion.png" type="Texture" id=17]
+[ext_resource path="res://assets/gstaff.png" type="Texture" id=18]
+[ext_resource path="res://assets/sword.png" type="Texture" id=19]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -242,11 +246,6 @@ position = Vector2( 821, 252 )
 [node name="Wall_S32" parent="YSort/Wall_S" instance=ExtResource( 9 )]
 position = Vector2( 694, 188 )
 
-[node name="Doors" type="YSort" parent="YSort"]
-
-[node name="WallDoor_E" parent="YSort/Doors" instance=ExtResource( 13 )]
-position = Vector2( 939, 10 )
-
 [node name="Props" type="YSort" parent="YSort"]
 
 [node name="Barrels3" parent="YSort/Props" instance=ExtResource( 6 )]
@@ -273,7 +272,10 @@ pathfinding_path = NodePath("../../../AstarTilemap")
 position = Vector2( 1014, 434 )
 collision_layer = 4
 collision_mask = 1
+speed = 100.0
+max_speed = 1000.0
 pathfinding_step_threshold = 5000.0
+wander_radius = Vector2( 1000, 1000 )
 pathfinding_path = NodePath("../../../AstarTilemap")
 
 [node name="BasicEnemy3" parent="YSort/Entities" instance=ExtResource( 3 )]
@@ -310,6 +312,7 @@ pathfinding_path = NodePath("../../../AstarTilemap")
 position = Vector2( -153, 71 )
 collision_layer = 2
 max_hp = 3
+hasStaff = true
 
 [node name="BasicEnemy6" parent="YSort/Entities" instance=ExtResource( 3 )]
 position = Vector2( 910, -410 )
@@ -330,6 +333,33 @@ max_speed = 1000.0
 pathfinding_step_threshold = 10.0
 wander_radius = Vector2( 1000, 1000 )
 pathfinding_path = NodePath("../../../AstarTilemap")
+
+[node name="Objects" type="YSort" parent="YSort"]
+position = Vector2( -1, -1 )
+
+[node name="PotionObject" parent="YSort/Objects" instance=ExtResource( 13 )]
+position = Vector2( -145, 422 )
+image = ExtResource( 17 )
+objectName = "potion"
+scaleSprite = 0.07
+
+[node name="ArmorObject" parent="YSort/Objects" instance=ExtResource( 13 )]
+position = Vector2( -70, 422 )
+image = ExtResource( 16 )
+objectName = "armor"
+scaleSprite = 1.5
+
+[node name="StaffObject" parent="YSort/Objects" instance=ExtResource( 13 )]
+position = Vector2( -68, 336 )
+image = ExtResource( 18 )
+objectName = "staff"
+scaleSprite = 1.0
+
+[node name="GSwordObject" parent="YSort/Objects" instance=ExtResource( 13 )]
+position = Vector2( -339, 314 )
+image = ExtResource( 19 )
+objectName = "gsword"
+scaleSprite = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
