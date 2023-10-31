@@ -18,15 +18,15 @@ func _ready():
 	target = get_parent().get_node("Player")
 	
 func _physics_process(delta):
-	if (target == null || is_dead() || target.hp <= 0):
+	if (target == null || is_dead()):
 		return
 	elif (target != null):
 		if (not is_attacking):
 			body_anim.set_state(AnimationState.IDLE, 
 				_get_direction_to(self.position.direction_to(target.position)))
 
-func notify_hit():
-	self.hp -= 10
+func notify_hit(damage):
+	self.hp -= damage
 	emit_signal("hp_changed", self.hp, max_hp)
 	if (target != null && hp <= 0):
 		body_anim.set_state(AnimationState.DEAD,
