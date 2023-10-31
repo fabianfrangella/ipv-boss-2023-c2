@@ -43,7 +43,6 @@ func update(delta:float) ->void:
 	
 	character.velocity = (character.velocity + character.global_position.direction_to(next_point) *speed).clamped(max_speed)
 	character._apply_movement()
-	character.body_anim.flip_h = character.velocity.x < 0
 	
 func _handle_body_entered(body) -> void:
 	._handle_body_entered(body)
@@ -54,9 +53,11 @@ func _handle_body_exited(body:Node) -> void:
 	character._play_animation("go_normal")
 	
 func _on_animation_finished(anim_name: String) -> void:
+	var full_normal_animation_name = "go_normal_" + character.direccion
+	var full_alert_animation_name = "alert_" + character.direccion
 	match anim_name:
-		"alert":
+		full_alert_animation_name:
 			character._play_animation("walk_alert")
 		
-		"go_normal":
+		full_normal_animation_name:
 			character._play_animation("walk")

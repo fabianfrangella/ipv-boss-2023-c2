@@ -60,7 +60,7 @@
 [resource]
 0/name = "DirtTilesE"
 0/texture = ExtResource( 44 )
-0/tex_offset = Vector2( 0, 0 )
+0/tex_offset = Vector2( 0, -384 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 256, 512 )
 0/tile_mode = 0
@@ -74,7 +74,7 @@
 0/z_index = 0
 1/name = "DirtTilesN"
 1/texture = ExtResource( 45 )
-1/tex_offset = Vector2( 0, 0 )
+1/tex_offset = Vector2( 0, -384 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 256, 512 )
 1/tile_mode = 0
@@ -88,7 +88,7 @@
 1/z_index = 0
 2/name = "DirtTilesS"
 2/texture = ExtResource( 46 )
-2/tex_offset = Vector2( 0, 0 )
+2/tex_offset = Vector2( 0, -384 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 256, 512 )
 2/tile_mode = 0
@@ -102,7 +102,7 @@
 2/z_index = 0
 3/name = "DirtTilesW"
 3/texture = ExtResource( 47 )
-3/tex_offset = Vector2( 0, 0 )
+3/tex_offset = Vector2( 0, -384 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 256, 512 )
 3/tile_mode = 0
@@ -116,7 +116,7 @@
 3/z_index = 0
 4/name = "DirtE"
 4/texture = ExtResource( 38 )
-4/tex_offset = Vector2( 0, 0 )
+4/tex_offset = Vector2( 0, -384 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 256, 512 )
 4/tile_mode = 0
@@ -130,7 +130,7 @@
 4/z_index = 0
 5/name = "DirtN"
 5/texture = ExtResource( 39 )
-5/tex_offset = Vector2( 0, 0 )
+5/tex_offset = Vector2( 0, -384 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 256, 512 )
 5/tile_mode = 0
@@ -144,7 +144,7 @@
 5/z_index = 0
 6/name = "DirtS"
 6/texture = ExtResource( 43 )
-6/tex_offset = Vector2( 0, 0 )
+6/tex_offset = Vector2( 0, -384 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 256, 512 )
 6/tile_mode = 0
@@ -158,7 +158,7 @@
 6/z_index = 0
 7/name = "DirtW"
 7/texture = ExtResource( 31 )
-7/tex_offset = Vector2( 0, 0 )
+7/tex_offset = Vector2( 0, -384 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 256, 512 )
 7/tile_mode = 0
@@ -172,7 +172,7 @@
 7/z_index = 0
 8/name = "StoneCornerE"
 8/texture = ExtResource( 37 )
-8/tex_offset = Vector2( 0, 0 )
+8/tex_offset = Vector2( 0, -384 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 256, 512 )
 8/tile_mode = 0
@@ -186,7 +186,7 @@
 8/z_index = 0
 9/name = "StoneCornerN"
 9/texture = ExtResource( 41 )
-9/tex_offset = Vector2( 0, 0 )
+9/tex_offset = Vector2( 0, -384 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 256, 512 )
 9/tile_mode = 0
@@ -200,7 +200,7 @@
 9/z_index = 0
 10/name = "StoneCornerS"
 10/texture = ExtResource( 35 )
-10/tex_offset = Vector2( 0, 0 )
+10/tex_offset = Vector2( 0, -384 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 256, 512 )
 10/tile_mode = 0
@@ -214,7 +214,7 @@
 10/z_index = 0
 11/name = "StoneCornerW"
 11/texture = ExtResource( 42 )
-11/tex_offset = Vector2( 0, 0 )
+11/tex_offset = Vector2( 0, -384 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 256, 512 )
 11/tile_mode = 0
@@ -228,7 +228,7 @@
 11/z_index = 0
 12/name = "StoneInsetE"
 12/texture = ExtResource( 40 )
-12/tex_offset = Vector2( 0, 0 )
+12/tex_offset = Vector2( 0, -384 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 256, 512 )
 12/tile_mode = 0
@@ -242,7 +242,7 @@
 12/z_index = 0
 13/name = "StoneInsetN"
 13/texture = ExtResource( 36 )
-13/tex_offset = Vector2( 0, 0 )
+13/tex_offset = Vector2( 0, -384 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 256, 512 )
 13/tile_mode = 0
@@ -256,7 +256,7 @@
 13/z_index = 0
 14/name = "StoneInsetS"
 14/texture = ExtResource( 32 )
-14/tex_offset = Vector2( 0, 0 )
+14/tex_offset = Vector2( 0, -384 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 256, 512 )
 14/tile_mode = 0
@@ -270,7 +270,7 @@
 14/z_index = 0
 15/name = "StoneInsetW"
 15/texture = ExtResource( 33 )
-15/tex_offset = Vector2( 0, 0 )
+15/tex_offset = Vector2( 0, -384 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 256, 512 )
 15/tile_mode = 0
@@ -284,7 +284,7 @@
 15/z_index = 0
 16/name = "StoneLeftE"
 16/texture = ExtResource( 34 )
-16/tex_offset = Vector2( 0, 0 )
+16/tex_offset = Vector2( 0, -384 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 0, 0, 256, 512 )
 16/tile_mode = 0
@@ -298,7 +298,7 @@
 16/z_index = 0
 17/name = "StoneLeftN"
 17/texture = ExtResource( 53 )
-17/tex_offset = Vector2( 0, 0 )
+17/tex_offset = Vector2( 0, -384 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 0, 256, 512 )
 17/tile_mode = 0
@@ -312,7 +312,7 @@
 17/z_index = 0
 18/name = "StoneLeftS"
 18/texture = ExtResource( 50 )
-18/tex_offset = Vector2( 0, 0 )
+18/tex_offset = Vector2( 0, -384 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 0, 0, 256, 512 )
 18/tile_mode = 0
@@ -326,7 +326,7 @@
 18/z_index = 0
 19/name = "StoneLeftW"
 19/texture = ExtResource( 55 )
-19/tex_offset = Vector2( 0, 0 )
+19/tex_offset = Vector2( 0, -384 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 0, 0, 256, 512 )
 19/tile_mode = 0
@@ -340,7 +340,7 @@
 19/z_index = 0
 20/name = "StoneMissingTilesE"
 20/texture = ExtResource( 54 )
-20/tex_offset = Vector2( 0, 0 )
+20/tex_offset = Vector2( 0, -384 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 0, 0, 256, 512 )
 20/tile_mode = 0
@@ -354,7 +354,7 @@
 20/z_index = 0
 21/name = "StoneMissingTilesN"
 21/texture = ExtResource( 51 )
-21/tex_offset = Vector2( 0, 0 )
+21/tex_offset = Vector2( 0, -384 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 0, 0, 256, 512 )
 21/tile_mode = 0
@@ -368,7 +368,7 @@
 21/z_index = 0
 22/name = "StoneMissingTilesS"
 22/texture = ExtResource( 56 )
-22/tex_offset = Vector2( 0, 0 )
+22/tex_offset = Vector2( 0, -384 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 0, 0, 256, 512 )
 22/tile_mode = 0
@@ -382,7 +382,7 @@
 22/z_index = 0
 23/name = "StoneMissingTilesW"
 23/texture = ExtResource( 52 )
-23/tex_offset = Vector2( 0, 0 )
+23/tex_offset = Vector2( 0, -384 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 0, 0, 256, 512 )
 23/tile_mode = 0
@@ -396,7 +396,7 @@
 23/z_index = 0
 24/name = "StoneRightE"
 24/texture = ExtResource( 48 )
-24/tex_offset = Vector2( 0, 0 )
+24/tex_offset = Vector2( 0, -384 )
 24/modulate = Color( 1, 1, 1, 1 )
 24/region = Rect2( 0, 0, 256, 512 )
 24/tile_mode = 0
@@ -410,7 +410,7 @@
 24/z_index = 0
 25/name = "StoneRightN"
 25/texture = ExtResource( 22 )
-25/tex_offset = Vector2( 0, 0 )
+25/tex_offset = Vector2( 0, -384 )
 25/modulate = Color( 1, 1, 1, 1 )
 25/region = Rect2( 0, 0, 256, 512 )
 25/tile_mode = 0
@@ -424,7 +424,7 @@
 25/z_index = 0
 26/name = "StoneRightS"
 26/texture = ExtResource( 12 )
-26/tex_offset = Vector2( 0, 0 )
+26/tex_offset = Vector2( 0, -384 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 0, 0, 256, 512 )
 26/tile_mode = 0
@@ -438,7 +438,7 @@
 26/z_index = 0
 27/name = "StoneRightW"
 27/texture = ExtResource( 10 )
-27/tex_offset = Vector2( 0, 0 )
+27/tex_offset = Vector2( 0, -384 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 0, 0, 256, 512 )
 27/tile_mode = 0
@@ -452,7 +452,7 @@
 27/z_index = 0
 28/name = "StoneSideUnevenE"
 28/texture = ExtResource( 6 )
-28/tex_offset = Vector2( 0, 0 )
+28/tex_offset = Vector2( 0, -384 )
 28/modulate = Color( 1, 1, 1, 1 )
 28/region = Rect2( 0, 0, 256, 512 )
 28/tile_mode = 0
@@ -466,7 +466,7 @@
 28/z_index = 0
 29/name = "StoneSideUnevenN"
 29/texture = ExtResource( 7 )
-29/tex_offset = Vector2( 0, 0 )
+29/tex_offset = Vector2( 0, -384 )
 29/modulate = Color( 1, 1, 1, 1 )
 29/region = Rect2( 0, 0, 256, 512 )
 29/tile_mode = 0
@@ -480,7 +480,7 @@
 29/z_index = 0
 30/name = "StoneSideUnevenS"
 30/texture = ExtResource( 27 )
-30/tex_offset = Vector2( 0, 0 )
+30/tex_offset = Vector2( 0, -384 )
 30/modulate = Color( 1, 1, 1, 1 )
 30/region = Rect2( 0, 0, 256, 512 )
 30/tile_mode = 0
@@ -494,7 +494,7 @@
 30/z_index = 0
 31/name = "StoneSideUnevenW"
 31/texture = ExtResource( 11 )
-31/tex_offset = Vector2( 0, 0 )
+31/tex_offset = Vector2( 0, -384 )
 31/modulate = Color( 1, 1, 1, 1 )
 31/region = Rect2( 0, 0, 256, 512 )
 31/tile_mode = 0
@@ -508,7 +508,7 @@
 31/z_index = 0
 32/name = "StoneSideE"
 32/texture = ExtResource( 15 )
-32/tex_offset = Vector2( 0, 0 )
+32/tex_offset = Vector2( 0, -384 )
 32/modulate = Color( 1, 1, 1, 1 )
 32/region = Rect2( 0, 0, 256, 512 )
 32/tile_mode = 0
@@ -522,7 +522,7 @@
 32/z_index = 0
 33/name = "StoneSideN"
 33/texture = ExtResource( 28 )
-33/tex_offset = Vector2( 0, 0 )
+33/tex_offset = Vector2( 0, -384 )
 33/modulate = Color( 1, 1, 1, 1 )
 33/region = Rect2( 0, 0, 256, 512 )
 33/tile_mode = 0
@@ -536,7 +536,7 @@
 33/z_index = 0
 34/name = "StoneSideS"
 34/texture = ExtResource( 19 )
-34/tex_offset = Vector2( 0, 0 )
+34/tex_offset = Vector2( 0, -384 )
 34/modulate = Color( 1, 1, 1, 1 )
 34/region = Rect2( 0, 0, 256, 512 )
 34/tile_mode = 0
@@ -550,7 +550,7 @@
 34/z_index = 0
 35/name = "StoneSideW"
 35/texture = ExtResource( 13 )
-35/tex_offset = Vector2( 0, 0 )
+35/tex_offset = Vector2( 0, -384 )
 35/modulate = Color( 1, 1, 1, 1 )
 35/region = Rect2( 0, 0, 256, 512 )
 35/tile_mode = 0
@@ -564,7 +564,7 @@
 35/z_index = 0
 36/name = "StoneStepsE"
 36/texture = ExtResource( 17 )
-36/tex_offset = Vector2( 0, 0 )
+36/tex_offset = Vector2( 0, -384 )
 36/modulate = Color( 1, 1, 1, 1 )
 36/region = Rect2( 0, 0, 256, 512 )
 36/tile_mode = 0
@@ -578,7 +578,7 @@
 36/z_index = 0
 37/name = "StoneStepsN"
 37/texture = ExtResource( 25 )
-37/tex_offset = Vector2( 0, 0 )
+37/tex_offset = Vector2( 0, -384 )
 37/modulate = Color( 1, 1, 1, 1 )
 37/region = Rect2( 0, 0, 256, 512 )
 37/tile_mode = 0
@@ -592,7 +592,7 @@
 37/z_index = 0
 38/name = "StoneStepsS"
 38/texture = ExtResource( 2 )
-38/tex_offset = Vector2( 0, 0 )
+38/tex_offset = Vector2( 0, -384 )
 38/modulate = Color( 1, 1, 1, 1 )
 38/region = Rect2( 0, 0, 256, 512 )
 38/tile_mode = 0
@@ -606,7 +606,7 @@
 38/z_index = 0
 39/name = "StoneStepsW"
 39/texture = ExtResource( 14 )
-39/tex_offset = Vector2( 0, 0 )
+39/tex_offset = Vector2( 0, -384 )
 39/modulate = Color( 1, 1, 1, 1 )
 39/region = Rect2( 0, 0, 256, 512 )
 39/tile_mode = 0
@@ -620,7 +620,7 @@
 39/z_index = 0
 40/name = "StoneStepE"
 40/texture = ExtResource( 16 )
-40/tex_offset = Vector2( 0, 0 )
+40/tex_offset = Vector2( 0, -384 )
 40/modulate = Color( 1, 1, 1, 1 )
 40/region = Rect2( 0, 0, 256, 512 )
 40/tile_mode = 0
@@ -634,7 +634,7 @@
 40/z_index = 0
 41/name = "StoneStepN"
 41/texture = ExtResource( 9 )
-41/tex_offset = Vector2( 0, 0 )
+41/tex_offset = Vector2( 0, -384 )
 41/modulate = Color( 1, 1, 1, 1 )
 41/region = Rect2( 0, 0, 256, 512 )
 41/tile_mode = 0
@@ -648,7 +648,7 @@
 41/z_index = 0
 42/name = "StoneStepS"
 42/texture = ExtResource( 8 )
-42/tex_offset = Vector2( 0, 0 )
+42/tex_offset = Vector2( 0, -384 )
 42/modulate = Color( 1, 1, 1, 1 )
 42/region = Rect2( 0, 0, 256, 512 )
 42/tile_mode = 0
@@ -662,7 +662,7 @@
 42/z_index = 0
 43/name = "StoneStepW"
 43/texture = ExtResource( 18 )
-43/tex_offset = Vector2( 0, 0 )
+43/tex_offset = Vector2( 0, -384 )
 43/modulate = Color( 1, 1, 1, 1 )
 43/region = Rect2( 0, 0, 256, 512 )
 43/tile_mode = 0
@@ -676,7 +676,7 @@
 43/z_index = 0
 44/name = "StoneTileE"
 44/texture = ExtResource( 1 )
-44/tex_offset = Vector2( 0, 0 )
+44/tex_offset = Vector2( 0, -384 )
 44/modulate = Color( 1, 1, 1, 1 )
 44/region = Rect2( 0, 0, 256, 512 )
 44/tile_mode = 0
@@ -690,7 +690,7 @@
 44/z_index = 0
 45/name = "StoneTileN"
 45/texture = ExtResource( 20 )
-45/tex_offset = Vector2( 0, 0 )
+45/tex_offset = Vector2( 0, -384 )
 45/modulate = Color( 1, 1, 1, 1 )
 45/region = Rect2( 0, 0, 256, 512 )
 45/tile_mode = 0
@@ -704,7 +704,7 @@
 45/z_index = 0
 46/name = "StoneTileS"
 46/texture = ExtResource( 21 )
-46/tex_offset = Vector2( 0, 0 )
+46/tex_offset = Vector2( 0, -384 )
 46/modulate = Color( 1, 1, 1, 1 )
 46/region = Rect2( 0, 0, 256, 512 )
 46/tile_mode = 0
@@ -718,7 +718,7 @@
 46/z_index = 0
 47/name = "StoneTileW"
 47/texture = ExtResource( 23 )
-47/tex_offset = Vector2( 0, 0 )
+47/tex_offset = Vector2( 0, -384 )
 47/modulate = Color( 1, 1, 1, 1 )
 47/region = Rect2( 0, 0, 256, 512 )
 47/tile_mode = 0
@@ -732,7 +732,7 @@
 47/z_index = 0
 48/name = "StoneUnevenE"
 48/texture = ExtResource( 5 )
-48/tex_offset = Vector2( 0, 0 )
+48/tex_offset = Vector2( 0, -384 )
 48/modulate = Color( 1, 1, 1, 1 )
 48/region = Rect2( 0, 0, 256, 512 )
 48/tile_mode = 0
@@ -746,7 +746,7 @@
 48/z_index = 0
 49/name = "StoneUnevenN"
 49/texture = ExtResource( 26 )
-49/tex_offset = Vector2( 0, 0 )
+49/tex_offset = Vector2( 0, -384 )
 49/modulate = Color( 1, 1, 1, 1 )
 49/region = Rect2( 0, 0, 256, 512 )
 49/tile_mode = 0
@@ -760,7 +760,7 @@
 49/z_index = 0
 50/name = "StoneUnevenS"
 50/texture = ExtResource( 24 )
-50/tex_offset = Vector2( 0, 0 )
+50/tex_offset = Vector2( 0, -384 )
 50/modulate = Color( 1, 1, 1, 1 )
 50/region = Rect2( 0, 0, 256, 512 )
 50/tile_mode = 0
@@ -774,7 +774,7 @@
 50/z_index = 0
 51/name = "StoneUnevenW"
 51/texture = ExtResource( 29 )
-51/tex_offset = Vector2( 0, 0 )
+51/tex_offset = Vector2( 0, -384 )
 51/modulate = Color( 1, 1, 1, 1 )
 51/region = Rect2( 0, 0, 256, 512 )
 51/tile_mode = 0
@@ -788,7 +788,7 @@
 51/z_index = 0
 52/name = "StoneE"
 52/texture = ExtResource( 49 )
-52/tex_offset = Vector2( 0, 0 )
+52/tex_offset = Vector2( 0, -384 )
 52/modulate = Color( 1, 1, 1, 1 )
 52/region = Rect2( 0, 0, 256, 512 )
 52/tile_mode = 0
@@ -802,7 +802,7 @@
 52/z_index = 0
 53/name = "StoneN"
 53/texture = ExtResource( 30 )
-53/tex_offset = Vector2( 0, 0 )
+53/tex_offset = Vector2( 0, -384 )
 53/modulate = Color( 1, 1, 1, 1 )
 53/region = Rect2( 0, 0, 256, 512 )
 53/tile_mode = 0
@@ -816,7 +816,7 @@
 53/z_index = 0
 54/name = "StoneS"
 54/texture = ExtResource( 3 )
-54/tex_offset = Vector2( 0, 0 )
+54/tex_offset = Vector2( 0, -384 )
 54/modulate = Color( 1, 1, 1, 1 )
 54/region = Rect2( 0, 0, 256, 512 )
 54/tile_mode = 0
@@ -830,7 +830,7 @@
 54/z_index = 0
 55/name = "StoneW"
 55/texture = ExtResource( 4 )
-55/tex_offset = Vector2( 0, 0 )
+55/tex_offset = Vector2( 0, -384 )
 55/modulate = Color( 1, 1, 1, 1 )
 55/region = Rect2( 0, 0, 256, 512 )
 55/tile_mode = 0

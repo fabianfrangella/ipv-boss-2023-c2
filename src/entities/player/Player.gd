@@ -8,6 +8,7 @@ const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 
 signal hit(amount)
 signal healed(amount)
+signal potions_changed(amount)
 var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
@@ -19,6 +20,10 @@ onready var body_anim: Node2D = $BodyAnimations
 
 export (int) var max_hp: int = 100
 var hp: int = max_hp
+
+export (int) var attack: int = 1
+
+export (int) var potions: int = 0
 
 export (float) var max_mana: float = 5.0
 var mana: float = max_mana
@@ -34,6 +39,10 @@ var attackHandlers
 var currentAttackMode
 var previous_direction = Vector2(0, 0)
 
+export (bool) var hasArmor: bool = false
+export (bool) var hasGSword: bool = false
+export (bool) var hasStaff: bool = false
+
 func _ready():
 	initialize()
 
@@ -41,8 +50,11 @@ func _physics_process(delta):
 	if (not movementHandler.is_attacking):
 		movementHandler.handle_movement(self)
 	attackHandler._handle_attack(self)
-	if Input.is_action_just_pressed("change_attack_mode"):
+	if Input.is_action_just_pressed("change_attack_mode") && hasStaff:
 		_change_attack_mode()
+
+	if Input.is_action_just_pressed("heal"):
+		heal_hp()
 	_set_weapon_direction()
 	
 
@@ -76,6 +88,12 @@ func _change_attack_mode():
 
 func notify_hit(amount: int = 1) -> void:
 	handle_event("hit", amount)
+
+func heal_hp()-> void:
+	if potions>0 && hp< max_hp:
+		sum_hp(6)
+		potions = potions -1
+		emit_signal("potions_changed", potions)
 
 func sum_hp(amount: int) -> void:
 	hp = clamp(hp + amount, 0, max_hp)
@@ -124,6 +142,9 @@ func notify_hp_changed(current_hp, max_hp):
 
 func notify_mana_changed(current_mana, max_mana):
 	handle_event("mana_changed", [current_mana, max_mana])
+	
+func notify_potions_changed(potions):
+	handle_event("potions_changed", potions)
 
 func handle_event(event: String, value = null) -> void:
 	match event:
@@ -141,6 +162,30 @@ func handle_event(event: String, value = null) -> void:
 func notify_dead():
 	handle_event("dead")
 
+func set_potions():
+	potions = 3
+	emit_signal("potions_changed", potions)
+	
+func set_armor():
+	hasArmor = true
+	hp = 10
+	max_hp = 10
+	if (currentAttackMode == ATTACK_MODES.MELEE):
+		body_anim.set_melee_animator()
+	else:
+		body_anim.set_range_animator()
+	
+func set_gsword():
+	hasGSword = true
+	attack = 5
+	if (currentAttackMode == ATTACK_MODES.MELEE):
+		body_anim.set_melee_animator()
+	else:
+		body_anim.set_range_animator()
+	
+func set_staff():
+	hasStaff = true
+		
 
 func _on_BodyAnimations_finished_attacking():
 	attackHandler.can_attack = true

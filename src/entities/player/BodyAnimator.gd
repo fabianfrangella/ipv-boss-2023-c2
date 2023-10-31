@@ -5,6 +5,11 @@ const AnimationState = preload("res://entities/player/AnimationState.gd")
 onready var body_anim: AnimatedSprite = $Melee
 onready var melee_weapon_anim: AnimatedSprite = $Melee
 onready var range_weapon_anim: AnimatedSprite = $Range
+onready var armor_melee = $ArmorMelee
+onready var normal_melee = $NormalMelee
+onready var normal_great_sword = $NormalGreatSword
+onready var normal_range = $NormalRange
+
 onready var body = get_parent()
 
 var previous_direction = Vector2(0, 0)
@@ -16,8 +21,7 @@ var state = AnimationState.IDLE
 var attack_type = 'melee'
 
 func _ready():
-	melee_weapon_anim.show()
-	range_weapon_anim.hide()
+	set_melee_animator()
 	_play_idle_animation()
 
 func _physics_process(delta):
@@ -28,6 +32,7 @@ func _physics_process(delta):
 
 func set_direction(direction):
 	self.previous_direction = direction
+
 
 func set_state(new_state, direction = self.previous_direction):
 	match new_state:
@@ -78,14 +83,28 @@ func _get_melee_animation(direction):
 		Vector2(0, 0): return "melee_down"
 
 func set_melee_animator():
-	melee_weapon_anim.show()
-	range_weapon_anim.hide()
-	body_anim = melee_weapon_anim
+	body_anim.hide()
+	if body.hasArmor && body.hasGSword:
+		melee_weapon_anim.show()
+		body_anim = melee_weapon_anim
+	elif body.hasArmor:
+		armor_melee.show()
+		body_anim = armor_melee
+	elif body.hasGSword:
+		normal_great_sword.show()
+		body_anim = normal_great_sword
+	else:
+		normal_melee.show()
+		body_anim = normal_melee
 	
 func set_range_animator():
-	melee_weapon_anim.hide()
-	range_weapon_anim.show()
-	body_anim = range_weapon_anim
+	body_anim.hide()
+	if body.hasArmor && body.hasStaff:
+		range_weapon_anim.show()
+		body_anim = range_weapon_anim
+	elif body.hasStaff:
+		normal_range.show()
+		body_anim = normal_range
 
 func _play_idle_animation():
 	match self.previous_direction:

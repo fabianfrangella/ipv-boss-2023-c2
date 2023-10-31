@@ -25,8 +25,8 @@ func fire() -> void:
 ## el proyectil
 func _fire() -> void:
 	if player.currentAttackMode == ATTACK_MODES.RANGE && player.mana >= mana_drain:
-		projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position))
+		projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position), player.attack*5 )
 		player.sum_mana(-mana_drain)
 	elif player.currentAttackMode == ATTACK_MODES.MELEE:
-		projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position))
+		projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position),player.attack)
 

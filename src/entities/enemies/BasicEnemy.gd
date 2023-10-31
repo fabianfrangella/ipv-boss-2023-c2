@@ -19,8 +19,9 @@ onready var pathfinding: PathfindAstar = get_node_or_null(pathfinding_path)
 
 var target: Node2D
 var projectile_container: Node
-
+var direccion: String = "down"
 var velocity: Vector2 = Vector2.ZERO
+var vdirection: Vector2 = Vector2.ZERO
 
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
@@ -44,17 +45,62 @@ func _fire() -> void:
 
 
 func _look_at_target() -> void:
-		body_anim.flip_h = raycast.cast_to.x < 0
+		pass
 		
 func _apply_movement()-> void:
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, vdirection)
 
 func _can_see_target() -> bool:
 	if target == null:
 		return false	
 	raycast.set_cast_to(raycast.to_local(target.global_position))
 	raycast.force_raycast_update()
+	set_direction_to(target)
 	return raycast.is_colliding() && raycast.get_collider() == target
+
+func set_direction_to(target: Node2D):
+	 # Obtenemos las posiciones del personaje y el objetivo
+	var character_position = global_transform.origin
+	var target_position = target.global_transform.origin  # Reemplaza "target_node" con el nombre de tu nodo objetivo
+
+	# Calculamos la diferencia en coordenadas X y Y entre el personaje y el objetivo
+	var x_difference = target_position.x - character_position.x
+	var y_difference = target_position.y - character_position.y
+
+	# Determinamos la dirección en la que se encuentra el objetivo
+	var direction = Vector2(x_difference, y_difference).normalized()
+	vdirection = direction
+	# Calculamos el valor absoluto de las diferencias en coordenadas X e Y
+	var abs_x_difference = abs(x_difference)
+	var abs_y_difference = abs(y_difference)
+
+	if direction == Vector2(0, -1):
+		# El objetivo está arriba del personaje
+		direccion = "up"
+	elif direction == Vector2(0, 1):
+		# El objetivo está abajo del personaje
+		direccion = "down"
+	elif direction == Vector2(1, 0):
+		# El objetivo está a la derecha del personaje
+		direccion = "right"
+	elif direction == Vector2(-1, 0):
+		# El objetivo está a la izquierda del personaje
+		direccion = "left"
+	elif abs_x_difference > 0 and abs_y_difference > 0:
+		# El objetivo está en una diagonal
+		# Puedes determinar en cuál de las cuatro diagonales se encuentra
+		if x_difference > 0 and y_difference > 0:
+			# El objetivo está en la diagonal superior derecha
+			direccion = "down_right"
+		elif x_difference > 0 and y_difference < 0:
+			# El objetivo está en la diagonal inferior derecha
+			direccion = "up_right"
+		elif x_difference < 0 and y_difference > 0:
+			# El objetivo está en la diagonal superior izquierda
+			direccion = "down_left"
+		elif x_difference < 0 and y_difference < 0:
+			# El objetivo está en la diagonal inferior izquierda
+			direccion = "up_right"
 
 ## Esta función ya no llama directamente a remove, sino que inhabilita las
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
@@ -71,8 +117,9 @@ func _remove() -> void:
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
-	if body_anim.frames.has_animation(animation):
-		body_anim.play(animation)
+	
+	if body_anim.frames.has_animation(animation + "_" + direccion):
+		body_anim.play(animation + "_" + direccion)
 
 func get_current_animation() -> String:
 	return body_anim.animation

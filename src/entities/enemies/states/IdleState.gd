@@ -33,10 +33,10 @@ func _handle_body_exited(body:Node) -> void:
 	character._play_animation("go_normal")
 	
 func _on_animation_finished(anim_name: String) -> void:
+	var full_alert_animation_name = "alert_" + character.direccion
+	var full_normal_animation_name = "go_normal_" + character.direccion
 	match anim_name:
-		"alert":
+		full_alert_animation_name:
 			character._play_animation("idle_alert")
-		"go_normal":
-			character._play_animation("idle")
-		"go_normal":
+		full_normal_animation_name:
 			character._play_animation("idle")

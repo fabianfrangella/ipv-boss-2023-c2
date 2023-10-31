@@ -80,9 +80,8 @@ tile_data = PoolIntArray( -589826, 11, 0, -655349, 8, 0, -524290, 11, 0, -589813
 position = Vector2( 1108, -160 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( 688, -140 )
-collision_layer = 2
-max_hp = 100
+hasArmor = true
+hasGSword = true
+hasStaff = true
 
 [connection signal="hp_changed" from="YSort/Entities/Boss" to="IULayer/BossUI" method="_on_hp_changed"]
-[connection signal="dead" from="YSort/Entities/Player" to="YSort/Entities/Boss" method="_on_Player_dead"]
