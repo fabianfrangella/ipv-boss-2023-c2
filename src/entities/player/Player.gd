@@ -18,7 +18,7 @@ onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
 onready var body_anim: Node2D = $BodyAnimations
 
-export (int) var max_hp: int = 3
+export (int) var max_hp: int = 100
 var hp: int = max_hp
 
 export (int) var attack: int = 1
@@ -47,12 +47,15 @@ func _ready():
 	initialize()
 
 func _physics_process(delta):
-	movementHandler.handle_movement(self)
+	if (not movementHandler.is_attacking):
+		movementHandler.handle_movement(self)
 	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode") && hasStaff:
 		_change_attack_mode()
+
 	if Input.is_action_just_pressed("heal"):
 		heal_hp()
+	_set_weapon_direction()
 	
 
 func initialize(projectile_container: Node = get_parent()):
@@ -68,6 +71,10 @@ func initialize(projectile_container: Node = get_parent()):
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"))
 	GameState.set_current_player(self)
+
+func _set_weapon_direction():
+	self.weapon.get_node("WeaponTip").position = previous_direction * 10
+	self.range_weapon.get_node("WeaponTip").position = previous_direction * 10
 
 func _change_attack_mode():
 	if (currentAttackMode == ATTACK_MODES.MELEE):
@@ -179,3 +186,12 @@ func set_gsword():
 func set_staff():
 	hasStaff = true
 		
+
+func _on_BodyAnimations_finished_attacking():
+	attackHandler.can_attack = true
+	movementHandler.is_attacking = false
+
+
+func _on_BodyAnimations_is_attacking():
+	attackHandler.can_attack = false
+	movementHandler.is_attacking = true

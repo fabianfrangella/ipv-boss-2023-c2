@@ -1,5 +1,6 @@
 [gd_scene load_steps=788 format=2]
 
+
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
 [ext_resource path="res://assets/characters/male_full_armor/male_full_armor_greatstaff.png" type="Texture" id=3]
@@ -72,25 +73,25 @@ flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 384, 640, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=212]
+[sub_resource type="AtlasTexture" id=360]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 0, 128, 128, 128 )
+region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=213]
+[sub_resource type="AtlasTexture" id=361]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 128, 128, 128, 128 )
+region = Rect2( 128, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=214]
+[sub_resource type="AtlasTexture" id=362]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 256, 128, 128, 128 )
+region = Rect2( 256, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=215]
+[sub_resource type="AtlasTexture" id=363]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 384, 128, 128, 128 )
+region = Rect2( 384, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=216]
 flags = 4
@@ -669,7 +670,7 @@ animations = [ {
 "name": "idle_down_right",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ) ],
+"frames": [ SubResource( 360 ), SubResource( 361 ), SubResource( 362 ), SubResource( 363 ) ],
 "loop": true,
 "name": "idle_left",
 "speed": 6.0
@@ -4522,7 +4523,7 @@ animations = [ {
 "frames": [ SubResource( 655 ), SubResource( 656 ), SubResource( 657 ), SubResource( 658 ) ],
 "loop": true,
 "name": "range_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 659 ), SubResource( 660 ), SubResource( 661 ), SubResource( 662 ) ],
 "loop": true,
@@ -4596,7 +4597,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 5.5 )
+extents = Vector2( 22.9167, 5.5 )
+
+[sub_resource type="CapsuleShape2D" id=364]
+radius = 19.1667
+height = 25.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -16 )
@@ -4647,7 +4652,7 @@ frames = SubResource( 101 )
 animation = "range_down_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 46.5 )
+position = Vector2( -1.25, 46.5 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -4673,12 +4678,21 @@ projectile_scene = ExtResource( 6 )
 
 [node name="WeaponTip" type="Position2D" parent="RangeWeaponContainer/Weapon"]
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 20 )
+shape = SubResource( 364 )
+
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="healed" from="." to="." method="notify_healed"]
 [connection signal="hit" from="." to="." method="notify_hit"]
 [connection signal="hp_changed" from="." to="." method="notify_hp_changed"]
 [connection signal="mana_changed" from="." to="." method="notify_mana_changed"]
 [connection signal="potions_changed" from="." to="." method="notify_potions_changed"]
+[connection signal="finished_attacking" from="BodyAnimations" to="." method="_on_BodyAnimations_finished_attacking"]
+[connection signal="is_attacking" from="BodyAnimations" to="." method="_on_BodyAnimations_is_attacking"]
 [connection signal="animation_finished" from="BodyAnimations/Melee" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="animation_finished" from="BodyAnimations/ArmorMelee" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="animation_finished" from="BodyAnimations/NormalMelee" to="BodyAnimations" method="_on_animation_finished"]
