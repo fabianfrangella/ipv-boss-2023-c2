@@ -1,12 +1,14 @@
 extends Node
 
-var speed = 240
-var dash_speed = 30
+var speed
+var dash_speed
 var can_dash
 var is_attacking = false
 
-func initialize(dash_timer: Timer):
+func initialize(dash_timer: Timer, _dash_speed = 30, _speed = 240):
 	can_dash = true
+	dash_speed = _dash_speed
+	speed = _speed
 	dash_timer.connect("timeout", self, "_on_dash_timer_timeout")
 
 func handle_movement(body: KinematicBody2D):

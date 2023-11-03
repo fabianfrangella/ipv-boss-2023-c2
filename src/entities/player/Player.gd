@@ -31,6 +31,8 @@ var mana: float = max_mana
 export (float) var mana_recovery_time: float = 5.0
 export (float) var mana_recovery_delay: float = 1.0
 
+export (float) var dash_speed = 30
+export (float) var speed = 240
 var projectile_container: Node
 
 var attackHandler
@@ -69,7 +71,7 @@ func initialize(projectile_container: Node = get_parent()):
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
-	movementHandler.initialize(get_node("DashTimer"))
+	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed)
 	GameState.set_current_player(self)
 
 func _set_weapon_direction():
