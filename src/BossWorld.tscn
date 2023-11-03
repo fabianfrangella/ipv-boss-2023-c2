@@ -77,9 +77,12 @@ tile_data = PoolIntArray( -589826, 11, 0, -655349, 8, 0, -524290, 11, 0, -589813
 [node name="Entities" type="YSort" parent="YSort"]
 
 [node name="Boss" parent="YSort/Entities" instance=ExtResource( 5 )]
-position = Vector2( 1108, -160 )
+position = Vector2( 446, 38 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
+max_hp = 100
+attack = 10
+potions = 3
 hasArmor = true
 hasGSword = true
 hasStaff = true
