@@ -8,9 +8,10 @@ onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 export (float) var VELOCITY: float = 800.0
 var damage: int = 1
 var direction: Vector2
-var hitbox_exceptions = ["Player"]
+var hitbox_exceptions = []
+var has_animated_sprite = false
 
-func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dmg: int = 1) -> void:
+func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dmg: int = 1, skip_hitboxes = ["PlayerHitbox"], has_animated_sprite = false) -> void:
 	container.add_child(self)
 	self.direction = direction
 	global_position = spawn_position
@@ -28,8 +29,13 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dm
 	## y volviendo únicos a la escena sus sub-recursos, para que no se mezclen con los otros
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
-	projectile_animations.play("fire_start")
-	projectile_animations.queue("fire_loop")
+	self.has_animated_sprite = has_animated_sprite
+	if (has_animated_sprite):
+		$ProjectileSprite.play("fire")
+	else:
+		projectile_animations.play("fire_start")
+		projectile_animations.queue("fire_loop")
+	hitbox_exceptions = skip_hitboxes
 
 
 func _physics_process(delta: float) -> void:
@@ -56,17 +62,8 @@ func _remove() -> void:
 	get_parent().remove_child(self)
 	queue_free()
 
-
-func _on_Hitbox_body_entered(body: Node) -> void:
-	if (hitbox_exceptions.has(body.name)):
-		return
-	if body.has_method("notify_hit"):
-		body.notify_hit(damage)
-	remove()
-
-
 func _on_Hitbox_area_entered(body):
-	if (body.name != "BossHitbox"):
+	if (hitbox_exceptions.has(body.name)):
 		return
 	if body.get_parent().has_method("notify_hit"):
 		body.get_parent().notify_hit(damage)

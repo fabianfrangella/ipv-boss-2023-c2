@@ -25,13 +25,13 @@ func _set_states(hp):
 	if (hp > 90):
 		states = [areaAttack]
 	elif (hp <= 90 && boss.hp > 70):
-		states = [areaAttack]
+		states = [fireAttack]
 	elif (hp <= 70 && boss.hp > 50):
 		states = [summonAttack]
 	elif (hp <= 50 && boss.hp > 30):
-		states = [fireAttack]
+		states = [areaAttack, fireAttack]
 	elif (hp <= 30 && boss.hp > 10):
-		states = [fireAttack, areaAttack]
+		states = [fireAttack, areaAttack, summonAttack]
 	elif (hp <= 10 && boss.hp > 0):
 		states = [fireAttack, areaAttack, summonAttack]
 	elif (hp <= 0):

@@ -3,6 +3,7 @@ extends AttackState
 onready var explosion_container = $ExplosionContainer
 onready var explosion_animations = $ExplosionContainer/Explosions
 onready var area_animations = $ExplosionContainer/Area
+onready var area_timer = $ExplosionContainer/Area/AreaTimer
 
 var time_since_last_attack = 0
 var damage_per_explosion = 15

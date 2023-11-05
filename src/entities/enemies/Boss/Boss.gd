@@ -11,6 +11,7 @@ var max_hp = 100
 var hp = 100
 
 signal hp_changed(hp)
+signal hit
 
 var is_attacking = false
 
@@ -28,6 +29,7 @@ func _physics_process(delta):
 func notify_hit(damage):
 	self.hp -= damage
 	emit_signal("hp_changed", self.hp, max_hp)
+	emit_signal("hit")
 	if (target != null && hp <= 0):
 		body_anim.set_state(AnimationState.DEAD,
 				_get_direction_to(self.position.direction_to(target.position)))
@@ -55,9 +57,7 @@ func _on_HealTimer_timeout():
 		emit_signal("hp_changed", hp, max_hp)
 
 func _on_AreaAttack_area_attack():
-	is_attacking = true
-	body_anim.set_state(AnimationState.ATTACK, 
-		_get_direction_to(self.position.direction_to(target.position)))
+	_set_attack_state()
 
 
 func _on_Demon_animation_finished():
@@ -74,3 +74,11 @@ func is_dead():
 
 func _on_Player_dead():
 	target = null
+
+func _on_FireAttack_fire_attack():
+	_set_attack_state()
+	
+func _set_attack_state():
+	is_attacking = true
+	body_anim.set_state(AnimationState.ATTACK, 
+		_get_direction_to(self.position.direction_to(target.position)))

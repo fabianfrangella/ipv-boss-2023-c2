@@ -3,6 +3,7 @@ extends Node
 const AnimationState = preload("res://entities/player/AnimationState.gd")
 
 onready var body_anim: AnimatedSprite = $Demon
+onready var blood_anim: AnimatedSprite = $Blood
 
 var animation_direction: Vector2 = Vector2(0, 1)
 var state = AnimationState.IDLE
@@ -53,3 +54,16 @@ func _play_animation(animation_name):
 			body_anim.play(animation_name + "_down_right")
 		Vector2(0, 0):
 			body_anim.play(animation_name + "_down")
+
+func _play_blood_animation():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var animation_name = "blood_" + str(rng.randi_range(1, 5))
+	blood_anim.play(animation_name)
+
+
+func _on_Blood_animation_finished():
+	pass
+
+func _on_Boss_hit():
+	_play_blood_animation()
