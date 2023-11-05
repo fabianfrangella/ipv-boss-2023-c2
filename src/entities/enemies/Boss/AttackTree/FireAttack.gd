@@ -22,6 +22,6 @@ func _fire() -> void:
 											self.global_position, 
 											self.global_position.direction_to(target_position), 
 											damage,
-											["BossHitbox"],
+											["BossHitbox", "BasicEnemyHitbox"],
 											true)
 

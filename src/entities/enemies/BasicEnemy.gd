@@ -106,8 +106,8 @@ func set_direction_to(target: Node2D):
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
 ## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount: int=1) -> void:
-	print("hit")
 	emit_signal("hit",amount)
+	pass
 
 func _remove() -> void:
 	get_parent().remove_child(self)
