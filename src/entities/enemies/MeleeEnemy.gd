@@ -9,20 +9,14 @@ onready var body_anim: AnimatedSprite = $Body
 
 export (float) var speed: float = 10.0
 export (float) var max_speed: float = 100.0
-export (float) var pathfinding_step_threshold: float = 5.0
-export (Vector2) var wander_radius:Vector2 = Vector2(10.0, 10.0)
 export (PackedScene) var projectile_scene: PackedScene
 
-
-export (NodePath) var pathfinding_path: NodePath
-onready var pathfinding: PathfindAstar = get_node_or_null(pathfinding_path)
 
 var target: Node2D
 var projectile_container: Node
 var direccion: String = "down"
 var velocity: Vector2 = Vector2.ZERO
 var vdirection: Vector2 = Vector2.ZERO
-
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 
@@ -48,14 +42,18 @@ func _look_at_target() -> void:
 		pass
 		
 func _apply_movement()-> void:
+	if target != null:
+		set_direction_to(target)
 	velocity = move_and_slide(velocity, vdirection)
 
 func _can_see_target() -> bool:
 	if target == null:
-		return false	
-	raycast.set_cast_to(raycast.to_local(target.global_position))
+		return false
+	var to_target = (target.global_position - global_position).normalized()
+	raycast.set_cast_to(to_target)
 	raycast.force_raycast_update()
 	set_direction_to(target)
+	#return raycast.is_colliding() && raycast.get_collider() == target
 	return true
 
 func set_direction_to(target: Node2D):

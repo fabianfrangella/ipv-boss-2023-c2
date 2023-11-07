@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://entities/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/enemies/EnemieMeleeAttack.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=4]
+resource_name = "fire_loop"
+
+[sub_resource type="Animation" id=2]
+resource_name = "fire_start"
+
+[sub_resource type="Animation" id=3]
+resource_name = "hit"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 44.5 )
+
+[node name="EnemieMeleeAttack" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="LifetimeTimer" parent="." index="0"]
+wait_time = 0.05
+
+[node name="ProjectileAnimations" parent="." index="1"]
+anims/fire_loop = SubResource( 4 )
+anims/fire_start = SubResource( 2 )
+anims/hit = SubResource( 3 )
+
+[node name="Hitbox" parent="." index="2"]
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 30, 0.5 )
+shape = SubResource( 1 )

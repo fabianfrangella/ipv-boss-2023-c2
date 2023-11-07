@@ -57,6 +57,8 @@ func _remove() -> void:
 
 
 func _on_Hitbox_body_entered(body: Node) -> void:
-	if body.has_method("notify_hit"):
+	print(body.name)
+	if body.has_method("notify_hit") && body.name != "BasicEnemy":
 		body.notify_hit(damage)
-	remove()
+		remove()
+	

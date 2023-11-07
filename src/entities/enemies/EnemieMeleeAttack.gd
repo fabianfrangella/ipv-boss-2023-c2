@@ -11,7 +11,7 @@ var direction: Vector2
 var hitbox_exceptions = []
 var has_animated_sprite = false
 
-func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dmg: int = 1, skip_hitboxes = ["PlayerHitbox"], has_animated_sprite = false) -> void:
+func initialize(container: Node, spawn_position: Vector2, direction: Vector2, dmg: int = 1, skip_hitboxes = ["BasicEnemyHitbox", "AttackArea"], has_animated_sprite = false) -> void:
 	container.add_child(self)
 	self.direction = direction
 	global_position = spawn_position

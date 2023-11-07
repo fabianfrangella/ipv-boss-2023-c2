@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/mock/MockTile.tres" type="TileSet" id=3]
 [ext_resource path="res://entities/player/Hints.gd" type="Script" id=4]
-[ext_resource path="res://entities/enemies/Boss/Boss.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/enemies/Boss/BossUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
 [ext_resource path="res://assets/tile/Wall/wall_set.tres" type="TileSet" id=8]
 [ext_resource path="res://entities/AstarTilemap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/tile/Prop/props_set.tres" type="TileSet" id=10]
+[ext_resource path="res://entities/enemies/BasicEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/enemies/MeleeEnemy.tscn" type="PackedScene" id=12]
 
 [node name="BossWorld" type="Node2D"]
 script = ExtResource( 7 )
@@ -92,12 +93,11 @@ tile_data = PoolIntArray( -131067, 4, 0, 10, 4, 0, 65536, 0, 0, 65540, 4, 0 )
 
 [node name="Entities" type="YSort" parent="YSort"]
 
-[node name="Boss" parent="YSort/Entities" instance=ExtResource( 5 )]
-position = Vector2( 783, 410 )
-pathfinding_path = NodePath("../../../AstarTilemap")
+[node name="MeleeEnemy" parent="YSort/Entities" instance=ExtResource( 12 )]
+position = Vector2( -788, 262 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( 357, 693 )
+position = Vector2( -1314, 346 )
 max_hp = 100
 attack = 10
 potions = 3
@@ -105,4 +105,4 @@ hasArmor = true
 hasGSword = true
 hasStaff = true
 
-[connection signal="hp_changed" from="YSort/Entities/Boss" to="IULayer/BossUI" method="_on_hp_changed"]
+[node name="BasicEnemy" parent="YSort/Entities" instance=ExtResource( 11 )]
