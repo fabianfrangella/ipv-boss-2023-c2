@@ -19,7 +19,8 @@ func _physics_process(delta):
 func _handle_states(delta):
 	if (states != null):
 		for state in states:
-			state.handle_state(delta)
+			if (boss.has_been_triggered):
+				state.handle_state(delta)
 
 func _set_states(hp):
 	if (hp > 90):

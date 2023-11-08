@@ -11,16 +11,17 @@ var max_hp = 100
 var hp = 100
 
 export (NodePath) var pathfinding_path: NodePath
-
 signal hp_changed(hp)
 signal hit
 
 var is_attacking = false
 var has_been_triggered = false
+var ui
 
 func _ready():
-	target = get_parent().get_node("Player")
-	
+	target = get_parent().get_parent().get_node("Player")
+	ui = get_parent().get_parent().get_parent().get_parent().get_node("IULayer/BossUI")
+	ui.hide()
 	
 func _physics_process(delta):
 	if (target == null || is_dead() || not has_been_triggered):
@@ -84,11 +85,13 @@ func _on_FireAttack_fire_attack():
 	
 func _set_attack_state():
 	is_attacking = true
-	body_anim.set_state(AnimationState.ATTACK, 
-		_get_direction_to(self.position.direction_to(target.position)))
+	if (target != null && target.position != null):
+		body_anim.set_state(AnimationState.ATTACK, 
+			_get_direction_to(self.position.direction_to(target.position)))
 
 
 func _on_DetectionArea_entered(area):
 	if (area.name == "PlayerHitbox"):
 		get_node("DetectionArea").queue_free()
+		ui.show()
 		has_been_triggered = true

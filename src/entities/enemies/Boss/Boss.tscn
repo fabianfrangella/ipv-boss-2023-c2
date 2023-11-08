@@ -1600,7 +1600,7 @@ animations = [ {
 radius = 16.6667
 
 [sub_resource type="CircleShape2D" id=315]
-radius = 190.904
+radius = 644.668
 
 [node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
