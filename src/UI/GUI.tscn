@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/Potion.png" type="Texture" id=2]
+[ext_resource path="res://UI/Timer.gd" type="Script" id=3]
+[ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/deaths.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.121569, 0.596078, 0.14902, 1 )
@@ -11,6 +14,18 @@ bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0509804, 0.129412, 0.372549, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -69,3 +84,38 @@ margin_right = 15.0
 margin_bottom = 96.0
 text = "3"
 valign = 2
+
+[node name="ScoreContainer" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScoreContainer"]
+margin_left = 12.0
+margin_top = 68.0
+margin_right = 48.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 4 )
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="ScoreContainer"]
+autostart = true
+script = ExtResource( 3 )
+
+[node name="DeathsContainer" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Deaths" type="Sprite" parent="DeathsContainer"]
+position = Vector2( 28, 126 )
+scale = Vector2( 0.013, 0.01225 )
+texture = ExtResource( 5 )
+
+[node name="DeathsAmounts" type="Label" parent="DeathsContainer"]
+margin_left = 47.0
+margin_top = 111.0
+margin_right = 62.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 5 )
+text = "0"
+
+[connection signal="timeout" from="ScoreContainer/Timer" to="ScoreContainer/Timer" method="_on_Timer_timeout"]

@@ -57,12 +57,13 @@ _global_script_class_icons={
 [application]
 
 config/name="ipv-boss"
-run/main_scene="res://BossWorld.tscn"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 GameState="*res://singletons/GameState.gd"
+Checkpoint="*res://singletons/Checkpoint.gd"
 
 [gui]
 

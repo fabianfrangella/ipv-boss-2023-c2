@@ -1,4 +1,6 @@
 extends Node2D
+onready var player = $YSort/Entities/Player
+
 
 ## Agregamos un botoncito primitivo de reset. Por default es la "R".
 func _input(event: InputEvent) -> void:

@@ -2144,6 +2144,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
+frame = 2
 playing = true
 
 [node name="BasicEnemyHitbox" type="CollisionShape2D" parent="."]

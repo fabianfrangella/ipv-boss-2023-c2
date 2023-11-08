@@ -4,6 +4,8 @@ onready var hp_progress_1 = $StatsContainer/HpProgress1
 onready var mana_progress = $StatsContainer/ManaProgress
 onready var potions_amount = $ItemsContainer/PotionsAmount
 onready var items_container = $ItemsContainer
+onready var deaths_amounts = $DeathsContainer/DeathsAmounts
+onready var timer = $ScoreContainer/Timer
 
 
 
@@ -14,11 +16,14 @@ export (float) var fade_delay: float = 2.0
 var canshow : bool = false
 
 var stats_tween: SceneTreeTween
-
+var deaths: int = -1
+var time: Timer
 
 # Recupera la información de cuál es el Player actual desde GameState.
 func _ready() -> void:
 	GameState.connect("current_player_changed", self, "_on_current_player_changed")
+	deaths = Checkpoint.deaths
+
 
 
 ## Cuando se asigna un Player nuevo, se conecta a las señales que
@@ -32,6 +37,9 @@ func _on_current_player_changed(player: Player) -> void:
 	
 	player.connect("potions_changed", self, "_on_potions_changed")
 	_on_potions_changed(player.potions)
+
+	player.connect("deaths_changed", self, "_on_deaths_changed")
+	_on_deaths_changed()
 
 
 # Callback de cambio de HP.
@@ -52,4 +60,9 @@ func _on_potions_changed(potions: int) -> void:
 	if potions > 0:
 		items_container.show()
 		
+	
+func _on_deaths_changed() -> void:
+	Checkpoint.deaths = deaths
+	deaths = deaths + 1
+	deaths_amounts.text = str(deaths)
 	

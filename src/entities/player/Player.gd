@@ -9,6 +9,7 @@ const ATTACK_MODES = preload("res://entities/player/AttackModes.gd")
 signal hit(amount)
 signal healed(amount)
 signal potions_changed(amount)
+signal deaths_changed()
 var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
@@ -20,6 +21,7 @@ onready var body_anim: Node2D = $BodyAnimations
 
 export (int) var max_hp: int = 100
 var hp: int = max_hp
+
 
 export (int) var attack: int = 1
 
@@ -72,6 +74,16 @@ func initialize(projectile_container: Node = get_parent()):
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
 	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed)
+	if Checkpoint.last_position:
+		self.global_position = Checkpoint.last_position
+	if Checkpoint.potions:
+		set_potions()
+	if Checkpoint.armor:
+		set_armor()
+	if Checkpoint.sword:
+		set_gsword()
+	if Checkpoint.staff:
+		set_staff()
 	GameState.set_current_player(self)
 
 func _set_weapon_direction():
@@ -129,10 +141,11 @@ func _update_passive_prop(amount, max_amount, property: String, updated_signal) 
 	emit_signal(updated_signal, amount, max_amount)
 	
 func _remove() -> void:
-	set_physics_process(false)
-	collision_layer = 0
-	get_parent().remove_child(self)
-	queue_free()
+	#set_physics_process(false)
+	#collision_layer = 0
+	#get_parent().remove_child(self)
+	#queue_free()
+	get_tree().reload_current_scene()
 
 
 func notify_healed(amount):
@@ -158,18 +171,22 @@ func handle_event(event: String, value = null) -> void:
 			if value[0] == 0:
 				emit_signal("dead")
 		"dead":
+			emit_signal("deaths_changed")
 			_remove()
+			
 
 
 func notify_dead():
 	handle_event("dead")
 
 func set_potions():
+	Checkpoint.potions = true
 	potions = 3
 	emit_signal("potions_changed", potions)
 	
 func set_armor():
 	hasArmor = true
+	Checkpoint.armor = true
 	hp = 10
 	max_hp = 10
 	if (currentAttackMode == ATTACK_MODES.MELEE):
@@ -178,6 +195,7 @@ func set_armor():
 		body_anim.set_range_animator()
 	
 func set_gsword():
+	Checkpoint.sword = true
 	hasGSword = true
 	attack = 5
 	if (currentAttackMode == ATTACK_MODES.MELEE):
@@ -186,6 +204,7 @@ func set_gsword():
 		body_anim.set_range_animator()
 	
 func set_staff():
+	Checkpoint.staff = true
 	hasStaff = true
 		
 
@@ -197,3 +216,22 @@ func _on_BodyAnimations_finished_attacking():
 func _on_BodyAnimations_is_attacking():
 	attackHandler.can_attack = false
 	movementHandler.is_attacking = true
+
+
+		
+
+
+func _on_PlayerHitbox_body_entered(body):
+	print(body)
+	if movementHandler.canPassThrough && body.name == "TileMap":
+		body.collision_layer = 0
+
+func _on_PlayerHitbox_body_exited(body):
+	if body.name == "TileMap" and body.collision_layer != 0 and !movementHandler.canPassThrough:
+		 body.collision_layer = 3
+
+
+
+
+func notify_deaths_changed():
+	pass # Replace with function body.

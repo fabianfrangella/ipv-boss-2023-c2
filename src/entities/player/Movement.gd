@@ -4,7 +4,7 @@ var speed
 var dash_speed
 var can_dash
 var is_attacking = false
-
+var canPassThrough = false
 func initialize(dash_timer: Timer, _dash_speed = 30, _speed = 240):
 	can_dash = true
 	dash_speed = _dash_speed
@@ -35,9 +35,11 @@ func handle_movement(body: KinematicBody2D):
 	if can_dash && Input.is_action_pressed("dash"):
 		velocity = velocity * dash_speed
 		can_dash = false
+		canPassThrough = true
 	
 	body.move_and_slide(velocity)
 	
 
 func _on_dash_timer_timeout():
 	can_dash = true
+	canPassThrough = false

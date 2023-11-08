@@ -6,7 +6,7 @@ onready var hitbox: Area2D = $Hitbox
 #onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
 export (float) var VELOCITY: float = 800.0
-export (int) var damage = 5
+export (int) var damage = 1
 var direction: Vector2
 
 
@@ -57,8 +57,7 @@ func _remove() -> void:
 
 
 func _on_Hitbox_body_entered(body: Node) -> void:
-	print(body.name)
-	if body.has_method("notify_hit") && body.name != "BasicEnemy":
+	if body.has_method("notify_hit") && !"BasicEnemy" in body.name:
 		body.notify_hit(damage)
 		remove()
-	
+

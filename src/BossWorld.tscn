@@ -93,16 +93,17 @@ tile_data = PoolIntArray( -131067, 4, 0, 10, 4, 0, 65536, 0, 0, 65540, 4, 0 )
 
 [node name="Entities" type="YSort" parent="YSort"]
 
+[node name="BasicEnemy" parent="YSort/Entities" instance=ExtResource( 11 )]
+
 [node name="MeleeEnemy" parent="YSort/Entities" instance=ExtResource( 12 )]
 position = Vector2( -788, 262 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( -1314, 346 )
+collision_layer = 3
 max_hp = 100
 attack = 10
 potions = 3
 hasArmor = true
 hasGSword = true
 hasStaff = true
-
-[node name="BasicEnemy" parent="YSort/Entities" instance=ExtResource( 11 )]
