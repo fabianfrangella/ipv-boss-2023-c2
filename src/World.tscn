@@ -268,4 +268,5 @@ __meta__ = {
 }
 
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="IULayer/BossUI" method="_on_hp_changed"]
 [connection signal="body_entered" from="YSort/Entities/Checkpoint/Area2D" to="YSort/Entities/Checkpoint" method="_on_Area2D_body_entered"]

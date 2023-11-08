@@ -8,10 +8,14 @@ onready var blood_anim: AnimatedSprite = $Blood
 var animation_direction: Vector2 = Vector2(0, 1)
 var state = AnimationState.IDLE
 
+var has_played_dead = false
+
 func _ready():
 	set_state(AnimationState.IDLE)
 	
 func _physics_process(delta):
+	if (has_played_dead):
+		return
 	match self.state:
 		AnimationState.IDLE: _play_idle_animation()
 		AnimationState.MOVEMENT: _play_movement_animation()
@@ -24,6 +28,7 @@ func set_state(new_state, direction = self.animation_direction):
 
 func _play_dead_animation():
 	_play_animation("death")
+	has_played_dead = true
 			
 func _play_idle_animation():
 	_play_animation("idle")
@@ -56,6 +61,8 @@ func _play_animation(animation_name):
 			body_anim.play(animation_name + "_down")
 
 func _play_blood_animation():
+	if (has_played_dead):
+		return
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var animation_name = "blood_" + str(rng.randi_range(1, 5))
