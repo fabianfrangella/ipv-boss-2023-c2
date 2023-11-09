@@ -29,6 +29,7 @@ func set_state(new_state, direction = self.animation_direction):
 func _play_dead_animation():
 	_play_animation("death")
 	has_played_dead = true
+	GameState.notify_level_won()
 			
 func _play_idle_animation():
 	_play_animation("idle")

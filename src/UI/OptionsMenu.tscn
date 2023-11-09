@@ -1,0 +1,216 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/ActionMap.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.486275, 0.223529, 0.223529, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.305882, 0.113725, 0.113725, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.752941, 0.713726, 0.713726, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.356863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.329412, 0.054902, 0.054902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.329412, 0.054902, 0.054902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.329412, 0.054902, 0.054902, 1 )
+
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -736.0
+margin_bottom = -438.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 288.0
+margin_bottom = 162.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_right = -10.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+text = "Options"
+align = 1
+valign = 1
+
+[node name="ReturnButton" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -26.0
+margin_top = -28.0
+margin_right = 27.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Return"
+
+[node name="Panel" type="TabContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 24.0
+margin_right = -2.0
+margin_bottom = -29.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/tab_fg = SubResource( 6 )
+custom_styles/tab_disabled = SubResource( 7 )
+custom_styles/tab_bg = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
+
+[node name="Controls" type="ScrollContainer" parent="Panel/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 19.0
+margin_right = -1.0
+margin_bottom = -1.0
+focus_mode = 2
+mouse_filter = 1
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Controls"]
+margin_right = 252.0
+margin_bottom = 185.0
+
+[node name="ActionMap" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 252.0
+margin_bottom = 25.0
+action = "ui_left"
+action_name = "Move Left"
+
+[node name="ActionMap2" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 29.0
+margin_right = 252.0
+margin_bottom = 54.0
+action = "ui_right"
+action_name = "Move Right"
+
+[node name="ActionMap3" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 58.0
+margin_right = 252.0
+margin_bottom = 83.0
+action = "ui_up"
+action_name = "Move Up"
+
+[node name="ActionMap4" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 87.0
+margin_right = 252.0
+margin_bottom = 112.0
+action = "ui_down"
+action_name = "MoveDown"
+
+[node name="ActionMap5" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 116.0
+margin_right = 252.0
+margin_bottom = 141.0
+action = "attack"
+action_name = "Attack"
+
+[node name="ActionMap6" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 145.0
+margin_right = 252.0
+margin_bottom = 170.0
+action = "dash"
+action_name = "Dash"
+
+[node name="ActionMap7" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 174.0
+margin_right = 252.0
+margin_bottom = 199.0
+action = "heal"
+action_name = "Heal"
+
+[node name="ActionMap8" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 203.0
+margin_right = 252.0
+margin_bottom = 228.0
+action = "change_attack_mode"
+action_name = "Change Attack Mode"
+
+[node name="ActionMap9" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 232.0
+margin_right = 252.0
+margin_bottom = 257.0
+action = "reset"
+action_name = "Reset"
+
+[connection signal="pressed" from="Panel/ReturnButton" to="." method="_on_ReturnButton_pressed"]

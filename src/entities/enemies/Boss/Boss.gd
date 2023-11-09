@@ -38,6 +38,7 @@ func notify_hit(damage):
 	if (target != null && hp <= 0):
 		body_anim.set_state(AnimationState.DEAD,
 				_get_direction_to(self.position.direction_to(target.position)))
+		
 
 func _get_direction_to(pos):
 	var abs_position = Vector2(0, 0)
