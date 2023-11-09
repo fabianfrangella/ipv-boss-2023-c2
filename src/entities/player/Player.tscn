@@ -4679,6 +4679,8 @@ collision_mask = 3
 position = Vector2( 0, 20 )
 shape = SubResource( 748 )
 
+[node name="HealTimer" type="Timer" parent="."]
+
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]
 [connection signal="healed" from="." to="." method="notify_healed"]
@@ -4696,3 +4698,4 @@ shape = SubResource( 748 )
 [connection signal="animation_finished" from="BodyAnimations/NormalRange" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_exited"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]

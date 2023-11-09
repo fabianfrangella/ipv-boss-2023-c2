@@ -48,6 +48,12 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
 
+[node name="HpText" type="Label" parent="StatsContainer/HpProgress1"]
+margin_right = 243.0
+margin_bottom = 23.0
+align = 1
+valign = 1
+
 [node name="ManaProgress" type="ProgressBar" parent="StatsContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,6 +64,12 @@ margin_bottom = -543.0
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
+
+[node name="ManaText" type="Label" parent="StatsContainer/ManaProgress"]
+margin_right = 243.0
+margin_bottom = 23.0
+align = 1
+valign = 1
 
 [node name="ItemsContainer" type="Control" parent="."]
 anchor_top = 1.0
@@ -102,6 +114,7 @@ autostart = true
 script = ExtResource( 3 )
 
 [node name="DeathsContainer" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

@@ -18,8 +18,9 @@ signal dead()
 onready var weapon = $WeaponContainer/Weapon
 onready var range_weapon = $RangeWeaponContainer/Weapon
 onready var body_anim: Node2D = $BodyAnimations
+onready var heal_timer = $HealTimer
 
-export (int) var max_hp: int = 100
+export (int) var max_hp: int = 3
 var hp: int = max_hp
 
 
@@ -217,12 +218,7 @@ func _on_BodyAnimations_is_attacking():
 	attackHandler.can_attack = false
 	movementHandler.is_attacking = true
 
-
-		
-
-
 func _on_PlayerHitbox_body_entered(body):
-	print(body)
 	if movementHandler.canPassThrough && body.name == "TileMap":
 		body.collision_layer = 0
 
@@ -230,8 +226,10 @@ func _on_PlayerHitbox_body_exited(body):
 	if body.name == "TileMap" and body.collision_layer != 0 and !movementHandler.canPassThrough:
 		 body.collision_layer = 3
 
-
-
-
 func notify_deaths_changed():
 	pass # Replace with function body.
+
+
+func _on_HealTimer_timeout():
+	if (hp < max_hp):
+		hp+=1
