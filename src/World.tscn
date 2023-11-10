@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -13,13 +13,11 @@
 [ext_resource path="res://Checkpoint.gd" type="Script" id=11]
 [ext_resource path="res://entities/enemies/Boss/Boss.tscn" type="PackedScene" id=12]
 [ext_resource path="res://entities/props/PickupObject.tscn" type="PackedScene" id=13]
-[ext_resource path="res://entities/player/Hints.gd" type="Script" id=14]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/steelarmor.png" type="Texture" id=16]
 [ext_resource path="res://assets/Potion.png" type="Texture" id=17]
 [ext_resource path="res://assets/gstaff.png" type="Texture" id=18]
 [ext_resource path="res://assets/sword.png" type="Texture" id=19]
-[ext_resource path="res://entities/enemies/Boss/BossUI.tscn" type="PackedScene" id=20]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=21]
 [ext_resource path="res://UI/VictoryMenu.tscn" type="PackedScene" id=22]
 
@@ -35,9 +33,6 @@ script = ExtResource( 5 )
 [node name="IULayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="IULayer" instance=ExtResource( 15 )]
-
-[node name="BossUI" parent="IULayer" instance=ExtResource( 20 )]
-position = Vector2( 294, 570 )
 
 [node name="PauseMenu" parent="IULayer" instance=ExtResource( 21 )]
 margin_right = 0.0
@@ -249,37 +244,10 @@ image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 772.0
-margin_top = 7.0
-margin_right = 1016.0
-margin_bottom = 269.0
-text = "KEYBOARD:
-PRESS \"WASD\" TO MOVE
-PRESS \"ENTER\" TO ATTACK
-PRESS \"Q\" TO CHANGE ATTACK MODE
-PRESS \"SPACE BAR\" TO DASH
-PRESS \"R\" TO RESET GAME
-PRESS \"H\" TO HIDE THIS TIPS
-
-JOYSTICK:
-USE \"LEFT STICK\" TO MOVE
-USE \"RIGHT STICK\" TO AIM
-PRESS \"R2\" TO ATTACK
-PRESS \"L1\" TO CHANGE ATTACK MODE
-PRESS \"R1\" TO DASH"
-uppercase = true
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [connection signal="restart_selected" from="IULayer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="IULayer/PauseMenu" to="." method="_on_return_requested"]
 [connection signal="return_selected" from="IULayer/VictoryMenu" to="." method="_on_return_requested"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
-[connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="IULayer/BossUI" method="_on_hp_changed"]
+[connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_boss_found"]
+[connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_hp_changed"]
 [connection signal="body_entered" from="YSort/Entities/Checkpoint/Area2D" to="YSort/Entities/Checkpoint" method="_on_Area2D_body_entered"]
