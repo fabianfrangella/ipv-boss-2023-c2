@@ -63,7 +63,6 @@ func _remove() -> void:
 	queue_free()
 
 func _on_Hitbox_area_entered(body):
-	print(body.name)
 	if (hitbox_exceptions.has(body.name)):
 		return
 	if body.get_parent().has_method("notify_hit"):

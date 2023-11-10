@@ -4,7 +4,7 @@ export (PackedScene) var projectile_scene: PackedScene
 onready var timer = $Timer
 
 var can_attack = true
-var damage = 20
+
 signal fire_attack
 
 func handle_state(delta):
@@ -21,7 +21,7 @@ func _fire() -> void:
 	projectile_scene.instance().initialize(self, 
 											self.global_position, 
 											self.global_position.direction_to(target_position), 
-											damage,
+											get_parent().boss.fire_damage,
 											["BossHitbox", "BasicEnemyHitbox"],
 											true)
 

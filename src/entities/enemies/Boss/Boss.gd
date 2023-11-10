@@ -18,6 +18,9 @@ signal boss_found
 var is_attacking = false
 var has_been_triggered = false
 
+export var fire_damage = 3
+export var area_damage = 5
+
 func _ready():
 	target = get_parent().get_parent().get_node("Player")
 	

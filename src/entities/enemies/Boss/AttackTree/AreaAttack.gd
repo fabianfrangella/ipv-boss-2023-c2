@@ -6,7 +6,7 @@ onready var area_animations = $ExplosionContainer/Area
 onready var area_timer = $ExplosionContainer/Area/AreaTimer
 
 var time_since_last_attack = 0
-var damage_per_explosion = 15
+var damage_per_explosion = 5
 
 signal area_attack
 
@@ -71,7 +71,7 @@ func on_area_timer_timeout():
 
 func on_explosion_hit(node):
 	if (node.name == "Player"):
-		node.notify_hit(damage_per_explosion)
+		node.notify_hit(get_parent().boss.area_damage)
 
 func _create_area():
 	var area = Area2D.new()

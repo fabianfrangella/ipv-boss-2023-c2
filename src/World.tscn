@@ -94,7 +94,7 @@ position = Vector2( 353, 509 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( 2224, -356 )
-max_hp = 3
+max_hp = 10
 
 [node name="SwordChamber" type="Node" parent="YSort/Entities"]
 
