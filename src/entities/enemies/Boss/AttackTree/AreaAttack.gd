@@ -36,8 +36,6 @@ func _on_Explosion_animation_finished():
 		explosion.stop()
 		explosion.position = explosion_container.position
 	explosion_animations.hide()
-	
-	area_animations.get_node("Area").get_child(0).queue_free()
 
 func _play_explosions():
 	explosion_animations.show()
@@ -60,8 +58,16 @@ func _on_Area_animation_finished():
 	_play_explosions()
 	var explosion_area = _create_area()
 	explosion_area.connect("body_entered", self, "on_explosion_hit")
+	var timer = Timer.new()
+	add_child(timer)
+	timer.set_one_shot(true)
+	timer.set_wait_time(0.5)
+	timer.connect("timeout", self, "on_area_timer_timeout")
+	timer.start()
 	area.add_child(explosion_area)
 	
+func on_area_timer_timeout():
+	area_animations.get_node("Area").get_child(0).queue_free()
 
 func on_explosion_hit(node):
 	if (node.name == "Player"):
