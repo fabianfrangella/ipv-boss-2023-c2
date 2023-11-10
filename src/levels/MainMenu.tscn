@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/MouseCamera.gd" type="Script" id=1]
+[ext_resource path="res://levels/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/OptionsMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/pointer.png" type="Texture" id=5]
+[ext_resource path="res://levels/LevelManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/titlebg.jpg" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 2 )
+level_manager_scene = ExtResource( 6 )
+mouse_cursor = ExtResource( 5 )
+
+[node name="MouseCamera" type="Camera2D" parent="."]
+position = Vector2( 144, 81 )
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+script = ExtResource( 1 )
+movement_strength = 0.25
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.007
+margin_right = 1.0
+margin_bottom = -0.200073
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Container"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -4.0
+margin_right = 129.0
+margin_bottom = 42.0
+mouse_filter = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+margin_right = 134.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+margin_top = 104.0
+margin_right = 134.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+
+[node name="Title" type="Label" parent="CanvasLayer/Container"]
+margin_left = 81.0
+margin_top = 91.0
+margin_right = 550.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 2 )
+text = "Defiance"
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]

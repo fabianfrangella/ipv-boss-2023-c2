@@ -8,7 +8,7 @@ onready var deaths_amounts = $DeathsContainer/DeathsAmounts
 onready var timer = $ScoreContainer/Timer
 onready var hp_text = $StatsContainer/HpProgress1/HpText
 onready var mana_text = $StatsContainer/ManaProgress/ManaText
-
+onready var boss_hp = $StatsContainer/BossHpProgress
 
 onready var fading_elements: Array = [hp_progress_1, mana_progress]
 
@@ -24,6 +24,8 @@ var time: Timer
 func _ready() -> void:
 	GameState.connect("current_player_changed", self, "_on_current_player_changed")
 	deaths = Checkpoint.deaths
+	boss_hp.value = 100
+	boss_hp.hide()
 
 ## Cuando se asigna un Player nuevo, se conecta a las señales que
 ## interesan, y se refresca la data.
@@ -67,3 +69,15 @@ func _on_deaths_changed() -> void:
 	deaths = deaths + 1
 	deaths_amounts.text = str(deaths)
 	
+func on_boss_hp_changed(hp: int, hp_max: int):
+	boss_hp.max_value = hp_max
+	boss_hp.value = hp
+
+func _on_Boss_boss_found():
+	boss_hp.show()
+
+
+func _on_Boss_hp_changed(hp: int, hp_max: int):
+	boss_hp.max_value = hp_max
+	boss_hp.value = hp
+

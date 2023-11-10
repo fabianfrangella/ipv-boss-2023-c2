@@ -13,15 +13,13 @@ var hp = 100
 export (NodePath) var pathfinding_path: NodePath
 signal hp_changed(hp)
 signal hit
+signal boss_found
 
 var is_attacking = false
 var has_been_triggered = false
-var ui
 
 func _ready():
 	target = get_parent().get_parent().get_node("Player")
-	ui = get_parent().get_parent().get_parent().get_parent().get_node("IULayer/BossUI")
-	ui.hide()
 	
 func _physics_process(delta):
 	if (target == null || is_dead() || not has_been_triggered):
@@ -38,6 +36,7 @@ func notify_hit(damage):
 	if (target != null && hp <= 0):
 		body_anim.set_state(AnimationState.DEAD,
 				_get_direction_to(self.position.direction_to(target.position)))
+		
 
 func _get_direction_to(pos):
 	var abs_position = Vector2(0, 0)
@@ -93,5 +92,5 @@ func _set_attack_state():
 func _on_DetectionArea_entered(area):
 	if (area.name == "PlayerHitbox"):
 		get_node("DetectionArea").queue_free()
-		ui.show()
+		emit_signal("boss_found")
 		has_been_triggered = true

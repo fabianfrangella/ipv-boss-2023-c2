@@ -7,3 +7,12 @@ var sword = false
 var staff = false
 var potions = false
 var time = null
+
+func reset():
+	last_position = null
+	deaths = -1
+	armor = false
+	sword = false
+	staff = false
+	potions = false
+	time = null
