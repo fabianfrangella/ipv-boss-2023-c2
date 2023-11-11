@@ -12,7 +12,7 @@ func initialize(dash_timer: Timer, _dash_speed = 30, _speed = 240):
 	dash_timer.connect("timeout", self, "_on_dash_timer_timeout")
 
 func handle_movement(body: KinematicBody2D):
-	var velocity = Vector2()
+	var velocity := Vector2()
 	if Input.is_action_pressed("ui_up"):
 		velocity += Vector2(0, -1)
 	if Input.is_action_pressed("ui_down"):
@@ -29,6 +29,11 @@ func handle_movement(body: KinematicBody2D):
 		body.previous_direction = velocity
 		body.body_anim.set_direction(velocity)
 		body.body_anim.set_state('movement')
+		if abs(velocity.x) + abs(velocity.y) > 1.0:
+			if abs(velocity.x + velocity.y) < 1.5:
+				velocity = velocity.rotated(deg2rad(18))
+			else:
+				velocity = velocity.rotated(deg2rad(-18))
 		
 	velocity = velocity.normalized() * speed
 	
