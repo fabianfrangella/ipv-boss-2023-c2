@@ -23,7 +23,7 @@
 [ext_resource path="res://UI/VictoryMenu.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 184.5, 94.5 )
+extents = Vector2( 182.286, 106.71 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 312.375, 146.875 )
@@ -114,7 +114,7 @@ position = Vector2( -707, 1566 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/TutorialChamber/TutorialUI/RangeEnemyArea"]
-position = Vector2( -1651, 1399 )
+position = Vector2( -1658.95, 1403.65 )
 rotation = 0.76969
 shape = SubResource( 3 )
 
@@ -149,6 +149,27 @@ margin_bottom = 221.0
 text = " Hay enemigos que pueden atacar a la distancia,
  tratá de esquivar sus ataques para acercarte y eliminarlos!"
 align = 1
+
+[node name="MeleeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
+anchor_left = 0.337
+anchor_top = 0.202
+anchor_right = 0.714
+anchor_bottom = 0.28
+margin_left = 331.0
+margin_top = 190.0
+margin_right = 707.0
+margin_bottom = 221.0
+text = "Otros enemigos se acercaran para atacarte,
+ tratá de recibir el menor daño posible de sus ataques y eliminalos!"
+align = 1
+
+[node name="MeleeEnemyArea" type="Area2D" parent="YSort/Entities/TutorialChamber/TutorialUI"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/TutorialChamber/TutorialUI/MeleeEnemyArea"]
+position = Vector2( -1070.63, 1341.66 )
+rotation = -0.916298
+shape = SubResource( 3 )
 
 [node name="SwordChamber" type="Node" parent="YSort/Entities"]
 
@@ -309,6 +330,7 @@ scaleSprite = 2.0
 [connection signal="return_selected" from="IULayer/VictoryMenu" to="." method="_on_return_requested"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/RangeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_RangeEnemyArea_area_entered"]
 [connection signal="pressed" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/ContinueButton" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_ContinueButton_pressed"]
+[connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/MeleeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_MeleeEnemyArea_area_entered"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_boss_found"]
 [connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_hp_changed"]
