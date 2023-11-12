@@ -62,7 +62,7 @@ margin_top = 5.0
 margin_right = -10.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 2 )
-text = "VICTORY!"
+text = "VICTORIA!"
 align = 1
 valign = 1
 
@@ -73,7 +73,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_right = 40.0
 margin_bottom = 14.0
-text = "Time: "
+text = "Tiempo: "
 align = 1
 valign = 1
 
@@ -85,7 +85,7 @@ anchor_bottom = 0.5
 margin_top = -19.0
 margin_right = 40.0
 margin_bottom = -5.0
-text = "Deaths:"
+text = "Muertes:"
 align = 1
 valign = 1
 
@@ -96,6 +96,6 @@ margin_right = 145.0
 margin_bottom = 109.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Return"
+text = "Regresar"
 
 [connection signal="pressed" from="Panel/ReturnButton" to="." method="_on_ReturnButton_pressed"]

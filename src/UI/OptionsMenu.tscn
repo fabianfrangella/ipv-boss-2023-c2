@@ -120,7 +120,7 @@ margin_right = 27.0
 margin_bottom = -5.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Return"
+text = "Regresar"
 
 [node name="Panel" type="TabContainer" parent="Panel"]
 anchor_right = 1.0
@@ -148,67 +148,67 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Controls"]
-margin_right = 252.0
-margin_bottom = 185.0
+margin_right = 185.0
+margin_bottom = 257.0
 
 [node name="ActionMap" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 25.0
 action = "ui_left"
 action_name = "Move Left"
 
 [node name="ActionMap2" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 29.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 54.0
 action = "ui_right"
 action_name = "Move Right"
 
 [node name="ActionMap3" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 58.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 83.0
 action = "ui_up"
 action_name = "Move Up"
 
 [node name="ActionMap4" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 87.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 112.0
 action = "ui_down"
 action_name = "MoveDown"
 
 [node name="ActionMap5" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 116.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 141.0
 action = "attack"
 action_name = "Attack"
 
 [node name="ActionMap6" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 145.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 170.0
 action = "dash"
 action_name = "Dash"
 
 [node name="ActionMap7" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 174.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 199.0
 action = "heal"
 action_name = "Heal"
 
 [node name="ActionMap8" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 203.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 228.0
 action = "change_attack_mode"
 action_name = "Change Attack Mode"
 
 [node name="ActionMap9" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 232.0
-margin_right = 252.0
+margin_right = 185.0
 margin_bottom = 257.0
 action = "reset"
 action_name = "Reset"

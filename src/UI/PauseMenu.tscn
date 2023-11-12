@@ -80,7 +80,7 @@ margin_right = 130.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Resume"
+text = "Resumir"
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 22.0
@@ -88,7 +88,7 @@ margin_right = 130.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Options"
+text = "Opciones"
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 44.0
@@ -96,7 +96,7 @@ margin_right = 130.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Restart"
+text = "Reiniciar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 66.0
@@ -104,7 +104,7 @@ margin_right = 130.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Return"
+text = "Regresar al Menu"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false

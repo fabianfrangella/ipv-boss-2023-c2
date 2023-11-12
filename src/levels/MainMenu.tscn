@@ -55,24 +55,24 @@ mouse_filter = 2
 alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Container/Buttons"]
-margin_right = 134.0
+margin_right = 157.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
-text = "Start"
+text = "Iniciar"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Container/Buttons"]
 margin_top = 52.0
-margin_right = 134.0
+margin_right = 157.0
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
-text = "Options"
+text = "Opciones"
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Container/Buttons"]
 margin_top = 104.0
-margin_right = 134.0
+margin_right = 157.0
 margin_bottom = 152.0
 custom_fonts/font = SubResource( 1 )
-text = "Exit"
+text = "Salir"
 
 [node name="Title" type="Label" parent="CanvasLayer/Container"]
 margin_left = 81.0
