@@ -97,7 +97,7 @@ tile_data = PoolIntArray( -1769458, 72, 0, -1703922, 72, 0, -1638386, 72, 0, -15
 [node name="Entities" type="YSort" parent="YSort"]
 
 [node name="BasicEnemy8" parent="YSort/Entities" instance=ExtResource( 3 )]
-position = Vector2( 353, 509 )
+position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( -2066, 1553 )
@@ -116,75 +116,59 @@ position = Vector2( -707, 1566 )
 [node name="PopupContainer" type="Control" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1024.0
-margin_bottom = -600.0
 script = ExtResource( 20 )
 
-[node name="ContinueButton" type="Button" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
-pause_mode = 2
-anchor_left = 0.322
-anchor_top = 0.61
-anchor_right = 0.643
-anchor_bottom = 0.61
-margin_left = 471.0
-margin_top = 377.0
-margin_right = 544.0
-margin_bottom = 397.0
-text = "Continuar"
+[node name="Panel" type="Panel" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
+anchor_left = 0.301
+anchor_top = 0.196
+anchor_right = 0.699
+anchor_bottom = 0.426
 
-[node name="RangeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
+[node name="RangeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
 visible = false
-anchor_left = 0.337
-anchor_top = 0.202
-anchor_right = 0.714
-anchor_bottom = 0.28
-margin_left = 331.0
-margin_top = 190.0
-margin_right = 707.0
-margin_bottom = 221.0
-text = " Hay enemigos que pueden atacar a la distancia,
- tratá de esquivar sus ataques para acercarte y eliminarlos!"
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "
+ Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!"
 align = 1
+autowrap = true
+clip_text = true
 
-[node name="MeleeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
+[node name="MeleeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
 visible = false
-anchor_left = 0.337
-anchor_top = 0.202
-anchor_right = 0.714
-anchor_bottom = 0.28
-margin_left = 331.0
-margin_top = 190.0
-margin_right = 707.0
-margin_bottom = 221.0
-text = "Otros enemigos se acercaran para atacarte,
- tratá de recibir el menor daño posible de sus ataques y eliminalos!"
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Otros enemigos se acercaran para atacarte, tratá de recibir el menor daño posible de sus ataques y eliminalos!"
 align = 1
+autowrap = true
+clip_text = true
 
-[node name="PotionText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
-anchor_left = 0.337
-anchor_top = 0.202
-anchor_right = 0.714
-anchor_bottom = 0.28
-margin_left = 331.0
-margin_top = 190.0
-margin_right = 707.0
-margin_bottom = 221.0
+[node name="PotionText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 text = "Parece que haz encontrado una poción!.
-En la mazmorra encontraras artefactos que te serviran para enfrentar a tus enemigos, 
-camina sobre ellos para equiparlos.
+En la mazmorra encontraras 
+artefactos que te serviran para enfrentar a tus enemigos, camina sobre ellos para equiparlos. 
 Algunos de estos artefactos son consumibles, presiona 1 para consumirlo"
 align = 1
+autowrap = true
+clip_text = true
 
-[node name="BossText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
-anchor_left = 0.337
-anchor_top = 0.202
-anchor_right = 0.714
-anchor_bottom = 0.28
-margin_left = 331.0
-margin_top = 190.0
-margin_right = 707.0
-margin_bottom = 221.0
+[node name="BossText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 align = 1
+autowrap = true
+clip_text = true
+
+[node name="ContinueButton" type="Button" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+pause_mode = 2
+anchor_left = 0.192
+anchor_top = 1.148
+anchor_right = 0.797
+anchor_bottom = 1.284
+text = "Continuar"
 
 [node name="RangeEnemyArea" type="Area2D" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 collision_mask = 3
@@ -375,7 +359,7 @@ scaleSprite = 2.0
 [connection signal="restart_selected" from="IULayer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="IULayer/PauseMenu" to="." method="_on_return_requested"]
 [connection signal="return_selected" from="IULayer/VictoryMenu" to="." method="_on_return_requested"]
-[connection signal="pressed" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/ContinueButton" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel/ContinueButton" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_ContinueButton_pressed"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/RangeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_RangeEnemyArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/MeleeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_MeleeEnemyArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/PotionArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_PotionArea_area_entered"]
