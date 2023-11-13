@@ -105,6 +105,7 @@ position = Vector2( 358, 504 )
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( -2103, 1615 )
 max_hp = 10
+hasStaff = true
 
 [node name="TutorialChamber" type="Node" parent="YSort/Entities"]
 

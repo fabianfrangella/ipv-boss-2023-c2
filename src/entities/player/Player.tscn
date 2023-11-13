@@ -1,4 +1,4 @@
-[gd_scene load_steps=789 format=2]
+[gd_scene load_steps=790 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/characters/male_full_armor/male_normal_melee.png" type="Texture" id=9]
 [ext_resource path="res://assets/characters/male_full_armor/male_normal_range.png" type="Texture" id=10]
 [ext_resource path="res://assets/characters/male_full_armor/male_full_armor_shortsword.png" type="Texture" id=11]
+[ext_resource path="res://Sounds/Spell/Magic Spell_Simple Swoosh_6.wav" type="AudioStream" id=12]
 
 [sub_resource type="AtlasTexture" id=114]
 flags = 4
@@ -3344,45 +3345,45 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 3456, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=288]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 3072, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=289]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 3200, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=290]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 3328, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=291]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 3456, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=292]
+[sub_resource type="AtlasTexture" id=883]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 3072, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=293]
+[sub_resource type="AtlasTexture" id=884]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 3200, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=294]
+[sub_resource type="AtlasTexture" id=885]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 3328, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=295]
+[sub_resource type="AtlasTexture" id=886]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 3456, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=887]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 3072, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=888]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 3200, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=889]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 3328, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=890]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 3456, 384, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=296]
 flags = 4
@@ -3776,12 +3777,12 @@ animations = [ {
 "name": "range_up",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 288 ), SubResource( 289 ), SubResource( 290 ), SubResource( 291 ) ],
+"frames": [ SubResource( 883 ), SubResource( 884 ), SubResource( 885 ), SubResource( 886 ) ],
 "loop": true,
 "name": "range_up_left",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 292 ), SubResource( 293 ), SubResource( 294 ), SubResource( 295 ) ],
+"frames": [ SubResource( 887 ), SubResource( 888 ), SubResource( 889 ), SubResource( 890 ) ],
 "loop": true,
 "name": "range_up_right",
 "speed": 10.0
@@ -4107,45 +4108,45 @@ flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3456, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=675]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 3072, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=676]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 3200, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=677]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 3328, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=678]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 3456, 384, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=679]
+[sub_resource type="AtlasTexture" id=891]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3072, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=680]
+[sub_resource type="AtlasTexture" id=892]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3200, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=681]
+[sub_resource type="AtlasTexture" id=893]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3328, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=682]
+[sub_resource type="AtlasTexture" id=894]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3456, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=895]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3072, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=896]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3200, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=897]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3328, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=898]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3456, 384, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=683]
 flags = 4
@@ -4539,12 +4540,12 @@ animations = [ {
 "name": "range_up",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 675 ), SubResource( 676 ), SubResource( 677 ), SubResource( 678 ) ],
+"frames": [ SubResource( 891 ), SubResource( 892 ), SubResource( 893 ), SubResource( 894 ) ],
 "loop": true,
 "name": "range_up_left",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 679 ), SubResource( 680 ), SubResource( 681 ), SubResource( 682 ) ],
+"frames": [ SubResource( 895 ), SubResource( 896 ), SubResource( 897 ), SubResource( 898 ) ],
 "loop": true,
 "name": "range_up_right",
 "speed": 10.0
@@ -4697,6 +4698,9 @@ shape = SubResource( 748 )
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
 
 [node name="Sword" type="AudioStreamPlayer2D" parent="AudioContainer"]
+
+[node name="Spell" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 12 )
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]
