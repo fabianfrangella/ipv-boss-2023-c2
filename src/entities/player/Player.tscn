@@ -1,4 +1,4 @@
-[gd_scene load_steps=790 format=2]
+[gd_scene load_steps=792 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/characters/male_full_armor/male_normal_range.png" type="Texture" id=10]
 [ext_resource path="res://assets/characters/male_full_armor/male_full_armor_shortsword.png" type="Texture" id=11]
 [ext_resource path="res://Sounds/Spell/Magic Spell_Simple Swoosh_6.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Hits/Bloody punch.wav" type="AudioStream" id=13]
+[ext_resource path="res://entities/player/Camera2D.gd" type="Script" id=14]
 
 [sub_resource type="AtlasTexture" id=114]
 flags = 4
@@ -4656,6 +4658,7 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
+script = ExtResource( 14 )
 
 [node name="DashTimer" type="Timer" parent="."]
 autostart = true
@@ -4701,6 +4704,9 @@ shape = SubResource( 748 )
 
 [node name="Spell" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 12 )
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 13 )
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]

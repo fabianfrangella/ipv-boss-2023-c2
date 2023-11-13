@@ -20,6 +20,8 @@ onready var range_weapon = $RangeWeaponContainer/Weapon
 onready var body_anim: Node2D = $BodyAnimations
 onready var heal_timer = $HealTimer
 
+onready var camera = $Camera2D
+
 export (int) var max_hp: int = 10
 var hp: int = max_hp
 
@@ -106,6 +108,8 @@ func _change_attack_mode():
 		body_anim.set_melee_animator()
 
 func notify_hit(amount: int = 1) -> void:
+	audio_container.get_node("Hit").play()
+	camera.shake(0.5, 5, 5)
 	handle_event("hit", amount)
 
 func heal_hp()-> void:

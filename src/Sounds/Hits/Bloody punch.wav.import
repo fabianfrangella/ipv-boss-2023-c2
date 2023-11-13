@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bloody punch.wav-245168b5c0b4d46e33828f8bc19aa0fb.sample"
+
+[deps]
+
+source_file="res://Sounds/Hits/Bloody punch.wav"
+dest_files=[ "res://.import/Bloody punch.wav-245168b5c0b4d46e33828f8bc19aa0fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
