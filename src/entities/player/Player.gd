@@ -50,6 +50,8 @@ export (bool) var hasStaff: bool = false
 
 const valid_outlines = ["BasicEnemyHitbox", "BossHitbox"]
 
+onready var audio_container = $AudioContainer
+
 func _ready():
 	initialize()
 
@@ -76,7 +78,7 @@ func initialize(projectile_container: Node = get_parent()):
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
-	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed)
+	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed, audio_container)
 	if Checkpoint.last_position:
 		self.global_position = Checkpoint.last_position
 	if Checkpoint.potions:

@@ -103,7 +103,7 @@ tile_data = PoolIntArray( -1769458, 72, 0, -1703922, 72, 0, -1638386, 72, 0, -15
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2120, 1603 )
+position = Vector2( -2103, 1615 )
 max_hp = 10
 
 [node name="TutorialChamber" type="Node" parent="YSort/Entities"]
@@ -333,7 +333,7 @@ position = Vector2( 319, -92 )
 shape = SubResource( 1 )
 
 [node name="Boss" parent="YSort/Entities/BossChamber" instance=ExtResource( 12 )]
-position = Vector2( 4725, -1933 )
+position = Vector2( 4717, -1973 )
 pathfinding_path = NodePath("../../../../AstarTilemap")
 
 [node name="Checkpoint" type="Node" parent="YSort/Entities"]

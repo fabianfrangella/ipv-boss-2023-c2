@@ -5,6 +5,10 @@ onready var explosion_animations = $ExplosionContainer/Explosions
 onready var area_animations = $ExplosionContainer/Area
 onready var area_timer = $ExplosionContainer/Area/AreaTimer
 
+# Sounds
+onready var explosion_player: AudioStreamPlayer2D = $ExplosionContainer/ExplosionPlayer
+onready var area_player: AudioStreamPlayer2D = $ExplosionContainer/AreaPlayer
+
 var time_since_last_attack = 0
 var damage_per_explosion = 5
 
@@ -24,6 +28,7 @@ func handle_state(delta):
 		area_animations.show()
 		area.show()
 		area.play("appear")
+		area_player.play()
 
 func _on_Explosion_animation_finished():
 	var explosions = [
@@ -50,6 +55,7 @@ func _play_explosions():
 		var rand_position = Vector2(random_range, random_range)
 		explosion.position = rand_position
 		explosion.play("explode")
+	explosion_player.play()
 
 func _on_Area_animation_finished():
 	var area = area_animations.get_node("Area")

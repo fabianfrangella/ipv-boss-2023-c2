@@ -1,4 +1,4 @@
-[gd_scene load_steps=376 format=2]
+[gd_scene load_steps=379 format=2]
 
 [ext_resource path="res://assets/characters/boss/demon.png" type="Texture" id=1]
 [ext_resource path="res://entities/enemies/Boss/Boss.gd" type="Script" id=2]
@@ -62,6 +62,9 @@
 [ext_resource path="res://entities/enemies/BasicEnemy.tscn" type="PackedScene" id=60]
 [ext_resource path="res://entities/enemies/MeleeEnemy.tscn" type="PackedScene" id=61]
 [ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=62]
+[ext_resource path="res://Sounds/Fire impact 1.wav" type="AudioStream" id=63]
+[ext_resource path="res://Sounds/Wind effects 5.wav" type="AudioStream" id=64]
+[ext_resource path="res://Sounds/Ice attack 2.wav" type="AudioStream" id=65]
 
 [sub_resource type="ShaderMaterial" id=316]
 
@@ -1679,6 +1682,12 @@ frame = 1
 
 [node name="AreaTimer" type="Timer" parent="AttackTree/AreaAttack/ExplosionContainer/Area"]
 
+[node name="ExplosionPlayer" type="AudioStreamPlayer2D" parent="AttackTree/AreaAttack/ExplosionContainer"]
+stream = ExtResource( 63 )
+
+[node name="AreaPlayer" type="AudioStreamPlayer2D" parent="AttackTree/AreaAttack/ExplosionContainer"]
+stream = ExtResource( 64 )
+
 [node name="FireAttack" type="Node2D" parent="AttackTree"]
 script = ExtResource( 6 )
 projectile_scene = ExtResource( 59 )
@@ -1686,6 +1695,9 @@ projectile_scene = ExtResource( 59 )
 [node name="Timer" type="Timer" parent="AttackTree/FireAttack"]
 wait_time = 2.0
 autostart = true
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="AttackTree/FireAttack"]
+stream = ExtResource( 65 )
 
 [node name="SummonAttack" type="Node2D" parent="AttackTree"]
 script = ExtResource( 7 )

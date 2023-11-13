@@ -2,6 +2,7 @@ extends AttackState
 
 export (PackedScene) var projectile_scene: PackedScene
 onready var timer = $Timer
+onready var audio_player: AudioStreamPlayer2D = $FireSound
 
 var can_attack = true
 
@@ -24,4 +25,5 @@ func _fire() -> void:
 											get_parent().boss.fire_damage,
 											["BossHitbox", "BasicEnemyHitbox"],
 											true)
+	audio_player.play()
 

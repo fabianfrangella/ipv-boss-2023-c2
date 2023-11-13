@@ -4692,6 +4692,12 @@ shape = SubResource( 748 )
 
 [node name="HealTimer" type="Timer" parent="."]
 
+[node name="AudioContainer" type="Node2D" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
+
+[node name="Sword" type="AudioStreamPlayer2D" parent="AudioContainer"]
+
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]
 [connection signal="healed" from="." to="." method="notify_healed"]
