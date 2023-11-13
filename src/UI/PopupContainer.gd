@@ -63,14 +63,20 @@ func _on_PotionArea_area_entered(area):
 func _on_BossChamberArea_area_entered(area):
 	if (area.name == "PlayerHitbox"):
 		var text = ""
+		var elementsLeft = 0
 		if (not area.get_parent().hasGSword):
+			elementsLeft+=1
 			text += "Parece que aún no has encontrado una buena espada. \n"
 		if (not area.get_parent().hasStaff):
+			elementsLeft+=1
 			text += "Todavía no has encontrado tu baculo? \n"
 		if (not area.get_parent().hasArmor):
+			elementsLeft+=1
 			text += "Sin armadura?, buena suerte \n"
 		if (text != ""):
-			text += "Si no tienes los elementos necesarios será muy dificil que mates al demonio"
+			text += "Si no tienes los elementos necesarios será muy dificil que mates al demonio que tienes adelante"
+			if (elementsLeft >= 2):
+				text = "Si no tienes los elementos necesarios será muy dificil que mates al demonio que tienes adelante. \n Sería mejor que explores la mazmorra y encuentres el equipamiento necesario."
 			boss_text.text = text
 			current_hint = boss_text
 			panel.show()
