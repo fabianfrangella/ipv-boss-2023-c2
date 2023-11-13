@@ -103,7 +103,7 @@ tile_data = PoolIntArray( -1769458, 72, 0, -1703922, 72, 0, -1638386, 72, 0, -15
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2103, 1615 )
+position = Vector2( -2041, 1591 )
 max_hp = 10
 hasStaff = true
 

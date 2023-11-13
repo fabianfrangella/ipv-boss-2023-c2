@@ -109,8 +109,11 @@ func _change_attack_mode():
 
 func notify_hit(amount: int = 1) -> void:
 	audio_container.get_node("Hit").play()
-	camera.shake(0.5, 5, 5)
+	shake_camera(0.5, 5, 5)
 	handle_event("hit", amount)
+
+func shake_camera(duration, frequency, amplitude):
+	camera.shake(duration, frequency, amplitude)
 
 func heal_hp()-> void:
 	if potions>0 && hp< max_hp:
