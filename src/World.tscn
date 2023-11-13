@@ -109,7 +109,7 @@ max_hp = 10
 position = Vector2( -1379, 1228 )
 
 [node name="MeleeEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 8 )]
-position = Vector2( -707, 1566 )
+position = Vector2( -691, 1527 )
 
 [node name="TutorialUI" type="CanvasLayer" parent="YSort/Entities/TutorialChamber"]
 
@@ -129,7 +129,8 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "
- Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!"
+Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!
+Cuando estés a una distancia adecuada para hacerle daño podrás observar su silueta remarcada"
 align = 1
 autowrap = true
 clip_text = true

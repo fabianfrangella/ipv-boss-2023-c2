@@ -1,4 +1,4 @@
-[gd_scene load_steps=357 format=2]
+[gd_scene load_steps=360 format=2]
 
 [ext_resource path="res://entities/enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/StateMachine.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/skeleton_occultist.png" type="Texture" id=8]
 [ext_resource path="res://assets/green_circle.png" type="Texture" id=9]
 [ext_resource path="res://entities/enemies/EnemyProjectile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=11]
+
+[sub_resource type="ShaderMaterial" id=347]
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -1726,6 +1729,8 @@ flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 1408, 384, 128, 128 )
 
+[sub_resource type="GDScript" id=348]
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
@@ -2088,6 +2093,7 @@ animations = [ {
 "name": "walk_up_right",
 "speed": 5.0
 } ]
+script = SubResource( 348 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1354.26
@@ -2132,12 +2138,14 @@ state_id = "die"
 position = Vector2( 2.19345e-05, 0 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
+material = SubResource( 347 )
 position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_up_right"
-frame = 1
+frame = 5
 playing = true
+script = ExtResource( 11 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 0, 176.667 )

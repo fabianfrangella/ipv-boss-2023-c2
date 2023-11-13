@@ -48,6 +48,8 @@ export (bool) var hasArmor: bool = false
 export (bool) var hasGSword: bool = false
 export (bool) var hasStaff: bool = false
 
+const valid_outlines = ["BasicEnemyHitbox", "BossHitbox"]
+
 func _ready():
 	initialize()
 
@@ -113,7 +115,6 @@ func heal_hp()-> void:
 func sum_hp(amount: int) -> void:
 	hp = clamp(hp + amount, 0, max_hp)
 	emit_signal("hp_changed", hp, max_hp)
-	print("hp_changed %s %s" % [hp, max_hp])
 
 
 var mana_regen_tween: SceneTreeTween
@@ -233,3 +234,13 @@ func notify_deaths_changed():
 func _on_HealTimer_timeout():
 	if (hp < max_hp):
 		hp+=1
+
+
+func _on_OutlineTriggerArea_area_entered(area):
+	if (valid_outlines.has(area.name)):
+		area.get_parent().set_outline()
+
+
+func _on_OutlineTriggerArea_area_exited(area):
+	if (valid_outlines.has(area.name)):
+		area.get_parent().remove_outline()

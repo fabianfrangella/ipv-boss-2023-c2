@@ -75,3 +75,10 @@ func _on_Blood_animation_finished():
 
 func _on_Boss_hit():
 	_play_blood_animation()
+	
+func set_outline():
+	body_anim.set_outline()
+
+func remove_outline():
+	body_anim.remove_outline()
+

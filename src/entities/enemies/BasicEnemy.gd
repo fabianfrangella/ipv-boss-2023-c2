@@ -123,3 +123,9 @@ func _play_animation(animation: String) -> void:
 
 func get_current_animation() -> String:
 	return body_anim.animation
+
+func set_outline():
+	body_anim.set_outline()
+
+func remove_outline():
+	body_anim.remove_outline()

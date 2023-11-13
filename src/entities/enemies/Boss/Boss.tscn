@@ -1,4 +1,4 @@
-[gd_scene load_steps=374 format=2]
+[gd_scene load_steps=376 format=2]
 
 [ext_resource path="res://assets/characters/boss/demon.png" type="Texture" id=1]
 [ext_resource path="res://entities/enemies/Boss/Boss.gd" type="Script" id=2]
@@ -61,6 +61,9 @@
 [ext_resource path="res://entities/enemies/BossProjectile.tscn" type="PackedScene" id=59]
 [ext_resource path="res://entities/enemies/BasicEnemy.tscn" type="PackedScene" id=60]
 [ext_resource path="res://entities/enemies/MeleeEnemy.tscn" type="PackedScene" id=61]
+[ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=62]
+
+[sub_resource type="ShaderMaterial" id=316]
 
 [sub_resource type="AtlasTexture" id=144]
 atlas = ExtResource( 1 )
@@ -1615,9 +1618,11 @@ autostart = true
 script = ExtResource( 4 )
 
 [node name="Demon" type="AnimatedSprite" parent="BodyAnimations"]
+material = SubResource( 316 )
 position = Vector2( 9, -5 )
 frames = SubResource( 5 )
 animation = "attack_up_left"
+script = ExtResource( 62 )
 
 [node name="Blood" type="AnimatedSprite" parent="BodyAnimations"]
 frames = SubResource( 210 )

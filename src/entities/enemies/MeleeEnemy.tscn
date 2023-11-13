@@ -1,4 +1,4 @@
-[gd_scene load_steps=359 format=2]
+[gd_scene load_steps=361 format=2]
 
 [ext_resource path="res://entities/enemies/MeleeStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/MeleeEnemy.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/skeleton_knight.png" type="Texture" id=8]
 [ext_resource path="res://assets/green_circle.png" type="Texture" id=9]
 [ext_resource path="res://entities/enemies/EnemieMeleeAttack.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=11]
+
+[sub_resource type="ShaderMaterial" id=695]
 
 [sub_resource type="AtlasTexture" id=351]
 flags = 4
@@ -2094,15 +2097,15 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=349]
-radius = 53.3333
-height = 166.667
-
 [sub_resource type="CircleShape2D" id=350]
 radius = 1860.59
 
 [sub_resource type="CircleShape2D" id=347]
 radius = 226.887
+
+[sub_resource type="CapsuleShape2D" id=349]
+radius = 93.3333
+height = 153.333
 
 [node name="MeleeEnemy" type="KinematicBody2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -2140,16 +2143,14 @@ state_id = "die"
 position = Vector2( 2.19345e-05, 0 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
+material = SubResource( 695 )
 position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
-frame = 1
+frame = 5
 playing = true
-
-[node name="BasicEnemyHitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 6.66667, 6.66666 )
-shape = SubResource( 349 )
+script = ExtResource( 11 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 0, 146.667 )
@@ -2170,6 +2171,12 @@ shape = SubResource( 350 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource( 347 )
+
+[node name="BasicEnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicEnemyHitbox"]
+position = Vector2( 6.66667, 6.66666 )
+shape = SubResource( 349 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_IdleTimer_timeout"]

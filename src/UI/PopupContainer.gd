@@ -12,7 +12,7 @@ var range_enemy_triggered = false
 var melee_enemy_triggered = false
 var potion_triggered = false
 
-onready var current_hint = $RangeEnemyText
+onready var current_hint = $Panel/RangeEnemyText
 
 func _ready():
 	continue_button.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=788 format=2]
+[gd_scene load_steps=789 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -4593,6 +4593,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.9167, 7.66665 )
 
+[sub_resource type="RectangleShape2D" id=882]
+extents = Vector2( 21.25, 16.6667 )
+
 [sub_resource type="CapsuleShape2D" id=748]
 radius = 14.1667
 height = 30.0
@@ -4672,6 +4675,14 @@ projectile_scene = ExtResource( 6 )
 
 [node name="WeaponTip" type="Position2D" parent="RangeWeaponContainer/Weapon"]
 
+[node name="OutlineTriggerArea" type="Area2D" parent="RangeWeaponContainer/Weapon/WeaponTip"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeWeaponContainer/Weapon/WeaponTip/OutlineTriggerArea"]
+position = Vector2( 5.41667, 6.66667 )
+shape = SubResource( 882 )
+
 [node name="PlayerHitbox" type="Area2D" parent="."]
 collision_mask = 3
 
@@ -4696,6 +4707,8 @@ shape = SubResource( 748 )
 [connection signal="animation_finished" from="BodyAnimations/NormalGreatSword" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="animation_finished" from="BodyAnimations/Range" to="BodyAnimations" method="_on_animation_finished"]
 [connection signal="animation_finished" from="BodyAnimations/NormalRange" to="BodyAnimations" method="_on_animation_finished"]
+[connection signal="area_entered" from="RangeWeaponContainer/Weapon/WeaponTip/OutlineTriggerArea" to="." method="_on_OutlineTriggerArea_area_entered"]
+[connection signal="area_exited" from="RangeWeaponContainer/Weapon/WeaponTip/OutlineTriggerArea" to="." method="_on_OutlineTriggerArea_area_exited"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_exited"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]

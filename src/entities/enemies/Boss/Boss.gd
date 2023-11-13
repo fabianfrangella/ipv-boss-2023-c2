@@ -97,3 +97,10 @@ func _on_DetectionArea_entered(area):
 		get_node("DetectionArea").queue_free()
 		emit_signal("boss_found")
 		has_been_triggered = true
+		
+func set_outline():
+	body_anim.set_outline()
+
+func remove_outline():
+	body_anim.remove_outline()
+
