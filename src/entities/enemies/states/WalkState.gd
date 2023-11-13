@@ -5,6 +5,7 @@ export (float) var max_speed: float = 100.0
 export (float) var pathfinding_step_threshold: float = 5.0
 export (Vector2) var wander_radius:Vector2 = Vector2(10.0, 10.0)
 var path:Array = []
+
 func enter() ->void:
 	if character.pathfinding != null:
 		var random_target: Vector2 = character.global_position + Vector2(
@@ -19,6 +20,7 @@ func enter() ->void:
 				character._play_animation("walk_alert")
 			else:
 				character._play_animation("walk")
+			character.play_sound("walk")
 	else:
 		emit_signal("finished","idle")
 		

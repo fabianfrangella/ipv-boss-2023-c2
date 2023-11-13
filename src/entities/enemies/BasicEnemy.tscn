@@ -1,4 +1,4 @@
-[gd_scene load_steps=360 format=2]
+[gd_scene load_steps=362 format=2]
 
 [ext_resource path="res://entities/enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/StateMachine.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/green_circle.png" type="Texture" id=9]
 [ext_resource path="res://entities/enemies/EnemyProjectile.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=11]
+[ext_resource path="res://Sounds/Spell/Magic Spell_Simple Swoosh_6.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Hits/Bloody punch.wav" type="AudioStream" id=13]
 
 [sub_resource type="ShaderMaterial" id=347]
 
@@ -2143,7 +2145,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_up_right"
-frame = 5
+frame = 7
 playing = true
 script = ExtResource( 11 )
 
@@ -2167,6 +2169,16 @@ shape = SubResource( 2 )
 [node name="BasicEnemyHitbox" type="CollisionShape2D" parent="BasicEnemyHitbox"]
 position = Vector2( 6.66667, 6.66666 )
 shape = SubResource( 1 )
+
+[node name="AudioContainer" type="Node2D" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
+
+[node name="Spell" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 12 )
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 13 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_IdleTimer_timeout"]

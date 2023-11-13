@@ -23,6 +23,16 @@ var direccion: String = "down"
 var velocity: Vector2 = Vector2.ZERO
 var vdirection: Vector2 = Vector2.ZERO
 
+onready var audio_container = $AudioContainer
+
+const footsteps = [
+preload("res://Sounds/footsteps/footstep01.ogg"), preload("res://Sounds/footsteps/footstep02.ogg"), 
+preload("res://Sounds/footsteps/footstep03.ogg"), preload("res://Sounds/footsteps/footstep04.ogg"), 
+preload("res://Sounds/footsteps/footstep05.ogg"), preload("res://Sounds/footsteps/footstep06.ogg"), 
+preload("res://Sounds/footsteps/footstep07.ogg"), preload("res://Sounds/footsteps/footstep08.ogg"), 
+preload("res://Sounds/footsteps/footstep09.ogg")
+]
+
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 
@@ -42,6 +52,7 @@ func _fire() -> void:
 			fire_position.global_position,
 			fire_position.global_position.direction_to(target.global_position)
 		)
+		play_sound("spell")
 
 
 func _look_at_target() -> void:
@@ -107,7 +118,6 @@ func set_direction_to(target: Node2D):
 ## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount: int=1) -> void:
 	emit_signal("hit",amount)
-	pass
 
 func _remove() -> void:
 	get_parent().remove_child(self)
@@ -120,6 +130,21 @@ func _play_animation(animation: String) -> void:
 	
 	if body_anim.frames.has_animation(animation + "_" + direccion):
 		body_anim.play(animation + "_" + direccion)
+
+func play_sound(sound):
+	match sound:
+		"walk":
+			var sfx = footsteps[randi() % footsteps.size()]
+			sfx.set_loop(false)
+			var player = audio_container.get_node("Footsteps")
+			if (not player.playing):
+				player.stream = sfx
+				player.play()
+		"hit":
+			audio_container.get_node("Hit").play()
+		"spell":
+			audio_container.get_node("Spell").play()
+			
 
 func get_current_animation() -> String:
 	return body_anim.animation

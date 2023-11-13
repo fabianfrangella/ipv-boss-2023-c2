@@ -100,7 +100,7 @@ format = 1
 
 [node name="ColorRect" type="ColorRect" parent="YSort/FogTile"]
 material = SubResource( 6 )
-margin_left = -2897.0
+margin_left = -3557.0
 margin_top = -3548.0
 margin_right = 7987.0
 margin_bottom = 2843.0
