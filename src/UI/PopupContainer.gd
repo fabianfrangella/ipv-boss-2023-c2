@@ -1,6 +1,5 @@
 extends Control
 
-
 onready var continue_button = $Panel/ContinueButton
 
 # Texts
