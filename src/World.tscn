@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -22,6 +22,26 @@
 [ext_resource path="res://UI/PopupContainer.gd" type="Script" id=20]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=21]
 [ext_resource path="res://UI/VictoryMenu.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Shaders/fog.tres" type="Shader" id=23]
+
+[sub_resource type="OpenSimplexNoise" id=7]
+
+[sub_resource type="NoiseTexture" id=8]
+width = 1980
+height = 1980
+seamless = true
+noise = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=6]
+render_priority = 1
+shader = ExtResource( 23 )
+shader_param/octaves = 10
+shader_param/starting_amplitude = 0.362
+shader_param/starting_frequency = 1.0
+shader_param/shift = 0.0
+shader_param/velocity = Vector2( 0.001, 0.001 )
+shader_param/fog_color = Color( 0, 0, 0, 1 )
+shader_param/noise = SubResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 180, 110 )
@@ -73,6 +93,17 @@ tile_data = PoolIntArray( -524293, 0, 0, -458757, 0, 0, -458756, 0, 0, -524281, 
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( -1, -1 )
 
+[node name="FogTile" type="TileMap" parent="YSort"]
+z_index = 10
+format = 1
+
+[node name="ColorRect" type="ColorRect" parent="YSort/FogTile"]
+material = SubResource( 6 )
+margin_left = -2897.0
+margin_top = -3548.0
+margin_right = 7987.0
+margin_bottom = 2843.0
+
 [node name="Walls" type="TileMap" parent="YSort"]
 position = Vector2( 2, 3 )
 mode = 1
@@ -121,7 +152,7 @@ autoplay = true
 [node name="TutorialChamber" type="Node" parent="YSort/Entities"]
 
 [node name="BasicEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 3 )]
-position = Vector2( -1379, 1228 )
+position = Vector2( -1424, 1243 )
 
 [node name="MeleeEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 8 )]
 position = Vector2( -691, 1527 )
