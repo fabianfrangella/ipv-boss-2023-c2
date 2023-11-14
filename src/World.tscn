@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Sounds/Misc/doorClose_1.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Particles/FireParticles.tscn" type="PackedScene" id=25]
 [ext_resource path="res://entities/props/Portal.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Sounds/Music/defiance_dungeon_bass.ogg" type="AudioStream" id=27]
 
 [sub_resource type="OpenSimplexNoise" id=7]
 
@@ -197,6 +198,12 @@ dash_speed = 20.0
 [node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
 scale = Vector2( 0.833333, 0.833333 )
 current = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
+pause_mode = 2
+stream = ExtResource( 27 )
+volume_db = 12.0
+autoplay = true
 
 [node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
 stream = ExtResource( 24 )
