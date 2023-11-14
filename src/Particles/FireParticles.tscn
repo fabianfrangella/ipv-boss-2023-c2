@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Particles/Textures/smoke_07.png" type="Texture" id=1]
 [ext_resource path="res://Particles/Textures/fire_02.png" type="Texture" id=2]
@@ -53,6 +53,9 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.05
 
+[sub_resource type="CircleShape2D" id=28]
+radius = 17.1172
+
 [node name="FireParticles" type="Node2D"]
 
 [node name="Campfire" type="Sprite" parent="."]
@@ -60,7 +63,6 @@ texture = ExtResource( 3 )
 
 [node name="FireParticles" type="Particles2D" parent="."]
 rotation = -3.14159
-z_index = 1
 amount = 12
 lifetime = 1.5
 speed_scale = 0.4
@@ -89,3 +91,10 @@ show_behind_parent = true
 position = Vector2( 0, 3 )
 scale = Vector2( 0.5, 0.3 )
 texture = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -1, -1 )
+shape = SubResource( 28 )

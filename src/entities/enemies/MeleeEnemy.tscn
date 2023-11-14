@@ -1,4 +1,4 @@
-[gd_scene load_steps=363 format=2]
+[gd_scene load_steps=364 format=2]
 
 [ext_resource path="res://entities/enemies/MeleeStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/MeleeEnemy.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=11]
 [ext_resource path="res://Sounds/Hits/Bloody punch.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/Hits/fall.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/sword/swing.wav" type="AudioStream" id=14]
 
 [sub_resource type="ShaderMaterial" id=695]
 
@@ -2150,6 +2151,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
+frame = 4
 playing = true
 script = ExtResource( 11 )
 
@@ -2184,6 +2186,7 @@ shape = SubResource( 349 )
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
 
 [node name="Sword" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 14 )
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 12 )
