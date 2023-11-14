@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://UI/VictoryMenu.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Shaders/fog.tres" type="Shader" id=23]
 [ext_resource path="res://Sounds/Misc/doorClose_1.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Particles/FireParticles.tscn" type="PackedScene" id=25]
 
 [sub_resource type="OpenSimplexNoise" id=7]
 
@@ -159,7 +160,7 @@ autoplay = true
 [node name="TutorialChamber" type="Node" parent="YSort/Entities"]
 
 [node name="BasicEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 3 )]
-position = Vector2( -1424, 1243 )
+position = Vector2( -1432, 1223 )
 
 [node name="MeleeEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 8 )]
 position = Vector2( -691, 1527 )
@@ -394,7 +395,7 @@ position = Vector2( 2029, -329 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/Checkpoint/Area2D"]
-position = Vector2( -282, 5 )
+position = Vector2( 82, 12 )
 shape = SubResource( 2 )
 
 [node name="Objects" type="YSort" parent="YSort"]
@@ -429,6 +430,56 @@ position = Vector2( -711, -1986 )
 image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0
+
+[node name="Particles" type="Node2D" parent="YSort"]
+
+[node name="FireParticles2" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( -875, 1387 )
+z_index = 1
+
+[node name="FireParticles" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( -2112, 1514 )
+z_index = 1
+
+[node name="FireParticles4" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 2142, -272 )
+z_index = 1
+
+[node name="FireParticles3" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( -464, 786 )
+z_index = 1
+
+[node name="FireParticles6" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( -4088, 2944 )
+z_index = 1
+
+[node name="FireParticles10" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 1227, -1287 )
+z_index = 1
+
+[node name="FireParticles7" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 3609, -1330 )
+z_index = 1
+
+[node name="FireParticles8" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 4141, -256 )
+z_index = 1
+
+[node name="FireParticles9" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 765, -1066 )
+z_index = 1
+
+[node name="FireParticles11" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 4104, -1830 )
+z_index = 1
+
+[node name="FireParticles12" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( 5032, -1553 )
+z_index = 1
+
+[node name="FireParticles5" parent="YSort/Particles" instance=ExtResource( 25 )]
+position = Vector2( -66, 167 )
+z_index = 1
 
 [connection signal="restart_selected" from="IULayer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="IULayer/PauseMenu" to="." method="_on_return_requested"]
