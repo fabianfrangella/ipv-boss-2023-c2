@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/defiance_boss.ogg-1bfc1bce6796f3eefae8e0295da7d66a.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Music/defiance_boss.ogg"
+dest_files=[ "res://.import/defiance_boss.ogg-1bfc1bce6796f3eefae8e0295da7d66a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
