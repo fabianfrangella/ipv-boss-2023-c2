@@ -148,7 +148,6 @@ scale = Vector2( 0.833333, 0.833333 )
 current = true
 
 [node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
-scale = Vector2( 1, 1 )
 stream = ExtResource( 24 )
 pitch_scale = 0.45
 

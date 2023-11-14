@@ -55,21 +55,23 @@ scale = 0.05
 [node name="FireParticles" type="Node2D"]
 
 [node name="Campfire" type="Sprite" parent="."]
-position = Vector2( 0, 5 )
 texture = ExtResource( 3 )
 
 [node name="FireParticles" type="Particles2D" parent="."]
 rotation = -3.14159
 z_index = 1
+amount = 12
+lifetime = 1.5
 speed_scale = 0.4
 visibility_rect = Rect2( -500, -500, 600, 600 )
 process_material = SubResource( 18 )
 texture = ExtResource( 2 )
 
 [node name="SmokeParticles" type="Particles2D" parent="."]
-position = Vector2( 0, -46 )
+position = Vector2( 0, -87 )
 rotation = 3.14159
-amount = 3
+amount = 5
+lifetime = 5.0
 speed_scale = 0.2
 process_material = SubResource( 23 )
 texture = ExtResource( 1 )
