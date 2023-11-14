@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/enemies/EnemyProjectile.gd" type="Script" id=1]
-[ext_resource path="res://Particles/Textures/scorch_02.png" type="Texture" id=2]
+[ext_resource path="res://Particles/Textures/muzzle_01.png" type="Texture" id=2]
+[ext_resource path="res://Particles/Textures/smoke_04.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 13.5093
@@ -22,7 +23,6 @@ linear_accel = 1.0
 scale = 1.2
 scale_random = 1.0
 scale_curve = SubResource( 4 )
-color = Color( 1, 0.164706, 0, 1 )
 
 [node name="EnemyProjectile" type="Node2D"]
 scale = Vector2( 2, 2 )
@@ -43,12 +43,17 @@ shape = SubResource( 1 )
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Body"]
-rotation = -1.5708
-scale = Vector2( 0.1, 0.1 )
-amount = 3
-lifetime = 2.0
+rotation = 1.5708
+scale = Vector2( 0.05, 0.1 )
+lifetime = 4.0
+speed_scale = 3.0
 randomness = 1.0
 process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Body"]
+rotation = -1.5708
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
