@@ -4699,6 +4699,7 @@ shape = SubResource( 748 )
 [node name="AudioContainer" type="Node2D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
+volume_db = -9.0
 
 [node name="Sword" type="AudioStreamPlayer2D" parent="AudioContainer"]
 

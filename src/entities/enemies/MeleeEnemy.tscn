@@ -2151,6 +2151,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
+frame = 7
 playing = true
 script = ExtResource( 11 )
 
@@ -2183,6 +2184,7 @@ shape = SubResource( 349 )
 [node name="AudioContainer" type="Node2D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="AudioContainer"]
+volume_db = -9.0
 
 [node name="Sword" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 14 )
