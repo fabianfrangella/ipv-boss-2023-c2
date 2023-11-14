@@ -139,9 +139,6 @@ position = Vector2( 358, 504 )
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
 position = Vector2( -2045, 1560 )
 max_hp = 10
-hasArmor = true
-hasGSword = true
-hasStaff = true
 
 [node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
 scale = Vector2( 0.833333, 0.833333 )
