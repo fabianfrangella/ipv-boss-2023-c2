@@ -16,6 +16,7 @@ func enter() ->void:
 			character._play_animation("walk_alert")
 		else:
 			character._play_animation("idle")
+		character.play_sound("walk")
 	
 		
 func exit() -> void:

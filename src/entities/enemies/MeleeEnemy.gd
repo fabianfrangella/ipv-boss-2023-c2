@@ -7,6 +7,8 @@ onready var fire_position: Node2D = $FirePosition
 onready var raycast: RayCast2D = $RayCast2D
 onready var body_anim: AnimatedSprite = $Body
 
+onready var audio_container = $AudioContainer
+
 export (float) var speed: float = 10.0
 export (float) var max_speed: float = 100.0
 export (PackedScene) var projectile_scene: PackedScene
@@ -19,6 +21,14 @@ var velocity: Vector2 = Vector2.ZERO
 var vdirection: Vector2 = Vector2.ZERO
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
+
+const footsteps = [
+preload("res://Sounds/footsteps/footstep01.ogg"), preload("res://Sounds/footsteps/footstep02.ogg"), 
+preload("res://Sounds/footsteps/footstep03.ogg"), preload("res://Sounds/footsteps/footstep04.ogg"), 
+preload("res://Sounds/footsteps/footstep05.ogg"), preload("res://Sounds/footsteps/footstep06.ogg"), 
+preload("res://Sounds/footsteps/footstep07.ogg"), preload("res://Sounds/footsteps/footstep08.ogg"), 
+preload("res://Sounds/footsteps/footstep09.ogg")
+]
 
 func initialize(container, turret_pos, projectile_container) -> void:
 	container.add_child(self)
@@ -36,6 +46,7 @@ func _fire() -> void:
 			fire_position.global_position,
 			fire_position.global_position.direction_to(target.global_position)
 		)
+		play_sound("sword")
 
 
 func _look_at_target() -> void:
@@ -105,7 +116,6 @@ func set_direction_to(target: Node2D):
 ## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount: int=1) -> void:
 	emit_signal("hit",amount)
-	pass
 
 func _remove() -> void:
 	get_parent().remove_child(self)
@@ -127,3 +137,19 @@ func set_outline():
 
 func remove_outline():
 	body_anim.remove_outline()
+
+func play_sound(sound):
+	match sound:
+		"walk":
+			var sfx = footsteps[randi() % footsteps.size()]
+			sfx.set_loop(false)
+			var player = audio_container.get_node("Footsteps")
+			if (not player.playing):
+				player.stream = sfx
+				player.play()
+		"hit":
+			audio_container.get_node("Hit").play()
+		"sword":
+			audio_container.get_node("Sword").play()
+		"death":
+			audio_container.get_node("Death").play()

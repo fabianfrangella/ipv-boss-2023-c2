@@ -144,6 +144,8 @@ func play_sound(sound):
 			audio_container.get_node("Hit").play()
 		"spell":
 			audio_container.get_node("Spell").play()
+		"death":
+			audio_container.get_node("Death").play()
 			
 
 func get_current_animation() -> String:

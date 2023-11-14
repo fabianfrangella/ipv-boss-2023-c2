@@ -1,4 +1,4 @@
-[gd_scene load_steps=362 format=2]
+[gd_scene load_steps=363 format=2]
 
 [ext_resource path="res://entities/enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/StateMachine.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://entities/enemies/OutlineShaderManager.gd" type="Script" id=11]
 [ext_resource path="res://Sounds/Spell/Magic Spell_Simple Swoosh_6.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/Hits/Bloody punch.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Hits/shade9.wav" type="AudioStream" id=14]
 
 [sub_resource type="ShaderMaterial" id=347]
 
@@ -2145,7 +2146,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_up_right"
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 11 )
 
@@ -2179,6 +2180,9 @@ stream = ExtResource( 12 )
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 13 )
+
+[node name="Death" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 14 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_IdleTimer_timeout"]

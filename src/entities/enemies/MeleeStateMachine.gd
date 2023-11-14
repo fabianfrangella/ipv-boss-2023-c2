@@ -12,6 +12,7 @@ func _on_Body_animation_finished():
 	_on_animation_finished(character.get_current_animation())
 
 func notify_hit(amount):
+	character.play_sound("hit")
 	if current_state != $Die:
 		_change_state("die")
 

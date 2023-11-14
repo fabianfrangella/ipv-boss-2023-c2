@@ -11,6 +11,7 @@ func enter() -> void:
 
 	else:
 		character._play_animation("die")
+	character.play_sound("death")
 
 
 
