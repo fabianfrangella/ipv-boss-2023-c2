@@ -16,7 +16,6 @@ func enter() ->void:
 			character._play_animation("walk_alert")
 		else:
 			character._play_animation("idle")
-		character.play_sound("walk")
 	
 		
 func exit() -> void:
@@ -37,6 +36,7 @@ func update(delta:float) ->void:
 
 	character._apply_movement()
 	character._play_animation("walk")
+	character.play_sound("walk")
 	
 func _handle_body_entered(body) -> void:
 	._handle_body_entered(body)
