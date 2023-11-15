@@ -38,7 +38,7 @@ scale_curve = SubResource( 4 )
 color = Color( 0.341176, 0.792157, 0.913725, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.625, 8.4375 )
+extents = Vector2( 12.625, 9.4375 )
 
 [node name="PlayerRangeAttack" instance=ExtResource( 1 )]
 VELOCITY = 500.0

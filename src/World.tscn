@@ -56,7 +56,7 @@ extents = Vector2( 180, 110 )
 extents = Vector2( 56.75, 42.75 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 120.252, 75.8679 )
+extents = Vector2( 120.252, 284.37 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 312.375, 146.875 )
@@ -109,7 +109,7 @@ position = Vector2( -464, 786 )
 z_index = 1
 
 [node name="FireParticles6" parent="TileMap/Particles" instance=ExtResource( 25 )]
-position = Vector2( -4088, 2944 )
+position = Vector2( -651, 258 )
 z_index = 1
 
 [node name="FireParticles10" parent="TileMap/Particles" instance=ExtResource( 25 )]
@@ -158,6 +158,7 @@ z_index = 10
 format = 1
 
 [node name="ColorRect" type="ColorRect" parent="YSort/FogTile"]
+visible = false
 material = SubResource( 6 )
 margin_left = -3557.0
 margin_top = -3548.0
@@ -231,7 +232,6 @@ position = Vector2( -1432, 1223 )
 position = Vector2( -691, 1527 )
 
 [node name="TutorialUI" type="CanvasLayer" parent="YSort/Entities/TutorialChamber"]
-visible = false
 
 [node name="PopupContainer" type="Control" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 anchor_right = 1.0
@@ -239,6 +239,7 @@ anchor_bottom = 1.0
 script = ExtResource( 20 )
 
 [node name="Panel" type="Panel" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
+visible = false
 anchor_left = 0.301
 anchor_top = 0.196
 anchor_right = 0.699
@@ -266,6 +267,7 @@ autowrap = true
 clip_text = true
 
 [node name="PotionText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "
@@ -298,6 +300,7 @@ clip_text = true
 
 [node name="ContinueButton" type="Button" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
 pause_mode = 2
+visible = false
 anchor_left = 0.192
 anchor_top = 1.148
 anchor_right = 0.797
@@ -339,7 +342,7 @@ shape = SubResource( 4 )
 [node name="StaffArea" type="Area2D" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/TutorialChamber/TutorialUI/StaffArea"]
-position = Vector2( 1908.46, 1368.17 )
+position = Vector2( 1916.14, 1360.05 )
 rotation = 0.757473
 scale = Vector2( 0.602409, -0.119378 )
 shape = SubResource( 5 )
