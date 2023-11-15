@@ -1,8 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/ActionMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/AudioBusOptions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/AudioHandler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/footsteps/footstep01.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/Music/defiance_boss.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Ambience/ambience.wav" type="AudioStream" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -79,10 +84,12 @@ border_width_bottom = 1
 border_color = Color( 0.329412, 0.054902, 0.054902, 1 )
 
 [node name="OptionsMenu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -736.0
 margin_bottom = -438.0
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -135,6 +142,10 @@ custom_styles/tab_disabled = SubResource( 7 )
 custom_styles/tab_bg = SubResource( 8 )
 custom_styles/panel = SubResource( 9 )
 
+[node name="PanelSounds" parent="Panel/Panel" instance=ExtResource( 5 )]
+_audio_bus = "Master"
+_audio_references = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
+
 [node name="Controls" type="ScrollContainer" parent="Panel/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,69 +159,91 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Controls"]
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 257.0
+size_flags_horizontal = 3
+alignment = 1
 
 [node name="ActionMap" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 25.0
 action = "ui_left"
 action_name = "Move Left"
 
 [node name="ActionMap2" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 29.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 54.0
 action = "ui_right"
 action_name = "Move Right"
 
 [node name="ActionMap3" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 58.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 83.0
 action = "ui_up"
 action_name = "Move Up"
 
 [node name="ActionMap4" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 87.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 112.0
 action = "ui_down"
 action_name = "MoveDown"
 
 [node name="ActionMap5" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 116.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 141.0
 action = "attack"
 action_name = "Attack"
 
 [node name="ActionMap6" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 145.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 170.0
 action = "dash"
 action_name = "Dash"
 
 [node name="ActionMap7" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 174.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 199.0
 action = "heal"
 action_name = "Heal"
 
 [node name="ActionMap8" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 203.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 228.0
 action = "change_attack_mode"
 action_name = "Change Attack Mode"
 
 [node name="ActionMap9" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 232.0
-margin_right = 185.0
+margin_right = 250.0
 margin_bottom = 257.0
 action = "reset"
 action_name = "Reset"
+
+[node name="Audio" type="ScrollContainer" parent="Panel/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 13.0
+focus_mode = 2
+mouse_filter = 1
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Audio"]
+margin_right = 264.0
+margin_bottom = 4.0
+mouse_filter = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="AudioBusOptions" parent="Panel/Panel/Audio/VBoxContainer" instance=ExtResource( 4 )]
+pause_mode = 2
 
 [connection signal="pressed" from="Panel/ReturnButton" to="." method="_on_ReturnButton_pressed"]

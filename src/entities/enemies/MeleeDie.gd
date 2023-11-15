@@ -9,6 +9,4 @@ func enter() -> void:
 	character.play_sound("death")
 
 func _on_animation_finished(anim_name:String) -> void:
-	if anim_name in ["die_alert_"+ character.direccion ,"die_"+ character.direccion]:
-		
-		character._remove()
+	character._remove()

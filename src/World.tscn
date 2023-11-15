@@ -56,7 +56,7 @@ extents = Vector2( 180, 110 )
 extents = Vector2( 56.75, 42.75 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 120.252, 75.8679 )
+extents = Vector2( 53.2593, 210.013 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 312.375, 146.875 )
@@ -337,8 +337,9 @@ shape = SubResource( 4 )
 [node name="StaffArea" type="Area2D" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/TutorialChamber/TutorialUI/StaffArea"]
-position = Vector2( 1972, 1351 )
+position = Vector2( 1908.46, 1368.17 )
 rotation = 0.757473
+scale = Vector2( 0.602409, -0.119378 )
 shape = SubResource( 5 )
 
 [node name="SwordChamber" type="Node" parent="YSort/Entities"]
@@ -466,7 +467,7 @@ shape = SubResource( 2 )
 position = Vector2( -60, -35 )
 
 [node name="PotionObject" parent="YSort/Objects" instance=ExtResource( 13 )]
-position = Vector2( 1089, -486 )
+position = Vector2( 1083, -452 )
 image = ExtResource( 17 )
 objectName = "potion"
 scaleSprite = 0.07
@@ -490,7 +491,7 @@ objectName = "staff"
 scaleSprite = 1.0
 
 [node name="GSwordObject" parent="YSort/Objects" instance=ExtResource( 13 )]
-position = Vector2( -711, -1986 )
+position = Vector2( -697, -1997 )
 image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0

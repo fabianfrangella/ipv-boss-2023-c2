@@ -117,7 +117,7 @@ func shake_camera(duration, frequency, amplitude):
 
 func heal_hp()-> void:
 	if potions>0 && hp< max_hp:
-		sum_hp(6)
+		sum_hp(15)
 		potions = potions -1
 		emit_signal("potions_changed", potions)
 
@@ -198,8 +198,9 @@ func set_potions():
 func set_armor():
 	hasArmor = true
 	Checkpoint.armor = true
-	hp = 10
-	max_hp = 10
+	hp = hp
+	max_hp = 30
+	emit_signal("hp_changed", hp, max_hp)
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		body_anim.set_melee_animator()
 	else:
