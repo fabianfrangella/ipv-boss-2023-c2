@@ -56,7 +56,7 @@ extents = Vector2( 180, 110 )
 extents = Vector2( 56.75, 42.75 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 53.2593, 210.013 )
+extents = Vector2( 120.252, 75.8679 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 312.375, 146.875 )
@@ -72,10 +72,12 @@ script = ExtResource( 5 )
 [node name="GUI" parent="IULayer" instance=ExtResource( 15 )]
 
 [node name="PauseMenu" parent="IULayer" instance=ExtResource( 21 )]
+visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="VictoryMenu" parent="IULayer" instance=ExtResource( 22 )]
+visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 
@@ -199,7 +201,6 @@ dash_speed = 20.0
 
 [node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
 scale = Vector2( 0.833333, 0.833333 )
-current = true
 script = ExtResource( 29 )
 
 [node name="Music" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
@@ -230,6 +231,7 @@ position = Vector2( -1432, 1223 )
 position = Vector2( -691, 1527 )
 
 [node name="TutorialUI" type="CanvasLayer" parent="YSort/Entities/TutorialChamber"]
+visible = false
 
 [node name="PopupContainer" type="Control" parent="YSort/Entities/TutorialChamber/TutorialUI"]
 anchor_right = 1.0
