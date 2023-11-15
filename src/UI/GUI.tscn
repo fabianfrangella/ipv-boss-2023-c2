@@ -215,6 +215,7 @@ anchor_bottom = 0.979
 theme = SubResource( 8 )
 
 [node name="ItemsContainer" type="Control" parent="."]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 28.0
@@ -237,7 +238,6 @@ margin_left = 5.0
 margin_top = 80.0
 margin_right = 15.0
 margin_bottom = 96.0
-text = "3"
 valign = 2
 
 [node name="ScoreContainer" type="Control" parent="."]

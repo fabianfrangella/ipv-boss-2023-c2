@@ -26,6 +26,8 @@ func _ready() -> void:
 	deaths = Checkpoint.deaths
 	boss_hp.value = 100
 	boss_hp.hide()
+	_on_hp_changed(10,10) # workaround, por alguna razon arranca vacío, despues lo chusmeo bien
+	_on_mana_changed(5, 5)
 
 ## Cuando se asigna un Player nuevo, se conecta a las señales que
 ## interesan, y se refresca la data.
@@ -68,16 +70,10 @@ func _on_deaths_changed() -> void:
 	Checkpoint.deaths = deaths
 	deaths = deaths + 1
 	deaths_amounts.text = str(deaths)
-	
-func on_boss_hp_changed(hp: int, hp_max: int):
-	boss_hp.max_value = hp_max
-	boss_hp.value = hp
 
 func _on_Boss_boss_found():
 	boss_hp.show()
 
-
 func _on_Boss_hp_changed(hp: int, hp_max: int):
 	boss_hp.max_value = hp_max
 	boss_hp.value = hp
-

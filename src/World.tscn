@@ -67,20 +67,6 @@ extents = Vector2( 375.5, 274 )
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="IULayer" type="CanvasLayer" parent="."]
-
-[node name="GUI" parent="IULayer" instance=ExtResource( 15 )]
-
-[node name="PauseMenu" parent="IULayer" instance=ExtResource( 21 )]
-visible = false
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="VictoryMenu" parent="IULayer" instance=ExtResource( 22 )]
-visible = false
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, -1 )
 mode = 1
@@ -158,7 +144,6 @@ z_index = 10
 format = 1
 
 [node name="ColorRect" type="ColorRect" parent="YSort/FogTile"]
-visible = false
 material = SubResource( 6 )
 margin_left = -3557.0
 margin_top = -3548.0
@@ -234,9 +219,22 @@ position = Vector2( -691, 1527 )
 [node name="TutorialUI" type="CanvasLayer" parent="YSort/Entities/TutorialChamber"]
 
 [node name="PopupContainer" type="Control" parent="YSort/Entities/TutorialChamber/TutorialUI"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 20 )
+
+[node name="GUI" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" instance=ExtResource( 15 )]
+
+[node name="PauseMenu" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" instance=ExtResource( 21 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="VictoryMenu" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" instance=ExtResource( 22 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="Panel" type="Panel" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
 visible = false
@@ -501,9 +499,13 @@ image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0
 
-[connection signal="restart_selected" from="IULayer/PauseMenu" to="." method="_on_restart_requested"]
-[connection signal="return_selected" from="IULayer/PauseMenu" to="." method="_on_return_requested"]
-[connection signal="return_selected" from="IULayer/VictoryMenu" to="." method="_on_return_requested"]
+[connection signal="deaths_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_deaths_changed"]
+[connection signal="hp_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_hp_changed"]
+[connection signal="mana_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_mana_changed"]
+[connection signal="potions_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_potions_changed"]
+[connection signal="restart_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_restart_requested"]
+[connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_return_requested"]
+[connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/VictoryMenu" to="." method="_on_return_requested"]
 [connection signal="pressed" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel/ContinueButton" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_ContinueButton_pressed"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/RangeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_RangeEnemyArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/MeleeEnemyArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_MeleeEnemyArea_area_entered"]
@@ -511,7 +513,7 @@ scaleSprite = 2.0
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/BossChamberArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_BossChamberArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/StaffArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_StaffArea_area_entered"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
-[connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_boss_found"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/Player/Listener2D" method="_on_Boss_boss_found"]
-[connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="IULayer/GUI" method="_on_Boss_hp_changed"]
+[connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_boss_found"]
+[connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_hp_changed"]
 [connection signal="body_entered" from="YSort/Entities/Checkpoint/Area2D" to="YSort/Entities/Checkpoint" method="_on_Area2D_body_entered"]
