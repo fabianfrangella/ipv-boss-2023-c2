@@ -2151,7 +2151,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
-frame = 3
+frame = 7
 playing = true
 script = ExtResource( 11 )
 

@@ -1779,42 +1779,42 @@ animations = [ {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": false,
 "name": "attack_down",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ) ],
 "loop": false,
 "name": "attack_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
 "loop": false,
 "name": "attack_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ) ],
 "loop": false,
 "name": "attack_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": false,
 "name": "attack_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ) ],
 "loop": false,
 "name": "attack_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
 "loop": false,
 "name": "attack_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
 "loop": false,
 "name": "attack_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 17 ), SubResource( 18 ) ],
 "loop": false,
@@ -1824,7 +1824,7 @@ animations = [ {
 "frames": [ SubResource( 102 ), SubResource( 103 ) ],
 "loop": false,
 "name": "die_alert_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 104 ), SubResource( 105 ) ],
 "loop": false,
@@ -1859,42 +1859,42 @@ animations = [ {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
 "name": "die_down",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ) ],
 "loop": false,
 "name": "die_down_left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ) ],
 "loop": false,
 "name": "die_down_right",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ) ],
 "loop": false,
 "name": "die_left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ) ],
 "loop": false,
 "name": "die_right",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ) ],
 "loop": false,
 "name": "die_up",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ) ],
 "loop": false,
 "name": "die_up_left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ) ],
 "loop": false,
 "name": "die_up_right",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
@@ -2146,7 +2146,6 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_up_right"
-frame = 4
 playing = true
 script = ExtResource( 11 )
 
