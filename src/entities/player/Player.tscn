@@ -4597,7 +4597,7 @@ animations = [ {
 extents = Vector2( 22.9167, 7.66665 )
 
 [sub_resource type="RectangleShape2D" id=882]
-extents = Vector2( 21.25, 16.6667 )
+extents = Vector2( 33.3333, 16.6667 )
 
 [sub_resource type="CapsuleShape2D" id=748]
 radius = 14.1667

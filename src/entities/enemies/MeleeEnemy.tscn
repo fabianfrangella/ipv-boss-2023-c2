@@ -1747,357 +1747,357 @@ animations = [ {
 "frames": [ SubResource( 355 ), SubResource( 356 ), SubResource( 357 ), SubResource( 358 ) ],
 "loop": true,
 "name": "alert_down_left",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 359 ), SubResource( 360 ), SubResource( 361 ), SubResource( 362 ) ],
 "loop": true,
 "name": "alert_down_right",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 363 ), SubResource( 364 ), SubResource( 365 ), SubResource( 366 ) ],
 "loop": true,
 "name": "alert_left",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 367 ), SubResource( 368 ), SubResource( 369 ), SubResource( 370 ) ],
 "loop": true,
 "name": "alert_right",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 371 ), SubResource( 372 ), SubResource( 373 ), SubResource( 374 ) ],
 "loop": true,
 "name": "alert_up",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 375 ), SubResource( 376 ), SubResource( 377 ), SubResource( 378 ) ],
 "loop": true,
 "name": "alert_up_left",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 379 ), SubResource( 380 ), SubResource( 381 ), SubResource( 382 ) ],
 "loop": true,
 "name": "alert_up_right",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 383 ), SubResource( 384 ), SubResource( 385 ), SubResource( 386 ) ],
 "loop": false,
 "name": "attack_down",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 387 ), SubResource( 388 ), SubResource( 389 ), SubResource( 390 ) ],
 "loop": false,
 "name": "attack_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 391 ), SubResource( 392 ), SubResource( 393 ), SubResource( 394 ) ],
 "loop": false,
 "name": "attack_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 395 ), SubResource( 396 ), SubResource( 397 ), SubResource( 398 ) ],
 "loop": false,
 "name": "attack_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 399 ), SubResource( 400 ), SubResource( 401 ), SubResource( 402 ) ],
 "loop": false,
 "name": "attack_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 403 ), SubResource( 404 ), SubResource( 405 ), SubResource( 406 ) ],
 "loop": false,
 "name": "attack_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 407 ), SubResource( 408 ), SubResource( 409 ), SubResource( 410 ) ],
 "loop": false,
 "name": "attack_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 411 ), SubResource( 412 ), SubResource( 413 ), SubResource( 414 ) ],
 "loop": false,
 "name": "attack_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 415 ), SubResource( 416 ) ],
 "loop": false,
 "name": "die_alert_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 417 ), SubResource( 418 ) ],
 "loop": false,
 "name": "die_alert_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 419 ), SubResource( 420 ) ],
 "loop": false,
 "name": "die_alert_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 421 ), SubResource( 422 ) ],
 "loop": false,
 "name": "die_alert_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 423 ), SubResource( 424 ) ],
 "loop": false,
 "name": "die_alert_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 425 ), SubResource( 426 ) ],
 "loop": false,
 "name": "die_alert_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 427 ), SubResource( 428 ) ],
 "loop": false,
 "name": "die_alert_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 429 ), SubResource( 430 ) ],
 "loop": false,
 "name": "die_alert_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 431 ), SubResource( 432 ), SubResource( 433 ), SubResource( 434 ), SubResource( 435 ) ],
 "loop": false,
 "name": "die_down",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 436 ), SubResource( 437 ), SubResource( 438 ), SubResource( 439 ), SubResource( 440 ) ],
 "loop": false,
 "name": "die_down_left",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 441 ), SubResource( 442 ), SubResource( 443 ), SubResource( 444 ), SubResource( 445 ) ],
 "loop": false,
 "name": "die_down_right",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 446 ), SubResource( 447 ), SubResource( 448 ), SubResource( 449 ), SubResource( 450 ) ],
 "loop": false,
 "name": "die_left",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 451 ), SubResource( 452 ), SubResource( 453 ), SubResource( 454 ), SubResource( 455 ) ],
 "loop": false,
 "name": "die_right",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 456 ), SubResource( 457 ), SubResource( 458 ), SubResource( 459 ), SubResource( 460 ) ],
 "loop": false,
 "name": "die_up",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 461 ), SubResource( 462 ), SubResource( 463 ), SubResource( 464 ), SubResource( 465 ) ],
 "loop": false,
 "name": "die_up_left",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 466 ), SubResource( 467 ), SubResource( 468 ), SubResource( 469 ), SubResource( 470 ) ],
 "loop": false,
 "name": "die_up_right",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 471 ), SubResource( 472 ), SubResource( 473 ), SubResource( 474 ) ],
 "loop": true,
 "name": "go_normal_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 475 ), SubResource( 476 ), SubResource( 477 ), SubResource( 478 ) ],
 "loop": true,
 "name": "go_normal_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 479 ), SubResource( 480 ), SubResource( 481 ), SubResource( 482 ) ],
 "loop": true,
 "name": "go_normal_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 483 ), SubResource( 484 ), SubResource( 485 ), SubResource( 486 ) ],
 "loop": true,
 "name": "go_normal_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 487 ), SubResource( 488 ), SubResource( 489 ), SubResource( 490 ) ],
 "loop": true,
 "name": "go_normal_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 491 ), SubResource( 492 ), SubResource( 493 ), SubResource( 494 ) ],
 "loop": true,
 "name": "go_normal_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 495 ), SubResource( 496 ), SubResource( 497 ), SubResource( 498 ) ],
 "loop": true,
 "name": "go_normal_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 499 ), SubResource( 500 ), SubResource( 501 ), SubResource( 502 ) ],
 "loop": true,
 "name": "go_normal_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 503 ), SubResource( 504 ), SubResource( 505 ), SubResource( 506 ) ],
 "loop": true,
 "name": "idle_alert_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 507 ), SubResource( 508 ), SubResource( 509 ), SubResource( 510 ) ],
 "loop": true,
 "name": "idle_alert_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 511 ), SubResource( 512 ), SubResource( 513 ), SubResource( 514 ) ],
 "loop": true,
 "name": "idle_alert_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 515 ), SubResource( 516 ), SubResource( 517 ), SubResource( 518 ) ],
 "loop": true,
 "name": "idle_alert_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 519 ), SubResource( 520 ), SubResource( 521 ), SubResource( 522 ) ],
 "loop": true,
 "name": "idle_alert_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 523 ), SubResource( 524 ), SubResource( 525 ), SubResource( 526 ) ],
 "loop": true,
 "name": "idle_alert_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 527 ), SubResource( 528 ), SubResource( 529 ), SubResource( 530 ) ],
 "loop": true,
 "name": "idle_alert_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 531 ), SubResource( 532 ), SubResource( 533 ), SubResource( 534 ) ],
 "loop": true,
 "name": "idle_alert_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 535 ), SubResource( 536 ), SubResource( 537 ), SubResource( 538 ) ],
 "loop": true,
 "name": "idle_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 539 ), SubResource( 540 ), SubResource( 541 ), SubResource( 542 ) ],
 "loop": true,
 "name": "idle_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 543 ), SubResource( 544 ), SubResource( 545 ), SubResource( 546 ) ],
 "loop": true,
 "name": "idle_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 547 ), SubResource( 548 ), SubResource( 549 ), SubResource( 550 ) ],
 "loop": true,
 "name": "idle_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 551 ), SubResource( 552 ), SubResource( 553 ), SubResource( 554 ) ],
 "loop": true,
 "name": "idle_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 555 ), SubResource( 556 ), SubResource( 557 ), SubResource( 558 ) ],
 "loop": true,
 "name": "idle_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 559 ), SubResource( 560 ), SubResource( 561 ), SubResource( 562 ) ],
 "loop": true,
 "name": "idle_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 563 ), SubResource( 564 ), SubResource( 565 ), SubResource( 566 ) ],
 "loop": true,
 "name": "idle_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 567 ), SubResource( 568 ), SubResource( 569 ), SubResource( 570 ), SubResource( 571 ), SubResource( 572 ), SubResource( 573 ), SubResource( 574 ) ],
 "loop": true,
 "name": "walk_alert_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 575 ), SubResource( 576 ), SubResource( 577 ), SubResource( 578 ), SubResource( 579 ), SubResource( 580 ), SubResource( 581 ), SubResource( 582 ) ],
 "loop": true,
 "name": "walk_alert_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 583 ), SubResource( 584 ), SubResource( 585 ), SubResource( 586 ), SubResource( 587 ), SubResource( 588 ), SubResource( 589 ), SubResource( 590 ) ],
 "loop": true,
 "name": "walk_alert_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 591 ), SubResource( 592 ), SubResource( 593 ), SubResource( 594 ), SubResource( 595 ), SubResource( 596 ), SubResource( 597 ), SubResource( 598 ) ],
 "loop": true,
 "name": "walk_alert_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 599 ), SubResource( 600 ), SubResource( 601 ), SubResource( 602 ), SubResource( 603 ), SubResource( 604 ), SubResource( 605 ), SubResource( 606 ) ],
 "loop": true,
 "name": "walk_alert_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 607 ), SubResource( 608 ), SubResource( 609 ), SubResource( 610 ), SubResource( 611 ), SubResource( 612 ), SubResource( 613 ), SubResource( 614 ) ],
 "loop": true,
 "name": "walk_alert_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 615 ), SubResource( 616 ), SubResource( 617 ), SubResource( 618 ), SubResource( 619 ), SubResource( 620 ), SubResource( 621 ), SubResource( 622 ) ],
 "loop": true,
 "name": "walk_alert_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 623 ), SubResource( 624 ), SubResource( 625 ), SubResource( 626 ), SubResource( 627 ), SubResource( 628 ), SubResource( 629 ), SubResource( 630 ) ],
 "loop": true,
 "name": "walk_alert_up_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 631 ), SubResource( 632 ), SubResource( 633 ), SubResource( 634 ), SubResource( 635 ), SubResource( 636 ), SubResource( 637 ), SubResource( 638 ) ],
 "loop": true,
 "name": "walk_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 639 ), SubResource( 640 ), SubResource( 641 ), SubResource( 642 ), SubResource( 643 ), SubResource( 644 ), SubResource( 645 ), SubResource( 646 ) ],
 "loop": true,
 "name": "walk_down_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 647 ), SubResource( 648 ), SubResource( 649 ), SubResource( 650 ), SubResource( 651 ), SubResource( 652 ), SubResource( 653 ), SubResource( 654 ) ],
 "loop": true,
 "name": "walk_down_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 655 ), SubResource( 656 ), SubResource( 657 ), SubResource( 658 ), SubResource( 659 ), SubResource( 660 ), SubResource( 661 ), SubResource( 662 ) ],
 "loop": true,
 "name": "walk_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 663 ), SubResource( 664 ), SubResource( 665 ), SubResource( 666 ), SubResource( 667 ), SubResource( 668 ), SubResource( 669 ), SubResource( 670 ) ],
 "loop": true,
 "name": "walk_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 671 ), SubResource( 672 ), SubResource( 673 ), SubResource( 674 ), SubResource( 675 ), SubResource( 676 ), SubResource( 677 ), SubResource( 678 ) ],
 "loop": true,
 "name": "walk_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 679 ), SubResource( 680 ), SubResource( 681 ), SubResource( 682 ), SubResource( 683 ), SubResource( 684 ), SubResource( 685 ), SubResource( 686 ) ],
 "loop": true,
 "name": "walk_up_left",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 687 ), SubResource( 688 ), SubResource( 689 ), SubResource( 690 ), SubResource( 691 ), SubResource( 692 ), SubResource( 693 ), SubResource( 694 ) ],
 "loop": true,
 "name": "walk_up_right",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="CircleShape2D" id=350]
@@ -2151,7 +2151,7 @@ position = Vector2( 10, -43.3333 )
 scale = Vector2( 4, 5 )
 frames = SubResource( 3 )
 animation = "walk_left"
-frame = 6
+frame = 3
 playing = true
 script = ExtResource( 11 )
 
