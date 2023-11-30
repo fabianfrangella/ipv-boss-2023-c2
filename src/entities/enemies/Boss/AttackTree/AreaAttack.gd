@@ -56,7 +56,7 @@ func _play_explosions():
 		explosion.position = rand_position
 		explosion.play("explode")
 	explosion_player.play()
-	get_parent().boss.target.shake_camera(1, 30, 30)
+	get_parent().boss.target.shake_camera(1, 50, 50)
 
 func _on_Area_animation_finished():
 	var area = area_animations.get_node("Area")
