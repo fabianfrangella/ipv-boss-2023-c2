@@ -16,7 +16,7 @@ border_width_bottom = 1
 border_color = Color( 0.329412, 0.054902, 0.054902, 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 12
+size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -34,6 +34,7 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="DynamicFont" id=5]
+size = 30
 font_data = ExtResource( 2 )
 
 [node name="ActionMap" type="PanelContainer"]
@@ -47,12 +48,12 @@ action_name = "hola"
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 120.0
-margin_bottom = 23.0
+margin_bottom = 45.0
 
 [node name="ActionKeyButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 15.0
-margin_bottom = 21.0
+margin_right = 25.0
+margin_bottom = 43.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
@@ -60,9 +61,10 @@ text = "a"
 
 [node name="ActionNameLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 19.0
-margin_right = 52.0
-margin_bottom = 21.0
+margin_left = 29.0
+margin_top = 2.0
+margin_right = 90.0
+margin_bottom = 41.0
 custom_fonts/font = SubResource( 5 )
 text = "hola"
 

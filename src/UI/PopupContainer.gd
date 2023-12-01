@@ -8,6 +8,7 @@ onready var melee_enemy_text = $Panel/MeleeEnemyText
 onready var potion_text = $Panel/PotionText
 onready var boss_text = $Panel/BossText
 onready var staff_text = $Panel/StaffText
+onready var dash_text = $Panel/DashText
 
 onready var panel = $Panel
 
@@ -16,6 +17,7 @@ var range_enemy_triggered = false
 var melee_enemy_triggered = false
 var potion_triggered = false
 var staff_triggered = false
+var dash_triggered = false
 
 var current_trigger = true
 onready var current_hint = $Panel/RangeEnemyText
@@ -35,6 +37,7 @@ func _on_hint_trigger(area, hint):
 			"melee_enemy": current_trigger = melee_enemy_triggered
 			"range_enemy": current_trigger = range_enemy_triggered
 			"potion": current_trigger = potion_triggered
+			"dash": current_trigger = dash_triggered
 			_: current_trigger = false
 		if (not current_trigger):
 			panel.show()
@@ -55,6 +58,8 @@ func _on_hint_trigger(area, hint):
 					potion_triggered = true
 				"boss":
 					current_hint = boss_text
+				"dash":
+					current_hint = dash_text
 				_: pass
 				
 			current_hint.show()
@@ -80,7 +85,7 @@ func _on_StaffArea_area_entered(area):
 
 func _on_BossChamberArea_area_entered(area):
 	if (area.name == "PlayerHitbox"):
-		var text = "\n"
+		var text = ""
 		var elementsLeft = 0
 		if (not area.get_parent().hasGSword):
 			elementsLeft+=1
@@ -102,3 +107,7 @@ func _on_BossChamberArea_area_entered(area):
 			get_tree().paused = true
 			continue_button.show()
 
+
+
+func _on_DashArea_area_entered(area):
+	_on_hint_trigger(area, "dash")

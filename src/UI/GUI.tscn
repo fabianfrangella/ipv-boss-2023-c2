@@ -238,6 +238,7 @@ margin_left = 5.0
 margin_top = 80.0
 margin_right = 15.0
 margin_bottom = 96.0
+text = "0"
 valign = 2
 
 [node name="ScoreContainer" type="Control" parent="."]

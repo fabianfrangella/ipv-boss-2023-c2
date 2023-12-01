@@ -1,5 +1,6 @@
 extends GameLevel
 onready var player = $YSort/Entities/Player
+onready var gui = $YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI
 
 # Regresa al menu principal
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Sounds/Music/defiance_dungeon_bass.ogg" type="AudioStream" id=27]
 [ext_resource path="res://Sounds/Music/defiance_boss.ogg" type="AudioStream" id=28]
 [ext_resource path="res://MusicTrigger.gd" type="Script" id=29]
+[ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=30]
 
 [sub_resource type="OpenSimplexNoise" id=7]
 
@@ -48,6 +49,30 @@ shader_param/shift = 0.0
 shader_param/velocity = Vector2( 0.001, 0.001 )
 shader_param/fog_color = Color( 0, 0, 0, 1 )
 shader_param/noise = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 25
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 25
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 25
+font_data = ExtResource( 30 )
 
 [sub_resource type="InputEventKey" id=9]
 scancode = 16777221
@@ -175,37 +200,6 @@ tile_data = PoolIntArray( -1245197, 20, 0, -720905, 5, 0, -720904, 5, 0, -655369
 
 [node name="Entities" type="YSort" parent="YSort"]
 
-[node name="BasicEnemy8" parent="YSort/Entities" instance=ExtResource( 3 )]
-position = Vector2( 358, 504 )
-
-[node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2079, 1599 )
-max_hp = 10
-dash_speed = 20.0
-
-[node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
-scale = Vector2( 0.833333, 0.833333 )
-script = ExtResource( 29 )
-
-[node name="Music" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
-pause_mode = 2
-stream = ExtResource( 27 )
-volume_db = 12.0
-autoplay = true
-
-[node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
-stream = ExtResource( 24 )
-pitch_scale = 0.45
-
-[node name="AmbienceSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
-stream = ExtResource( 14 )
-volume_db = 5.0
-autoplay = true
-
-[node name="BossMusic" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
-stream = ExtResource( 28 )
-volume_db = 8.0
-
 [node name="TutorialChamber" type="Node" parent="YSort/Entities"]
 
 [node name="BasicEnemy" parent="YSort/Entities/TutorialChamber" instance=ExtResource( 3 )]
@@ -235,30 +229,24 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Panel" type="Panel" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer"]
-visible = false
-anchor_left = 0.301
-anchor_top = 0.196
-anchor_right = 0.699
-anchor_bottom = 0.426
+anchor_left = 0.21
+anchor_top = 0.288
+anchor_right = 0.788
+anchor_bottom = 0.712
+margin_left = -0.0400085
+margin_top = 0.199997
+margin_right = 0.0879517
+margin_bottom = 13.8
 
 [node name="RangeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "
-Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!
+margin_right = -1.552
+custom_fonts/font = SubResource( 11 )
+text = "Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!
 Cuando estés a una distancia adecuada para hacerle daño podrás observar su silueta remarcada"
 align = 1
-autowrap = true
-clip_text = true
-
-[node name="MeleeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "
-Otros enemigos se acercaran para atacarte, tratá de recibir el menor daño posible de sus ataques y eliminalos!"
-align = 1
+valign = 1
 autowrap = true
 clip_text = true
 
@@ -266,12 +254,13 @@ clip_text = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "
-Parece que has encontrado una poción!.
+custom_fonts/font = SubResource( 13 )
+text = "Parece que has encontrado una poción!.
 En la mazmorra encontraras 
 artefactos que te serviran para enfrentar a tus enemigos, camina sobre ellos para equiparlos. 
 Algunos de estos artefactos son consumibles, presiona 1 para consumirlo"
 align = 1
+valign = 1
 autowrap = true
 clip_text = true
 
@@ -279,7 +268,9 @@ clip_text = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 14 )
 align = 1
+valign = 1
 autowrap = true
 clip_text = true
 
@@ -287,10 +278,34 @@ clip_text = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "
-Encontraste el baculo!, puedes equiparlo presionando Q en cualquier momento. 
+custom_fonts/font = SubResource( 15 )
+text = "Encontraste el baculo!, puedes equiparlo presionando Q en cualquier momento. 
 Ten en cuenta que tus ataques de magia consumen mana!."
 align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="MeleeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+custom_fonts/font = SubResource( 12 )
+text = "Otros enemigos se acercaran para atacarte, tratá de recibir el menor daño posible de sus ataques y eliminalos!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="DashText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "Puedes utilizar el dash con Espacio para esquivar los ataques enemigos!"
+align = 1
+valign = 1
 autowrap = true
 clip_text = true
 
@@ -301,6 +316,7 @@ anchor_left = 0.192
 anchor_top = 1.148
 anchor_right = 0.797
 anchor_bottom = 1.284
+custom_fonts/font = SubResource( 16 )
 action_mode = 0
 shortcut = SubResource( 10 )
 text = "Continuar"
@@ -344,6 +360,46 @@ position = Vector2( 1916.14, 1360.05 )
 rotation = 0.757473
 scale = Vector2( 0.602409, -0.119378 )
 shape = SubResource( 5 )
+
+[node name="DashArea" type="Area2D" parent="YSort/Entities/TutorialChamber/TutorialUI"]
+position = Vector2( -339, -313 )
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/TutorialChamber/TutorialUI/DashArea"]
+position = Vector2( 43.9999, 1098 )
+rotation = 0.76969
+shape = SubResource( 3 )
+
+[node name="BasicEnemy8" parent="YSort/Entities" instance=ExtResource( 3 )]
+position = Vector2( 358, 504 )
+
+[node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
+position = Vector2( -2079, 1599 )
+max_hp = 10
+dash_speed = 20.0
+
+[node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
+scale = Vector2( 0.833333, 0.833333 )
+script = ExtResource( 29 )
+
+[node name="Music" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
+pause_mode = 2
+stream = ExtResource( 27 )
+volume_db = 12.0
+autoplay = true
+
+[node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
+stream = ExtResource( 24 )
+pitch_scale = 0.45
+
+[node name="AmbienceSound" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
+stream = ExtResource( 14 )
+volume_db = 5.0
+autoplay = true
+
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="YSort/Entities/Player/Listener2D"]
+stream = ExtResource( 28 )
+volume_db = 8.0
 
 [node name="SwordChamber" type="Node" parent="YSort/Entities"]
 
@@ -499,10 +555,6 @@ image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0
 
-[connection signal="deaths_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_deaths_changed"]
-[connection signal="hp_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_hp_changed"]
-[connection signal="mana_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_mana_changed"]
-[connection signal="potions_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_potions_changed"]
 [connection signal="restart_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_return_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/VictoryMenu" to="." method="_on_return_requested"]
@@ -512,8 +564,13 @@ scaleSprite = 2.0
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/PotionArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_PotionArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/BossChamberArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_BossChamberArea_area_entered"]
 [connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/StaffArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_StaffArea_area_entered"]
+[connection signal="area_entered" from="YSort/Entities/TutorialChamber/TutorialUI/DashArea" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" method="_on_DashArea_area_entered"]
+[connection signal="deaths_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_deaths_changed"]
+[connection signal="hp_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_hp_changed"]
+[connection signal="mana_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_mana_changed"]
+[connection signal="potions_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_potions_changed"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
-[connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/Player/Listener2D" method="_on_Boss_boss_found"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_boss_found"]
+[connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/Player/Listener2D" method="_on_Boss_boss_found"]
 [connection signal="hp_changed" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_hp_changed"]
 [connection signal="body_entered" from="YSort/Entities/Checkpoint/Area2D" to="YSort/Entities/Checkpoint" method="_on_Area2D_body_entered"]

@@ -83,6 +83,7 @@ func initialize(projectile_container: Node = get_parent()):
 	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed, audio_container)
 	if Checkpoint.last_position:
 		self.global_position = Checkpoint.last_position
+	GameState.set_current_player(self)
 	if Checkpoint.potions:
 		set_potions()
 	if Checkpoint.armor:
@@ -91,7 +92,6 @@ func initialize(projectile_container: Node = get_parent()):
 		set_gsword()
 	if Checkpoint.staff:
 		set_staff()
-	GameState.set_current_player(self)
 
 func _set_weapon_direction():
 	self.weapon.get_node("WeaponTip").position = previous_direction * 10
@@ -193,13 +193,13 @@ func notify_dead():
 func set_potions():
 	Checkpoint.potions = true
 	potions = 3
-	emit_signal("potions_changed", potions)
+	emit_signal("potions_changed", 3)
 	
 func set_armor():
 	hasArmor = true
 	Checkpoint.armor = true
-	hp = hp
 	max_hp = 30
+	hp = max_hp
 	emit_signal("hp_changed", hp, max_hp)
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		body_anim.set_melee_animator()

@@ -17,11 +17,11 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="DynamicFont" id=1]
-size = 18
+size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 12
+size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=4]
@@ -35,8 +35,8 @@ border_width_bottom = 1
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -736.0
-margin_bottom = -438.0
+margin_right = 1.0
+margin_bottom = 2.0
 mouse_filter = 2
 script = ExtResource( 1 )
 
@@ -51,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.0
-margin_top = -70.0
-margin_right = 80.0
-margin_bottom = 70.0
+margin_left = -218.5
+margin_top = -161.0
+margin_right = 278.5
+margin_bottom = 196.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="Panel"]
@@ -73,45 +73,43 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 15.0
-margin_top = -42.0
+margin_top = -107.0
 margin_right = -15.0
-margin_bottom = 62.0
+margin_bottom = 121.0
 
 [node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
-margin_right = 130.0
-margin_bottom = 18.0
+margin_right = 467.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "Resumir"
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 22.0
-margin_right = 130.0
-margin_bottom = 40.0
+margin_top = 58.0
+margin_right = 467.0
+margin_bottom = 112.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "Opciones"
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 44.0
-margin_right = 130.0
-margin_bottom = 62.0
+margin_top = 116.0
+margin_right = 467.0
+margin_bottom = 170.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "Reiniciar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 66.0
-margin_right = 130.0
-margin_bottom = 84.0
+margin_top = 174.0
+margin_right = 467.0
+margin_bottom = 228.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "Regresar al Menu"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false
-margin_right = 0.0
-margin_bottom = 0.0
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
