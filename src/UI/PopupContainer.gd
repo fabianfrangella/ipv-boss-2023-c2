@@ -96,7 +96,7 @@ func _on_BossChamberArea_area_entered(area):
 		if (not area.get_parent().hasArmor):
 			elementsLeft+=1
 			text += "Sin armadura?, buena suerte \n"
-		if (text != "\n"):
+		if (text != ""):
 			text += "Si no tienes los elementos necesarios será muy dificil que mates al demonio que tienes adelante"
 			if (elementsLeft >= 2):
 				text = "Si no tienes los elementos necesarios será muy dificil que mates al demonio que tienes adelante. \n Sería mejor que explores la mazmorra y encuentres el equipamiento necesario."
