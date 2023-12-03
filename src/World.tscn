@@ -374,7 +374,7 @@ shape = SubResource( 3 )
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2079, 1599 )
+position = Vector2( -2097, 1597 )
 max_hp = 10
 dash_speed = 20.0
 

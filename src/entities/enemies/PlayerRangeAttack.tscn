@@ -38,7 +38,7 @@ scale_curve = SubResource( 4 )
 color = Color( 0.341176, 0.792157, 0.913725, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.625, 9.4375 )
+extents = Vector2( 24.5, 16.5 )
 
 [node name="PlayerRangeAttack" instance=ExtResource( 1 )]
 VELOCITY = 500.0
@@ -51,7 +51,6 @@ anims/fire_start = SubResource( 2 )
 
 [node name="Charged" type="Sprite" parent="." index="2"]
 position = Vector2( 0.125, -0.499999 )
-scale = Vector2( 0.56746, 0.479167 )
 texture = ExtResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
@@ -67,5 +66,5 @@ texture = ExtResource( 3 )
 collision_mask = 5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2( -3, 0 )
+position = Vector2( 4.5, 0.5 )
 shape = SubResource( 1 )

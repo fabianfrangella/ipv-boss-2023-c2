@@ -109,16 +109,24 @@ func _change_attack_mode():
 
 func notify_hit(amount: int = 1) -> void:
 	audio_container.get_node("Hit").play()
+	_play_blood_animation()
 	shake_camera(0.5, 5, 5)
 	handle_event("hit", amount)
 
 func shake_camera(duration, frequency, amplitude):
 	camera.shake(duration, frequency, amplitude)
 
+func _play_blood_animation():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var animation_name = "blood_" + str(rng.randi_range(1, 5))
+	body_anim.get_node("Blood").play(animation_name)
+	
 func heal_hp()-> void:
 	if potions>0 && hp< max_hp:
 		sum_hp(15)
 		potions = potions -1
+		audio_container.get_node("Heal").play()
 		emit_signal("potions_changed", potions)
 
 func sum_hp(amount: int) -> void:
@@ -192,8 +200,8 @@ func notify_dead():
 
 func set_potions():
 	Checkpoint.potions = true
-	potions = 3
-	emit_signal("potions_changed", 3)
+	potions += 3
+	emit_signal("potions_changed", potions)
 	
 func set_armor():
 	hasArmor = true

@@ -4,6 +4,7 @@ extends Node2D
 onready var lifetime_timer: Timer = $LifetimeTimer
 onready var hitbox: Area2D = $Hitbox
 onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
+onready var audio = $AudioStreamPlayer2D
 
 export (float) var VELOCITY: float = 800.0
 var damage: int = 1
@@ -67,4 +68,5 @@ func _on_Hitbox_area_entered(body):
 		return
 	if body.get_parent().has_method("notify_hit"):
 		body.get_parent().notify_hit(damage)
-	remove()
+		audio.connect("finished", self, "remove")
+		audio.play()
