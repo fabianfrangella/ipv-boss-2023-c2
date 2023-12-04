@@ -89,7 +89,6 @@ func _on_Selected_Sword():
 	weapon_container.get_node("SelectedSword").show()
 	
 func _on_Blood_Overlay(hp, show):
-	print("HP: ", hp)
 	if (show):
 		blood_overlay.modulate.a8 = _get_blood_overlay_intensity(hp)
 		blood_overlay.show()

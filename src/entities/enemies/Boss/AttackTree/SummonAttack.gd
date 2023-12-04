@@ -24,7 +24,7 @@ func _summon(summon_position, enemy_name, name):
 		enemy.pathfinding_path = get_parent().boss.pathfinding_path 
 	enemy.name = enemy_name
 	enemy.global_position = summon_position
-	enemy.scale = Vector2(0.25, 0.25)
+	enemy.scale = Vector2(0.20, 0.20)
 	add_child(enemy)
 
 func _on_Timer_timeout():

@@ -10,7 +10,7 @@ onready var summonAttack = get_node("SummonAttack")
 onready var states = [areaAttack]
 
 func _physics_process(delta):
-	if (boss.is_dead()):
+	if (boss.is_dead() || boss.move_to_portal):
 		return
 	if (states != null):
 		_set_states(boss.hp)
@@ -28,12 +28,18 @@ func _set_states(hp):
 	elif (hp <= 90 && boss.hp > 70):
 		states = [fireAttack]
 	elif (hp <= 70 && boss.hp > 50):
+		boss.move_to_portal = true
+		boss.current_portal = 1
 		states = [summonAttack]
 	elif (hp <= 50 && boss.hp > 30):
 		states = [areaAttack, fireAttack]
 	elif (hp <= 30 && boss.hp > 10):
+		boss.move_to_portal = true
+		boss.current_portal = 2
 		states = [fireAttack, areaAttack, summonAttack]
 	elif (hp <= 10 && boss.hp > 0):
+		boss.move_to_portal = true
+		boss.current_portal = 3
 		states = [fireAttack, areaAttack, summonAttack]
 	elif (hp <= 0):
 		states = []

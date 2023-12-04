@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 const AnimationState = preload("res://entities/player/AnimationState.gd")
 
@@ -20,6 +20,12 @@ var has_been_triggered = false
 
 export var fire_damage = 3
 export var area_damage = 5
+export var portals = []
+
+export var speed = 400
+
+var current_portal = 0
+var move_to_portal = false
 
 func _ready():
 	target = get_parent().get_parent().get_node("Player")
@@ -31,6 +37,20 @@ func _physics_process(delta):
 		if (not is_attacking):
 			body_anim.set_state(AnimationState.IDLE, 
 				_get_direction_to(self.position.direction_to(target.position)))
+	if move_to_portal:
+		move_to_portal(current_portal)
+
+func move_to_portal(portal):
+	var velocity = Vector2(0, 0)
+	var target = portals[portal]
+	velocity = (target - position).normalized() * speed
+	if (target - position).length() > 5:
+		body_anim.set_state(AnimationState.MOVEMENT, 
+				_get_direction_to(self.position.direction_to(target)))
+		move_and_slide(velocity)
+	else:
+		move_to_portal = false
+	
 
 func notify_hit(damage):
 	self.hp -= damage

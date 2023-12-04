@@ -150,7 +150,16 @@ position = Vector2( 5032, -1553 )
 z_index = 1
 
 [node name="Portal" parent="TileMap" instance=ExtResource( 26 )]
-position = Vector2( 4698, -1857 )
+position = Vector2( 4629, -1744 )
+
+[node name="Portal2" parent="TileMap" instance=ExtResource( 26 )]
+position = Vector2( 4150, -2312 )
+
+[node name="Portal3" parent="TileMap" instance=ExtResource( 26 )]
+position = Vector2( 5850, -1424 )
+
+[node name="Portal4" parent="TileMap" instance=ExtResource( 26 )]
+position = Vector2( 5306, -2182 )
 
 [node name="AstarTilemap" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -383,7 +392,7 @@ shape = SubResource( 3 )
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2121, 1605 )
+position = Vector2( -2102, 1569 )
 max_hp = 10
 dash_speed = 20.0
 
@@ -518,8 +527,9 @@ position = Vector2( 319, -92 )
 shape = SubResource( 1 )
 
 [node name="Boss" parent="YSort/Entities/BossChamber" instance=ExtResource( 12 )]
-position = Vector2( 4717, -1973 )
+position = Vector2( 4650, -1837 )
 pathfinding_path = NodePath("../../../../AstarTilemap")
+portals = [ Vector2( 4629, -1744 ), Vector2( 4153, -2381 ), Vector2( 5855, -1514 ), Vector2( 5322, -2246 ) ]
 
 [node name="Checkpoint" type="Node" parent="YSort/Entities"]
 script = ExtResource( 11 )
@@ -529,7 +539,8 @@ position = Vector2( 2029, -329 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Entities/Checkpoint/Area2D"]
-position = Vector2( 52, -11 )
+visible = false
+position = Vector2( 100, -43 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="YSort/Entities/Checkpoint"]
