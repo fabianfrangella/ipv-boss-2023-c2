@@ -196,7 +196,6 @@ tile_set = ExtResource( 6 )
 cell_size = Vector2( 256, 128 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -1245197, 20, 0, -720905, 5, 0, -720904, 5, 0, -655369, 5, 0, -655368, 5, 0, -720891, 12, 0, -589833, 5, 0, -589832, 5, 0, -524297, 5, 0, -524276, 52, 0 )
 
 [node name="Entities" type="YSort" parent="YSort"]
 
@@ -374,8 +373,9 @@ shape = SubResource( 3 )
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2097, 1597 )
+position = Vector2( 2244, -427 )
 max_hp = 10
+potions = 3
 dash_speed = 20.0
 
 [node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
@@ -522,6 +522,8 @@ collision_mask = 3
 position = Vector2( 52, -11 )
 shape = SubResource( 2 )
 
+[node name="Sprite" type="Sprite" parent="YSort/Entities/Checkpoint"]
+
 [node name="Objects" type="YSort" parent="YSort"]
 position = Vector2( -60, -35 )
 
@@ -569,6 +571,8 @@ scaleSprite = 2.0
 [connection signal="hp_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_hp_changed"]
 [connection signal="mana_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_mana_changed"]
 [connection signal="potions_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_potions_changed"]
+[connection signal="using_staff" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Selected_Staff"]
+[connection signal="using_sword" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Selected_Sword"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_boss_found"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/Player/Listener2D" method="_on_Boss_boss_found"]

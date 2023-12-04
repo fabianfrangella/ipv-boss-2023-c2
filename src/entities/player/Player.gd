@@ -10,6 +10,8 @@ signal hit(amount)
 signal healed(amount)
 signal potions_changed(amount)
 signal deaths_changed()
+signal using_sword()
+signal using_staff()
 var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
@@ -102,9 +104,11 @@ func _change_attack_mode():
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
 		currentAttackMode = ATTACK_MODES.RANGE
 		body_anim.set_range_animator()
+		emit_signal("using_staff")
 	else:
 		attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 		currentAttackMode = ATTACK_MODES.MELEE
+		emit_signal("using_sword")
 		body_anim.set_melee_animator()
 
 func notify_hit(amount: int = 1) -> void:

@@ -4,6 +4,7 @@ onready var hp_progress_1 = $StatsContainer/HpProgress1
 onready var mana_progress = $StatsContainer/ManaProgress
 onready var potions_amount = $ItemsContainer/PotionsAmount
 onready var items_container = $ItemsContainer
+onready var weapon_container = $WeaponContainer
 onready var deaths_amounts = $DeathsContainer/DeathsAmounts
 onready var timer = $ScoreContainer/Timer
 onready var hp_text = $StatsContainer/HpProgress1/HpText
@@ -77,3 +78,11 @@ func _on_Boss_boss_found():
 func _on_Boss_hp_changed(hp: int, hp_max: int):
 	boss_hp.max_value = hp_max
 	boss_hp.value = hp
+	
+func _on_Selected_Staff():
+	weapon_container.get_node("SelectedStaff").show()
+	weapon_container.get_node("SelectedSword").hide()
+
+func _on_Selected_Sword():
+	weapon_container.get_node("SelectedStaff").hide()
+	weapon_container.get_node("SelectedSword").show()
