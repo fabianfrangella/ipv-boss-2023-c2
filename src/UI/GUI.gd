@@ -88,5 +88,27 @@ func _on_Selected_Sword():
 	weapon_container.get_node("SelectedStaff").hide()
 	weapon_container.get_node("SelectedSword").show()
 	
-func _on_Blood_Overlay():
-	blood_overlay.show()
+func _on_Blood_Overlay(hp, show):
+	print("HP: ", hp)
+	if (show):
+		blood_overlay.modulate.a8 = _get_blood_overlay_intensity(hp)
+		blood_overlay.show()
+	else:
+		blood_overlay.hide()
+
+func _get_blood_overlay_intensity(hp):
+	if (hp <= 100 && hp > 80):
+		return 50
+	if (hp <= 80 && hp > 60):
+		return 70
+	if (hp <= 60 && hp > 50):
+		return 100
+	if (hp <= 50 && hp > 40):
+		return 150
+	if (hp <= 40 && hp > 30):
+		return 180
+	if (hp <= 30 && hp > 10):
+		return 200
+	if (hp <= 10 && hp > 0):
+		return 255
+	return 0

@@ -8,6 +8,7 @@ resource_name = "fire_start"
 loop = true
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 20.025
 
 [node name="Projectile" type="Node2D"]
 z_as_relative = false

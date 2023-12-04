@@ -12,6 +12,7 @@ signal potions_changed(amount)
 signal deaths_changed()
 signal using_sword()
 signal using_staff()
+signal hp_feedback(intensity, show)
 var is_using_joystick = false
 signal hp_changed(current_hp, max_hp)
 signal mana_changed(current_mana, max_mana)
@@ -188,9 +189,14 @@ func handle_event(event: String, value = null) -> void:
 	match event:
 		"hit":
 			sum_hp(-value)
+			emit_signal("hp_feedback", int(round(float((float(hp) / float(max_hp)) * 100))), true)
 		"healed":
 			sum_hp(value)
 		"hp_changed":
+			if (hp == max_hp):
+				emit_signal("hp_feedback", 100.0, false)
+			else:
+				emit_signal("hp_feedback", int(round(float(float(hp) / float(max_hp) * 100))), true)
 			if value[0] == 0:
 				emit_signal("dead")
 		"dead":
