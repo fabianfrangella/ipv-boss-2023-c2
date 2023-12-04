@@ -56,7 +56,7 @@
 [ext_resource path="res://assets/tile/Isometric/stoneMissingTiles_E.png" type="Texture" id=54]
 [ext_resource path="res://assets/tile/Isometric/stoneLeft_W.png" type="Texture" id=55]
 [ext_resource path="res://assets/tile/Isometric/stoneMissingTiles_S.png" type="Texture" id=56]
-[ext_resource path="res://assets/tile/Wall/shadow_tile.png" type="Texture" id=57]
+[ext_resource path="res://assets/tile/Wall/shadow_floor.png" type="Texture" id=57]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 384, 256, 448, 128, 512, 0, 448, 0, 448 )
@@ -863,14 +863,14 @@ points = PoolVector2Array( 128, 384, 256, 448, 160, 512, 32, 416, 32, 416 )
 55/shape_one_way_margin = 0.0
 55/shapes = [  ]
 55/z_index = 0
-56/name = "shadow_tile.png 56"
+56/name = "shadow_floor.png 56"
 56/texture = ExtResource( 57 )
-56/tex_offset = Vector2( 0, 0 )
+56/tex_offset = Vector2( 0, -384 )
 56/modulate = Color( 1, 1, 1, 1 )
 56/region = Rect2( 0, 0, 256, 512 )
 56/tile_mode = 0
-56/occluder_offset = Vector2( 0, 0 )
-56/navigation_offset = Vector2( 0, 0 )
+56/occluder_offset = Vector2( 128, 256 )
+56/navigation_offset = Vector2( 128, 256 )
 56/shape_offset = Vector2( 0, 0 )
 56/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 56/shape_one_way = false
