@@ -101,6 +101,7 @@ func _set_weapon_direction():
 	self.range_weapon.get_node("WeaponTip").position = previous_direction * 10
 
 func _change_attack_mode():
+	audio_container.get_node("ChangeWeapon").play()
 	if (currentAttackMode == ATTACK_MODES.MELEE):
 		attackHandler = attackHandlers.get(ATTACK_MODES.RANGE)
 		currentAttackMode = ATTACK_MODES.RANGE

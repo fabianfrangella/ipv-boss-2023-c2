@@ -1,4 +1,4 @@
-[gd_scene load_steps=927 format=2]
+[gd_scene load_steps=928 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/effects/blood/3_100x100px.png" type="Texture" id=18]
 [ext_resource path="res://assets/effects/blood/4_100x100px.png" type="Texture" id=19]
 [ext_resource path="res://Sounds/Misc/bottle.wav" type="AudioStream" id=20]
+[ext_resource path="res://Sounds/change_weapon.ogg" type="AudioStream" id=21]
 
 [sub_resource type="AtlasTexture" id=114]
 flags = 4
@@ -5390,6 +5391,9 @@ stream = ExtResource( 13 )
 
 [node name="Heal" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 20 )
+
+[node name="ChangeWeapon" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 21 )
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]
