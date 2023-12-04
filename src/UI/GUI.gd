@@ -10,6 +10,7 @@ onready var timer = $ScoreContainer/Timer
 onready var hp_text = $StatsContainer/HpProgress1/HpText
 onready var mana_text = $StatsContainer/ManaProgress/ManaText
 onready var boss_hp = $StatsContainer/BossHpProgress
+onready var blood_overlay = $BloodOverlay
 
 onready var fading_elements: Array = [hp_progress_1, mana_progress]
 
@@ -86,3 +87,6 @@ func _on_Selected_Staff():
 func _on_Selected_Sword():
 	weapon_container.get_node("SelectedStaff").hide()
 	weapon_container.get_node("SelectedSword").show()
+	
+func _on_Blood_Overlay():
+	blood_overlay.show()

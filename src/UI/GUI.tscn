@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/assets/HealthPotionUI.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/assets/VidaBar.png" type="Texture" id=6]
 [ext_resource path="res://UI/assets/ManaBar.png" type="Texture" id=7]
 [ext_resource path="res://UI/assets/Baculo.png" type="Texture" id=8]
+[ext_resource path="res://assets/effects/BloodOverlay.png" type="Texture" id=9]
 [ext_resource path="res://UI/assets/Espada.png" type="Texture" id=11]
 [ext_resource path="res://UI/assets/Marco_CuadradoArmas.png" type="Texture" id=12]
 [ext_resource path="res://UI/assets/Border_Style_3.png" type="Texture" id=13]
@@ -340,5 +341,13 @@ margin_right = 62.0
 margin_bottom = 143.0
 custom_fonts/font = SubResource( 5 )
 text = "0"
+
+[node name="BloodOverlay" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 4.0
+texture = ExtResource( 9 )
+expand = true
 
 [connection signal="timeout" from="ScoreContainer/Timer" to="ScoreContainer/Timer" method="_on_Timer_timeout"]
