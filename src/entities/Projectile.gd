@@ -51,9 +51,6 @@ func remove() -> void:
 	hitbox.collision_mask = 0
 	set_physics_process(false)
 	
-	## Acá, como hicimos con Turret y Player, delegamos la "muerte"
-	## a una animación de golpe.
-	projectile_animations.play("hit")
 	get_parent().remove_child(self)
 	queue_free()
 
@@ -68,5 +65,4 @@ func _on_Hitbox_area_entered(body):
 		return
 	if body.get_parent().has_method("notify_hit"):
 		body.get_parent().notify_hit(damage)
-		audio.connect("finished", self, "remove")
 		audio.play()

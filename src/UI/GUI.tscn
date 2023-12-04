@@ -352,7 +352,7 @@ texture = ExtResource( 9 )
 expand = true
 
 [node name="Fog" type="TextureRect" parent="."]
-modulate = Color( 0.141176, 0.133333, 0.133333, 0.705882 )
+modulate = Color( 0.0745098, 0.0745098, 0.0745098, 0.956863 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0

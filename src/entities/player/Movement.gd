@@ -53,6 +53,9 @@ func handle_movement(body: KinematicBody2D):
 		velocity = velocity * dash_speed
 		can_dash = false
 		canPassThrough = true
+		audio_container.get_node("DashStart").play()
+		audio_container.get_node("Dash").play()
+		body.body_anim.get_node("AnimationPlayer").play("teleport")
 	
 	body.move_and_slide(velocity)
 	

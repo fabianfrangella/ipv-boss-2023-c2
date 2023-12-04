@@ -1,4 +1,4 @@
-[gd_scene load_steps=928 format=2]
+[gd_scene load_steps=937 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/BodyAnimator.gd" type="Script" id=2]
@@ -21,6 +21,15 @@
 [ext_resource path="res://assets/effects/blood/4_100x100px.png" type="Texture" id=19]
 [ext_resource path="res://Sounds/Misc/bottle.wav" type="AudioStream" id=20]
 [ext_resource path="res://Sounds/change_weapon.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Shaders/teleport.tres" type="Shader" id=22]
+[ext_resource path="res://Sounds/Magic Spell_Short Reverse_1.wav" type="AudioStream" id=23]
+
+[sub_resource type="ShaderMaterial" id=1016]
+shader = ExtResource( 22 )
+shader_param/progress = 0.0
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
 
 [sub_resource type="AtlasTexture" id=114]
 flags = 4
@@ -785,6 +794,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="ShaderMaterial" id=1017]
+shader = ExtResource( 22 )
+shader_param/progress = null
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
+
 [sub_resource type="AtlasTexture" id=749]
 flags = 4
 atlas = ExtResource( 11 )
@@ -1547,6 +1563,13 @@ animations = [ {
 "name": "walk_up_right",
 "speed": 10.0
 } ]
+
+[sub_resource type="ShaderMaterial" id=1018]
+shader = ExtResource( 22 )
+shader_param/progress = 0.0
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
 
 [sub_resource type="AtlasTexture" id=878]
 flags = 4
@@ -2311,6 +2334,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="ShaderMaterial" id=1019]
+shader = ExtResource( 22 )
+shader_param/progress = null
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
+
 [sub_resource type="AtlasTexture" id=490]
 flags = 4
 atlas = ExtResource( 8 )
@@ -3074,6 +3104,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="ShaderMaterial" id=1020]
+shader = ExtResource( 22 )
+shader_param/progress = null
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
+
 [sub_resource type="AtlasTexture" id=232]
 flags = 4
 atlas = ExtResource( 3 )
@@ -3836,6 +3873,13 @@ animations = [ {
 "name": "walk_up_right",
 "speed": 10.0
 } ]
+
+[sub_resource type="ShaderMaterial" id=1021]
+shader = ExtResource( 22 )
+shader_param/progress = 0.0
+shader_param/noise_desnity = 1000.0
+shader_param/beam_size = 0.025
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
 
 [sub_resource type="AtlasTexture" id=619]
 flags = 4
@@ -5268,6 +5312,53 @@ animations = [ {
 "speed": 60.0
 } ]
 
+[sub_resource type="Animation" id=1022]
+resource_name = "teleport"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.301, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.5 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 1.0 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 1.0 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 1.0 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.6 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.5 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.4 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.2 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.0 ],
+"method": "_set_progress_dash"
+}, {
+"args": [ 0.0 ],
+"method": "_set_progress_dash"
+} ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.9167, 7.66665 )
 
@@ -5289,25 +5380,28 @@ max_hp = 1
 script = ExtResource( 2 )
 
 [node name="Melee" type="AnimatedSprite" parent="BodyAnimations"]
-visible = false
+material = SubResource( 1016 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 747 )
 animation = "idle_down_right"
 
 [node name="ArmorMelee" type="AnimatedSprite" parent="BodyAnimations"]
 visible = false
+material = SubResource( 1017 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 877 )
 animation = "idle_down_right"
 
 [node name="NormalMelee" type="AnimatedSprite" parent="BodyAnimations"]
 visible = false
+material = SubResource( 1018 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 489 )
 animation = "idle_down_right"
 
 [node name="NormalGreatSword" type="AnimatedSprite" parent="BodyAnimations"]
 visible = false
+material = SubResource( 1019 )
 position = Vector2( 0, 0.833332 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 100 )
@@ -5315,12 +5409,14 @@ animation = "idle_down_right"
 
 [node name="Range" type="AnimatedSprite" parent="BodyAnimations"]
 visible = false
+material = SubResource( 1020 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 618 )
 animation = "range_down_right"
 
 [node name="NormalRange" type="AnimatedSprite" parent="BodyAnimations"]
 visible = false
+material = SubResource( 1021 )
 position = Vector2( 0, -0.833333 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 101 )
@@ -5331,7 +5427,11 @@ frames = SubResource( 1015 )
 animation = "blood_5"
 frame = 31
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BodyAnimations"]
+anims/teleport = SubResource( 1022 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1.25, 44.3333 )
 shape = SubResource( 1 )
 
@@ -5394,6 +5494,13 @@ stream = ExtResource( 20 )
 
 [node name="ChangeWeapon" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 21 )
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 23 )
+
+[node name="DashStart" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource( 12 )
+pitch_scale = 3.13
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]

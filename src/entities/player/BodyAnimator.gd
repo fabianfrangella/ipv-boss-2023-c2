@@ -150,3 +150,6 @@ func _on_animation_finished():
 	if 'melee' in body_anim.animation or 'range' in body_anim.animation:
 		emit_signal("finished_attacking")
 		state = AnimationState.IDLE
+		
+func _set_progress_dash(value):
+	body_anim.material.set_shader_param("progress", value)

@@ -11,6 +11,7 @@ onready var hp_text = $StatsContainer/HpProgress1/HpText
 onready var mana_text = $StatsContainer/ManaProgress/ManaText
 onready var boss_hp = $StatsContainer/BossHpProgress
 onready var blood_overlay = $BloodOverlay
+onready var fog = $Fog
 
 onready var fading_elements: Array = [hp_progress_1, mana_progress]
 
@@ -111,3 +112,6 @@ func _get_blood_overlay_intensity(hp):
 	if (hp <= 10 && hp > 0):
 		return 255
 	return 0
+	
+func _on_Boss_Found():
+	fog.hide()

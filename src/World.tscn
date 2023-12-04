@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -94,6 +94,10 @@ extents = Vector2( 312.375, 146.875 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 375.5, 274 )
+
+[sub_resource type="Environment" id=17]
+background_mode = 4
+glow_enabled = true
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -578,6 +582,9 @@ image = ExtResource( 19 )
 objectName = "gsword"
 scaleSprite = 2.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 17 )
+
 [connection signal="restart_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_return_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/VictoryMenu" to="." method="_on_return_requested"]
@@ -595,6 +602,7 @@ scaleSprite = 2.0
 [connection signal="potions_changed" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_potions_changed"]
 [connection signal="using_staff" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Selected_Staff"]
 [connection signal="using_sword" from="YSort/Entities/Player" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Selected_Sword"]
+[connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_Found"]
 [connection signal="body_entered" from="YSort/Entities/BossChamber/Area2D" to="YSort/Entities/BossChamber/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/GUI" method="_on_Boss_boss_found"]
 [connection signal="boss_found" from="YSort/Entities/BossChamber/Boss" to="YSort/Entities/Player/Listener2D" method="_on_Boss_boss_found"]
