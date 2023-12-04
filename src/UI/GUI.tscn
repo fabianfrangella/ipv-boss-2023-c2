@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://UI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/assets/HealthPotionUI.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://UI/assets/Espada.png" type="Texture" id=11]
 [ext_resource path="res://UI/assets/Marco_CuadradoArmas.png" type="Texture" id=12]
 [ext_resource path="res://UI/assets/Border_Style_3.png" type="Texture" id=13]
+[ext_resource path="res://UI/assets/StaminaBar.png" type="Texture" id=14]
 
 [sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.0041841, 0.100418, 1 )
@@ -211,6 +212,7 @@ scale = Vector2( 0.863636, 0.862654 )
 texture = ExtResource( 12 )
 
 [node name="SelectedStaff" type="Sprite" parent="WeaponContainer"]
+visible = false
 scale = Vector2( 0.863636, 0.867284 )
 texture = ExtResource( 12 )
 
@@ -283,10 +285,9 @@ anchor_left = 0.232
 anchor_top = 0.881
 anchor_right = 0.769
 anchor_bottom = 0.944
-margin_top = -6.0
-margin_bottom = -6.0
 theme = SubResource( 8 )
 texture_under = ExtResource( 13 )
+texture_over = ExtResource( 14 )
 texture_progress = SubResource( 15 )
 tint_progress = Color( 0.372549, 0.00392157, 0.00392157, 1 )
 nine_patch_stretch = true
