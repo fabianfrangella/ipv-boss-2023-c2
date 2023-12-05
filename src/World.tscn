@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tile/Floor/floor_set.tres" type="TileSet" id=2]
@@ -50,6 +50,16 @@ shader_param/shift = 0.0
 shader_param/velocity = Vector2( 0.001, 0.001 )
 shader_param/fog_color = Color( 0, 0, 0, 1 )
 shader_param/noise = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.266667, 0.109804, 0.109804, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+shadow_color = Color( 0.0392157, 0.0117647, 0.0117647, 0.690196 )
+shadow_size = 5
 
 [sub_resource type="DynamicFont" id=11]
 size = 22
@@ -262,6 +272,7 @@ margin_top = 0.199997
 margin_right = 0.0879517
 margin_bottom = 13.8
 theme = ExtResource( 31 )
+custom_styles/panel = SubResource( 18 )
 
 [node name="RangeEnemyText" type="Label" parent="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/Panel"]
 anchor_right = 1.0
