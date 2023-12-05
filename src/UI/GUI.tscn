@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://UI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/assets/HealthPotionUI.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://UI/assets/Marco_CuadradoArmas.png" type="Texture" id=12]
 [ext_resource path="res://UI/assets/Border_Style_3.png" type="Texture" id=13]
 [ext_resource path="res://UI/assets/StaminaBar.png" type="Texture" id=14]
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=15]
 
 [sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.0041841, 0.100418, 1 )
@@ -358,5 +359,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 10 )
 expand = true
+
+[node name="DeadLabel" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -511.0
+margin_bottom = -297.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 15 )
+text = "Has muerto"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
 
 [connection signal="timeout" from="ScoreContainer/Timer" to="ScoreContainer/Timer" method="_on_Timer_timeout"]

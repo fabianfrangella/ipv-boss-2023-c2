@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://fonts/SpaceGrotesk-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/ActionMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/AudioBusOptions.tscn" type="PackedScene" id=4]
@@ -8,6 +7,8 @@
 [ext_resource path="res://Sounds/footsteps/footstep01.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/Music/defiance_boss.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/Ambience/ambience.wav" type="AudioStream" id=8]
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=9]
+[ext_resource path="res://UI/Fonts/Two for Juan.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -23,11 +24,11 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
-font_data = ExtResource( 1 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
-font_data = ExtResource( 1 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.305882, 0.113725, 0.113725, 1 )
@@ -43,7 +44,7 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=5]
 size = 20
-font_data = ExtResource( 1 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 content_margin_left = 2.0
@@ -88,6 +89,7 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 9 )
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -134,6 +136,7 @@ margin_left = 2.0
 margin_top = 45.0
 margin_right = -2.0
 margin_bottom = -90.0
+theme = ExtResource( 9 )
 custom_fonts/font = SubResource( 5 )
 custom_styles/tab_fg = SubResource( 6 )
 custom_styles/tab_disabled = SubResource( 7 )
@@ -148,79 +151,83 @@ _audio_references = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
-margin_top = 29.0
+margin_top = 28.0
 margin_right = -1.0
 margin_bottom = -1.0
 focus_mode = 2
 mouse_filter = 1
+theme = ExtResource( 9 )
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Controls"]
 margin_right = 986.0
-margin_bottom = 419.0
+margin_bottom = 455.0
 size_flags_horizontal = 3
+theme = ExtResource( 9 )
 alignment = 1
 
 [node name="ActionMap" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
 margin_right = 986.0
-margin_bottom = 43.0
+margin_bottom = 47.0
+theme = ExtResource( 9 )
 action = "ui_left"
 action_name = "Move Left"
 
 [node name="ActionMap2" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 47.0
+margin_top = 51.0
 margin_right = 986.0
-margin_bottom = 90.0
+margin_bottom = 98.0
+theme = ExtResource( 9 )
 action = "ui_right"
 action_name = "Move Right"
 
 [node name="ActionMap3" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 94.0
+margin_top = 102.0
 margin_right = 986.0
-margin_bottom = 137.0
+margin_bottom = 149.0
 action = "ui_up"
 action_name = "Move Up"
 
 [node name="ActionMap4" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 141.0
+margin_top = 153.0
 margin_right = 986.0
-margin_bottom = 184.0
+margin_bottom = 200.0
 action = "ui_down"
 action_name = "MoveDown"
 
 [node name="ActionMap5" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 188.0
+margin_top = 204.0
 margin_right = 986.0
-margin_bottom = 231.0
+margin_bottom = 251.0
 action = "attack"
 action_name = "Attack"
 
 [node name="ActionMap6" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 235.0
+margin_top = 255.0
 margin_right = 986.0
-margin_bottom = 278.0
+margin_bottom = 302.0
 action = "dash"
 action_name = "Dash"
 
 [node name="ActionMap7" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 282.0
+margin_top = 306.0
 margin_right = 986.0
-margin_bottom = 325.0
+margin_bottom = 353.0
 action = "heal"
 action_name = "Heal"
 
 [node name="ActionMap8" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 329.0
+margin_top = 357.0
 margin_right = 986.0
-margin_bottom = 372.0
+margin_bottom = 404.0
 action = "change_attack_mode"
 action_name = "Change Attack Mode"
 
 [node name="ActionMap9" parent="Panel/Panel/Controls/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 376.0
+margin_top = 408.0
 margin_right = 986.0
-margin_bottom = 419.0
+margin_bottom = 455.0
 action = "reset"
 action_name = "Reset"
 
