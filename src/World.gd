@@ -20,3 +20,6 @@ func _on_restart_requested() -> void:
 	Checkpoint.reset()
 	emit_signal("restart_requested")
 
+
+func _on_DeadMenu_restart_selected():
+	get_tree().reload_current_scene()

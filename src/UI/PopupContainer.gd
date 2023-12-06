@@ -22,6 +22,8 @@ var dash_triggered = false
 var current_trigger = true
 onready var current_hint = $Panel/RangeEnemyText
 
+onready var dead_menu = $DeadMenu
+
 func _ready():
 	continue_button.hide()
 	range_enemy_text.hide()
@@ -29,6 +31,7 @@ func _ready():
 	potion_text.hide()
 	boss_text.hide()
 	panel.hide()
+	dead_menu.hide()
 
 func _on_hint_trigger(area, hint):
 	if (area.name == "PlayerHitbox"):
@@ -107,7 +110,9 @@ func _on_BossChamberArea_area_entered(area):
 			get_tree().paused = true
 			continue_button.show()
 
-
-
 func _on_DashArea_area_entered(area):
 	_on_hint_trigger(area, "dash")
+
+
+func _on_Player_dead():
+	dead_menu.show()

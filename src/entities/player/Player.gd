@@ -170,7 +170,8 @@ func _remove() -> void:
 	#collision_layer = 0
 	#get_parent().remove_child(self)
 	#queue_free()
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	pass
 
 
 func notify_healed(amount):

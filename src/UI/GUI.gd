@@ -116,6 +116,3 @@ func _get_blood_overlay_intensity(hp):
 	
 func _on_Boss_Found():
 	fog.hide()
-
-func _on_Death():
-	dead_label.show()
