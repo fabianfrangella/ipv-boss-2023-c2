@@ -5496,11 +5496,12 @@ stream = ExtResource( 20 )
 stream = ExtResource( 21 )
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="AudioContainer"]
-stream = ExtResource( 23 )
+stream = ExtResource( 12 )
+pitch_scale = 3.63
 
 [node name="DashStart" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource( 23 )
-pitch_scale = 3.13
+pitch_scale = 0.53
 
 [node name="GhostTimer" type="Timer" parent="."]
 wait_time = 0.03
