@@ -39,8 +39,8 @@ var mana: float = max_mana
 export (float) var mana_recovery_time: float = 5.0
 export (float) var mana_recovery_delay: float = 1.0
 
-export (float) var dash_speed = 30
-export (float) var speed = 240
+export (float) var dash_speed = 20
+export (float) var speed = 15000
 var projectile_container: Node
 
 var attackHandler
@@ -62,7 +62,7 @@ func _ready():
 
 func _physics_process(delta):
 	if (not movementHandler.is_attacking):
-		movementHandler.handle_movement(self)
+		movementHandler.handle_movement(self, delta)
 	attackHandler._handle_attack(self)
 	if Input.is_action_just_pressed("change_attack_mode") && hasStaff:
 		_change_attack_mode()
@@ -83,7 +83,7 @@ func initialize(projectile_container: Node = get_parent()):
 	attackHandler = attackHandlers.get(ATTACK_MODES.MELEE)
 	currentAttackMode = ATTACK_MODES.MELEE
 	movementHandler = MovementHandler.new()
-	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed, audio_container)
+	movementHandler.initialize(get_node("DashTimer"), dash_speed, speed, audio_container, get_node("GhostTimer"), self)
 	if Checkpoint.last_position:
 		self.global_position = Checkpoint.last_position
 	GameState.set_current_player(self)

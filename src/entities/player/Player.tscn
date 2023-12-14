@@ -22,7 +22,7 @@
 [ext_resource path="res://Sounds/Misc/bottle.wav" type="AudioStream" id=20]
 [ext_resource path="res://Sounds/change_weapon.ogg" type="AudioStream" id=21]
 [ext_resource path="res://Shaders/teleport.tres" type="Shader" id=22]
-[ext_resource path="res://Sounds/Magic Spell_Short Reverse_1.wav" type="AudioStream" id=23]
+[ext_resource path="res://Sounds/Magic Spell_Short Reverse_2.wav" type="AudioStream" id=23]
 
 [sub_resource type="ShaderMaterial" id=1016]
 shader = ExtResource( 22 )
@@ -5499,8 +5499,11 @@ stream = ExtResource( 21 )
 stream = ExtResource( 23 )
 
 [node name="DashStart" type="AudioStreamPlayer2D" parent="AudioContainer"]
-stream = ExtResource( 12 )
+stream = ExtResource( 23 )
 pitch_scale = 3.13
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.03
 
 [connection signal="dead" from="." to="." method="notify_dead"]
 [connection signal="deaths_changed" from="." to="." method="notify_deaths_changed"]
