@@ -24,7 +24,10 @@ onready var current_hint = $Panel/RangeEnemyText
 
 onready var dead_menu = $DeadMenu
 
+signal unpaused
+
 func _ready():
+	initialize_texts()
 	continue_button.hide()
 	range_enemy_text.hide()
 	melee_enemy_text.hide()
@@ -63,12 +66,33 @@ func _on_hint_trigger(area, hint):
 					current_hint = boss_text
 				"dash":
 					current_hint = dash_text
+					dash_triggered = true
 				_: pass
 				
 			current_hint.show()
-			
+
+func initialize_texts():
+	range_enemy_text.text = """Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!
+Cuando estés a una distancia adecuada para hacerle daño podrás observar su silueta remarcada.
+Utiliza la tecla """ + get_key_name("attack") + """ para atacar"""
+	
+	melee_enemy_text.text = """Otros enemigos se acercaran para atacarte, tratá de recibir el menor daño posible de sus ataques y eliminalos!"""
+	
+	potion_text.text = """Parece que has encontrado una poción!.
+En la mazmorra encontraras 
+artefactos que te serviran para enfrentar a tus enemigos, camina sobre ellos para equiparlos. 
+Algunos de estos artefactos son consumibles, presiona """ + get_key_name("heal") + " para consumirlo"
+
+	boss_text.text = ""
+	
+	staff_text.text = """Encontraste el baculo!, puedes equiparlo presionando """  + get_key_name("change_attack_mode") + """ en cualquier momento. 
+Ten en cuenta que tus ataques de magia consumen mana!."""
+	
+	dash_text.text = """Puedes utilizar el dash con """ + get_key_name("dash") + """ para esquivar los ataques enemigos!"""
+
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
+	emit_signal("unpaused")
 	current_hint.hide()
 	continue_button.hide()
 	panel.hide()
@@ -116,3 +140,22 @@ func _on_DashArea_area_entered(area):
 
 func _on_Player_dead():
 	dead_menu.show()
+
+func get_key_name(action: String):
+	# Gets the first input event attached to an action.
+	var event = InputMap.get_action_list(action)[0]
+	
+	# Returns if the event is not a key.
+	if not event is InputEventKey:
+		return
+	
+	# Gets the constant scancode and the physical scancode of the key
+	var scancode: int = event.scancode
+	var physical_scancode: int = event.physical_scancode
+	
+	# Checks if the key is physical, if so it converts the scancode
+	if physical_scancode:
+		scancode = OS.keyboard_get_scancode_from_physical(physical_scancode)
+	
+	# Returns the name of the key
+	return OS.get_scancode_string(scancode)

@@ -284,8 +284,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1.552
 custom_fonts/font = SubResource( 11 )
-text = "Hay enemigos que pueden atacar a la distancia, tratá de esquivar sus ataques para acercarte y eliminarlos!
-Cuando estés a una distancia adecuada para hacerle daño podrás observar su silueta remarcada"
 align = 1
 valign = 1
 autowrap = true
@@ -333,7 +331,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 custom_fonts/font = SubResource( 12 )
-text = "Otros enemigos se acercaran para atacarte, tratá de recibir el menor daño posible de sus ataques y eliminalos!"
 align = 1
 valign = 1
 autowrap = true
@@ -602,6 +599,7 @@ scaleSprite = 2.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 17 )
 
+[connection signal="unpaused" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer" to="YSort/Entities/Player" method="_on_PopupContainer_unpaused"]
 [connection signal="restart_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/PauseMenu" to="." method="_on_return_requested"]
 [connection signal="return_selected" from="YSort/Entities/TutorialChamber/TutorialUI/PopupContainer/VictoryMenu" to="." method="_on_return_requested"]

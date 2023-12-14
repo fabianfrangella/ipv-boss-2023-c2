@@ -57,13 +57,19 @@ const valid_outlines = ["BasicEnemyHitbox", "BossHitbox"]
 
 onready var audio_container = $AudioContainer
 
+var was_just_paused = false
+
 func _ready():
 	initialize()
 
 func _physics_process(delta):
 	if (not movementHandler.is_attacking):
 		movementHandler.handle_movement(self, delta)
-	attackHandler._handle_attack(self)
+	
+	if (not was_just_paused):
+		attackHandler._handle_attack(self)
+	else:
+		was_just_paused = false
 	if Input.is_action_just_pressed("change_attack_mode") && hasStaff:
 		_change_attack_mode()
 
@@ -274,3 +280,7 @@ func _on_OutlineTriggerArea_area_entered(area):
 func _on_OutlineTriggerArea_area_exited(area):
 	if (valid_outlines.has(area.name)):
 		area.get_parent().remove_outline()
+
+
+func _on_PopupContainer_unpaused():
+	was_just_paused = true
