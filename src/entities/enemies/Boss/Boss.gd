@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
 const AnimationState = preload("res://entities/player/AnimationState.gd")
+onready var ghost_timer = $GhostTimer
 
 onready var attack_tree = get_node("AttackTree")
 onready var heal_timer: Timer = get_node("HealTimer")
 onready var body_anim = $BodyAnimations
+var ghost_scene = preload("res://entities/player/DashGhost.tscn")
 
 var target
 var max_hp = 100
@@ -45,12 +47,23 @@ func move_to_portal(portal):
 	var target = portals[portal]
 	velocity = (target - position).normalized() * speed
 	if (target - position).length() > 5:
+		ghost_timer.start()
+		instance_ghost()
 		body_anim.set_state(AnimationState.MOVEMENT, 
 				_get_direction_to(self.position.direction_to(target)))
 		move_and_slide(velocity)
 	else:
 		move_to_portal = false
+		ghost_timer.stop()
 	
+func instance_ghost():
+	var ghost: AnimatedSprite = ghost_scene.instance()  # Cambiamos de Sprite a AnimatedSprite
+	self.get_parent().add_child(ghost)
+	ghost.global_position = body_anim.body_anim.global_position
+	ghost.frames = body_anim.body_anim.frames  # Utilizamos 'frames' en lugar de 'texture'
+	ghost.animation = body_anim.body_anim.animation  # Asignamos la animación actual
+	ghost.frame = body_anim.body_anim.frame
+	ghost.scale = body_anim.body_anim.scale
 
 func notify_hit(damage):
 	self.hp -= damage
@@ -124,3 +137,7 @@ func set_outline():
 func remove_outline():
 	body_anim.remove_outline()
 
+
+
+func _on_GhostTimer_timeout():
+	instance_ghost()

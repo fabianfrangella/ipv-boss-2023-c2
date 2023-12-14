@@ -414,7 +414,7 @@ shape = SubResource( 3 )
 position = Vector2( 358, 504 )
 
 [node name="Player" parent="YSort/Entities" instance=ExtResource( 1 )]
-position = Vector2( -2102, 1569 )
+position = Vector2( -2156, 1531 )
 max_hp = 10
 
 [node name="Listener2D" type="Listener2D" parent="YSort/Entities/Player"]
