@@ -147,7 +147,7 @@ func get_key_name(action: String):
 	
 	# Returns if the event is not a key.
 	if not event is InputEventKey:
-		return
+		return action
 	
 	# Gets the constant scancode and the physical scancode of the key
 	var scancode: int = event.scancode
